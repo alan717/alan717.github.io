@@ -4,9 +4,16 @@
     <title>我的部落格</title>
     <link>http://alan717.github.io</link>
     <description>Blah, blah...</description>
-    <pubDate>Sat, 15 Feb 2020 15:47:51 CST</pubDate>
-    <lastBuildDate>Sat, 15 Feb 2020 15:47:51 CST</lastBuildDate>
+    <pubDate>Sat, 15 Feb 2020 15:52:15 CST</pubDate>
+    <lastBuildDate>Sat, 15 Feb 2020 15:52:15 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>第一篇测试</title>
+      <link>http://alan717.github.io/blog/2020/02/15/2020/02/15</link>
+      <description><![CDATA[第一次写org-page]]></description>
+      <pubDate>2020-02-15</pubDate>
+      <guid>http://alan717.github.io/blog/2020/02/15/2020/02/15</guid>
+    </item>
   </channel>
 </rss>
