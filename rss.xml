@@ -3,9 +3,9 @@
   <channel>
     <title>我的部落格</title>
     <link>http://alan717.github.io</link>
-    <description>Blah, blah...</description>
-    <pubDate>Sat, 15 Feb 2020 16:09:46 CST</pubDate>
-    <lastBuildDate>Sat, 15 Feb 2020 16:09:46 CST</lastBuildDate>
+    <description>行者的笔记.Blah blah...</description>
+    <pubDate>Sat, 15 Feb 2020 20:08:23 CST</pubDate>
+    <lastBuildDate>Sat, 15 Feb 2020 20:08:23 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
