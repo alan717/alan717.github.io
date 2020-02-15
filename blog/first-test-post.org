@@ -1,0 +1,17 @@
+#+TITLE:       第一篇测试
+#+AUTHOR:      
+#+EMAIL:       tonki@poi
+#+DATE:        2020-02-15 Sat
+#+URI:         /blog/%y/%m/%d/2020/02/15
+#+KEYWORDS:    [org-page,git]
+#+TAGS:        org-page,git
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: 第一次写org-page
+* org-page
+在这儿假期简直太无聊了。
+
+
+然后就像测试一下这个blog搭建起来，准备之后的事情
+* 测试一下图片的使用
+
