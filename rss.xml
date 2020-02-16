@@ -4,16 +4,30 @@
     <title>我的部落格</title>
     <link>http://alan717.github.io</link>
     <description>行者的笔记.Blah blah...</description>
-    <pubDate>Sun, 16 Feb 2020 21:27:26 CST</pubDate>
-    <lastBuildDate>Sun, 16 Feb 2020 21:27:26 CST</lastBuildDate>
+    <pubDate>Sun, 16 Feb 2020 22:43:38 CST</pubDate>
+    <lastBuildDate>Sun, 16 Feb 2020 22:43:38 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>PLT&amp;GOT</title>
+      <link>http://alan717.github.io/blog/2020/02/16/plt&amp;got</link>
+      <description><![CDATA[linux elf plt got]]></description>
+      <pubDate>2020-02-16</pubDate>
+      <guid>http://alan717.github.io/blog/2020/02/16/plt&amp;got</guid>
+    </item>
     <item>
       <title>elisp阅读00</title>
       <link>http://alan717.github.io/blog/2020/02/16/elisp阅读00</link>
       <description><![CDATA[阅读elisp手册]]></description>
       <pubDate>2020-02-16</pubDate>
       <guid>http://alan717.github.io/blog/2020/02/16/elisp阅读00</guid>
+    </item>
+    <item>
+      <title>Emacs插件开发</title>
+      <link>http://alan717.github.io/blog/2020/02/16/emacs插件开发</link>
+      <description><![CDATA[emacs插件开发]]></description>
+      <pubDate>2020-02-16</pubDate>
+      <guid>http://alan717.github.io/blog/2020/02/16/emacs插件开发</guid>
     </item>
     <item>
       <title>第一篇测试</title>
