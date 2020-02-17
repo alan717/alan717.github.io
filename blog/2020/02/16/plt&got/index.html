@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>PLT&amp;GOT - 我的部落格</title>
+    <title>PLT&amp;GOT表ELF - 我的部落格</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
     <meta name="description" content="linux elf plt got" />
@@ -31,14 +31,116 @@
 
 <div>
 <div class="post">
-<h1>PLT&amp;GOT</h1>
+<h1>PLT&amp;GOT表ELF</h1>
+<div id="outline-container-org917c272" class="outline-2">
+<h2 id="org917c272">术语</h2>
+<div class="outline-text-2" id="text-org917c272">
+<p>
+Global Offset Table -&gt;GOT
+Procedure Linkage Table-&gt;PLT
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf9a4690" class="outline-2">
+<h2 id="orgf9a4690">基本认知</h2>
+<div class="outline-text-2" id="text-orgf9a4690">
+<p>
+先跳.got.plt表，没绝对地址则跳plt对应函数的过程链接函数，跳到过程链接函数然后跳对应的PLT0表来跳到*dl_time_resolve()*
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4c08403" class="outline-2">
+<h2 id="org4c08403">详细实现</h2>
+<div class="outline-text-2" id="text-org4c08403">
+<p>
+ELF将GOT拆成两个部分".got",".got.plt"，其中.got保存全局变量引用的地址，.got.plt波阿村函数引用地址。所有对于外部函数的引用都分离出来放在.got.plt中。它的前三项有特殊用途：
+第一项保存的是.dynamic的地址，这个段描述了本模块动态链接相关信息
+第二项保存的是本模块ID
+第三项是_dl_runtime_resolve()的地址。
+其中第二项和第三项由动态链接器在装载共享模块时负责将他们初始化。.got.plt的其余项分别对应每个外部函数的引用。
+.got.plt:
+Address of .dynamic
+Module ID "Lib.so"
+_dl_runtime_resolve()
+import func1
+import func2
+...
+...
+</p>
+
+
+<p>
+PLT结构也有点不同，为了避免代码的重复，ELF把最后两条指令放在了PLT中的第一项。
+PLT0:
+push *(GOT + 4)
+jump *(GOT + 8)
+...
+bar@plt:
+jmp *(bar@GOT)
+push n
+jump PLT0
+</p>
+
+<p>
+PLT在ELF文件中放在.plt段，因为本身是地址无关代码因此，和代码段一起放在可读可执行的Segment被装载进内存。
+</p>
+</div>
+</div>
+<div id="outline-container-org78ee726" class="outline-2">
+<h2 id="org78ee726">追加</h2>
+<div class="outline-text-2" id="text-org78ee726">
+<p>
+一般来讲plt hook修改的就是plt第一次跳got表对应函数的地址，修改这个地址即可hook跳走。
+</p>
+<div class="org-src-container">
+<pre class="src src-c">void hook() {
+    uintptr_t base_addr;
+    uintptr_t addr;
+    //1. get the base addr of libpasswd.so
+    base_addr = get_base_addr("libpasswd");
+    if (0 == base_addr) return;
+    addr = base_addr + 0x201020; 
+    //2. add the write permisson
+    mprotect((void *)PAGE_START(addr), PAGE_SIZE, PROT_READ|PROT_WRITE);
+    //3. replace our hook func my_strcmp
+    *(void **)addr = my_strcmp; 
+    //4. clear the cache
+    __builtin___clear_cache((void *)PAGE_START(addr),
+            (void *)PAGE_END(addr));
+}
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-org7b0c802" class="outline-2">
+<h2 id="org7b0c802">实践</h2>
+<div class="outline-text-2" id="text-org7b0c802">
+<p>
+除此之外可以用gdb来观察如何跳走的，解析的
+<img src="/assets/blog/2020/02/16/plt&got/lastest_scr_002.png" alt="lastest_scr_002.png" />
+</p>
+
+
+<p>
+refer：
+<a href="http://nicephil.blinkenshell.org/my_book/ch07s04.html">http://nicephil.blinkenshell.org/my_book/ch07s04.html</a>
+<a href="https://www.cnblogs.com/dennis-wong/p/11229372.html">https://www.cnblogs.com/dennis-wong/p/11229372.html</a>
+</p>
+</div>
+</div>
 
 </div>
 </div>
     <div>
       <div class="post-meta">
         <span title="post date" class="post-info">2020-02-16</span>
-        <span title="last modification date" class="post-info">2020-02-16</span>
+        <span title="last modification date" class="post-info">2020-02-17</span>
         <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
         <span title="author" class="post-info"></span>
       </div>
