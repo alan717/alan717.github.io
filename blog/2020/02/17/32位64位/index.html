@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Tag: linux - 我的部落格</title>
+    <title>32位64位 - 我的部落格</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
+    <meta name="description" content="Linux32位和64位差异化" />
+    <meta name="keywords" content="linux,32,64" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -26,16 +28,63 @@
         </form>
       </header>
     </div>
+
+<div>
+<div class="post">
+<h1>32位64位</h1>
+<div id="outline-container-org632361a" class="outline-2">
+<h2 id="org632361a">编译部分</h2>
+<div class="outline-text-2" id="text-org632361a">
+</div>
+<div id="outline-container-orgf491bd4" class="outline-3">
+<h3 id="orgf491bd4">编译找到不到32位库</h3>
+<div class="outline-text-3" id="text-orgf491bd4">
+<p>
+ 64位默认不编译32位否则出现
+#+BEGIN_SRC c
+/usr/include/gnu/stubs.h:7:11: 致命错误：gnu/stubs-32.h：没有那个文件或目录
+    7 | # include &lt;gnu/stubs-32.h&gt;
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">^~~~~~~~~~~~~~~~</td>
+</tr>
+</tbody>
+</table>
+<p>
+编译中断。
+</p>
+
+<p>
+#+END_SRC c
+这是没有安装32位支持库支持的，所以要安装 <b>multilib-devel</b>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org19f4260" class="outline-2">
+<h2 id="org19f4260">SSS</h2>
+</div>
+
+</div>
+</div>
     <div>
-      <div class="post">
-        <h1>Tag: linux</h1>
-        <ul class="org-ul">
-          <li><a href="/blog/2020/02/17/32位64位">32位64位</a></li>
-          <li><a href="/blog/2020/02/16/plt&amp;got">PLT&amp;GOT</a></li>
-        </ul>
+      <div class="post-meta">
+        <span title="post date" class="post-info">2020-02-17</span>
+        <span title="last modification date" class="post-info">2020-02-17</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
+        <span title="author" class="post-info"></span>
       </div>
-    </div>
-    <div>
+      <section>
+        <h1>Comments</h1>
+      </section>
       <script src="//code.jquery.com/jquery-latest.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js"></script>
       <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -50,5 +99,6 @@
         </p>
       </div>
     </div>
+
   </body>
 </html>
