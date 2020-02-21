@@ -4,10 +4,24 @@
     <title>我的部落格</title>
     <link>http://alan717.github.io</link>
     <description>行者的笔记.Blah blah...</description>
-    <pubDate>Tue, 18 Feb 2020 23:50:59 CST</pubDate>
-    <lastBuildDate>Tue, 18 Feb 2020 23:50:59 CST</lastBuildDate>
+    <pubDate>Fri, 21 Feb 2020 17:15:42 CST</pubDate>
+    <lastBuildDate>Fri, 21 Feb 2020 17:15:42 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Linux挂在镜像文件及修改文件内容</title>
+      <link>http://alan717.github.io/blog/2020/02/21/linux挂在镜像文件</link>
+      <description><![CDATA[linux挂在另外一个系统的文件]]></description>
+      <pubDate>2020-02-21</pubDate>
+      <guid>http://alan717.github.io/blog/2020/02/21/linux挂在镜像文件</guid>
+    </item>
+    <item>
+      <title>ndk单独工具链生成</title>
+      <link>http://alan717.github.io/blog/2020/02/21/ndk单独工具链生成</link>
+      <description><![CDATA[ndk单独linux工具链]]></description>
+      <pubDate>2020-02-21</pubDate>
+      <guid>http://alan717.github.io/blog/2020/02/21/ndk单独工具链生成</guid>
+    </item>
     <item>
       <title>Linux go deep</title>
       <link>http://alan717.github.io/blog/2020/02/17/linux-go-deep</link>
@@ -63,13 +77,6 @@
       <description><![CDATA[第一次写org-page]]></description>
       <pubDate>2020-02-16</pubDate>
       <guid>http://alan717.github.io/blog/2020/02/15/第一篇测试</guid>
-    </item>
-    <item>
-      <title>测试写一篇Wiki</title>
-      <link>http://alan717.github.io/blog/2020/02/15/测试写一篇wiki</link>
-      <description><![CDATA[测试写一篇wiki]]></description>
-      <pubDate>2020-02-15</pubDate>
-      <guid>http://alan717.github.io/blog/2020/02/15/测试写一篇wiki</guid>
     </item>
   </channel>
 </rss>
