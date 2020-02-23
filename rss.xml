@@ -4,8 +4,8 @@
     <title>我的部落格</title>
     <link>http://alan717.github.io</link>
     <description>行者的笔记.Blah blah...</description>
-    <pubDate>Sun, 23 Feb 2020 18:27:09 CST</pubDate>
-    <lastBuildDate>Sun, 23 Feb 2020 18:27:09 CST</lastBuildDate>
+    <pubDate>Sun, 23 Feb 2020 22:30:23 CST</pubDate>
+    <lastBuildDate>Sun, 23 Feb 2020 22:30:23 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
     <item>
@@ -14,6 +14,13 @@
       <description><![CDATA[阅读elisp手册]]></description>
       <pubDate>2020-02-23</pubDate>
       <guid>http://alan717.github.io/blog/2020/02/16/elisp阅读00</guid>
+    </item>
+    <item>
+      <title>Emacs插件开发</title>
+      <link>http://alan717.github.io/blog/2020/02/16/emacs插件开发</link>
+      <description><![CDATA[emacs插件开发]]></description>
+      <pubDate>2020-02-23</pubDate>
+      <guid>http://alan717.github.io/blog/2020/02/16/emacs插件开发</guid>
     </item>
     <item>
       <title>protobuf流反解析</title>
@@ -70,13 +77,6 @@
       <description><![CDATA[linux elf plt got]]></description>
       <pubDate>2020-02-17</pubDate>
       <guid>http://alan717.github.io/blog/2020/02/16/plt&amp;got</guid>
-    </item>
-    <item>
-      <title>人生啊时间啊</title>
-      <link>http://alan717.github.io/blog/2020/02/17/人生啊时间啊</link>
-      <description><![CDATA[life & time ah]]></description>
-      <pubDate>2020-02-17</pubDate>
-      <guid>http://alan717.github.io/blog/2020/02/17/人生啊时间啊</guid>
     </item>
   </channel>
 </rss>
