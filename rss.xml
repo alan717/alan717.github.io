@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
   <channel>
-    <title>我的部落格</title>
+    <title>山门凯的部落格</title>
     <link>http://alan717.github.io</link>
-    <description>行者的笔记.Blah blah...</description>
-    <pubDate>Sun, 01 Mar 2020 22:55:37 CST</pubDate>
-    <lastBuildDate>Sun, 01 Mar 2020 22:55:37 CST</lastBuildDate>
+    <description>Blah blah...</description>
+    <pubDate>Sun, 01 Mar 2020 23:55:09 CST</pubDate>
+    <lastBuildDate>Sun, 01 Mar 2020 23:55:09 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>Android Hook方法总结</title>
+      <link>http://alan717.github.io/blog/2020/03/01/android-hook方法总结</link>
+      <description><![CDATA[android hook方法总结]]></description>
+      <pubDate>2020-03-01</pubDate>
+      <guid>http://alan717.github.io/blog/2020/03/01/android-hook方法总结</guid>
+    </item>
     <item>
       <title>elisp阅读00</title>
       <link>http://alan717.github.io/blog/2020/02/16/elisp阅读00</link>
@@ -30,11 +37,25 @@
       <guid>http://alan717.github.io/blog/2020/02/16/emacs插件开发</guid>
     </item>
     <item>
+      <title>Emacs for Py</title>
+      <link>http://alan717.github.io/blog/2020/03/01/emacs-for-py</link>
+      <description><![CDATA[Emacs Python IDE]]></description>
+      <pubDate>2020-03-01</pubDate>
+      <guid>http://alan717.github.io/blog/2020/03/01/emacs-for-py</guid>
+    </item>
+    <item>
       <title>i3wm使用</title>
       <link>http://alan717.github.io/blog/2020/03/01/i3wm使用</link>
       <description><![CDATA[i3wm usage]]></description>
       <pubDate>2020-03-01</pubDate>
       <guid>http://alan717.github.io/blog/2020/03/01/i3wm使用</guid>
+    </item>
+    <item>
+      <title>透明代理一些分析</title>
+      <link>http://alan717.github.io/blog/2020/03/01/透明代理一些分析</link>
+      <description><![CDATA[代理分析]]></description>
+      <pubDate>2020-03-01</pubDate>
+      <guid>http://alan717.github.io/blog/2020/03/01/透明代理一些分析</guid>
     </item>
     <item>
       <title>protobuf流反解析</title>
@@ -56,27 +77,6 @@
       <description><![CDATA[linux挂在另外一个系统的文件]]></description>
       <pubDate>2020-02-21</pubDate>
       <guid>http://alan717.github.io/blog/2020/02/21/linux挂在镜像文件</guid>
-    </item>
-    <item>
-      <title>ndk单独工具链生成</title>
-      <link>http://alan717.github.io/blog/2020/02/21/ndk单独工具链生成</link>
-      <description><![CDATA[ndk单独linux工具链]]></description>
-      <pubDate>2020-02-21</pubDate>
-      <guid>http://alan717.github.io/blog/2020/02/21/ndk单独工具链生成</guid>
-    </item>
-    <item>
-      <title>Linux go deep</title>
-      <link>http://alan717.github.io/blog/2020/02/17/linux-go-deep</link>
-      <description><![CDATA[linux 世界]]></description>
-      <pubDate>2020-02-18</pubDate>
-      <guid>http://alan717.github.io/blog/2020/02/17/linux-go-deep</guid>
-    </item>
-    <item>
-      <title>32位64位</title>
-      <link>http://alan717.github.io/blog/2020/02/17/32位64位</link>
-      <description><![CDATA[Linux32位和64位差异化]]></description>
-      <pubDate>2020-02-18</pubDate>
-      <guid>http://alan717.github.io/blog/2020/02/17/32位64位</guid>
     </item>
   </channel>
 </rss>
