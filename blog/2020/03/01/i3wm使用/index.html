@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>注入进程 - 我的部落格</title>
+    <title>i3wm使用 - 我的部落格</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="description" content="linux inject" />
-    <meta name="keywords" content="inject" />
+    <meta name="description" content="i3wm usage" />
+    <meta name="keywords" content="i3" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -31,14 +31,50 @@
 
 <div>
 <div class="post">
-<h1>注入进程</h1>
+<h1>i3wm使用</h1>
+<div id="outline-container-org2b92c43" class="outline-2">
+<h2 id="org2b92c43">i3</h2>
+<div class="outline-text-2" id="text-org2b92c43">
+</div>
+<div id="outline-container-org9bf7cde" class="outline-3">
+<h3 id="org9bf7cde">锁屏</h3>
+<div class="outline-text-3" id="text-org9bf7cde">
+<p>
+锁屏时候使用当前桌面的图片高度马赛克然后锁屏，输入密码即可解锁
+</p>
 
-<div id="outline-container-orga09f18a" class="outline-2">
-<h2 id="orga09f18a">思路</h2>
-<div class="outline-text-2" id="text-orga09f18a">
-<ol class="org-ol">
-<li>Ptrace目标进程，</li>
-</ol>
+<p>
+首先写一个锁屏脚本保存在$HOME/.config/i3/lock.sh
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">img=/tmp/i3lock.png
+scrot $img
+convert $img -scale 10% -scale 1000% $img
+
+i3lock -u -i $img
+
+</pre>
+</div>
+
+<p>
+配置i3 config文件
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">set $i3lockwall sh ~/.config/i3/lock.sh
+bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
+</pre>
+</div>
+
+<p>
+结果演示：
+</p>
+
+
+<div class="figure">
+<p><img src="asset/916780050.jpg" alt="916780050.jpg" />
+</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -46,9 +82,9 @@
 </div>
     <div>
       <div class="post-meta">
-        <span title="post date" class="post-info">2020-02-22</span>
-        <span title="last modification date" class="post-info">2020-02-23</span>
-        <span title="tags" class="post-info"><a href="/tags/inject/">inject</a></span>
+        <span title="post date" class="post-info">2020-03-01</span>
+        <span title="last modification date" class="post-info">2020-03-01</span>
+        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
         <span title="author" class="post-info"></span>
       </div>
       <section>
