@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>注入进程 - 山门凯的部落格</title>
+    <title>LPC 逆 - 山门凯的部落格</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="description" content="linux inject" />
-    <meta name="keywords" content="inject" />
+    <meta name="description" content="lpc单片机" />
+    <meta name="keywords" content="LPC" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
   </head>
@@ -31,14 +31,61 @@
 
 <div>
 <div class="post">
-<h1>注入进程</h1>
+<h1>LPC 逆</h1>
 
-<div id="outline-container-org9eff258" class="outline-2">
-<h2 id="org9eff258">思路</h2>
-<div class="outline-text-2" id="text-org9eff258">
+
+<div id="outline-container-org72d3e3d" class="outline-2">
+<h2 id="org72d3e3d">目标</h2>
+<div class="outline-text-2" id="text-org72d3e3d">
+<p>
+逆从flash提取的二进制程序，找到关于pwm波形的处理程序并反汇编，得到算法。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org43da530" class="outline-2">
+<h2 id="org43da530">思路</h2>
+<div class="outline-text-2" id="text-org43da530">
 <ol class="org-ol">
-<li>Ptrace目标进程，</li>
+<li>首先拿到固件</li>
+<li>拖入IDA</li>
+<li>确定cpu执行的第一条指令地址，开始逆向分析找到while(1)</li>
+<li>在while(1)中找到pwm程序或者是定时器任务中的全局函数</li>
 </ol>
+</div>
+</div>
+
+<div id="outline-container-orgdae493f" class="outline-2">
+<h2 id="orgdae493f">困难</h2>
+<div class="outline-text-2" id="text-orgdae493f">
+<p>
+基础的单片机知识欠缺，需要快速学习.
+</p>
+</div>
+</div>
+<div id="outline-container-orga206c76" class="outline-2">
+<h2 id="orga206c76">实践</h2>
+<div class="outline-text-2" id="text-orga206c76">
+<p>
+etc
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9e0abb1" class="outline-2">
+<h2 id="org9e0abb1">效果</h2>
+<div class="outline-text-2" id="text-org9e0abb1">
+<p>
+etc
+</p>
+</div>
+</div>
+<div id="outline-container-orgde16f38" class="outline-2">
+<h2 id="orgde16f38">反思</h2>
+<div class="outline-text-2" id="text-orgde16f38">
+<p>
+etc
+</p>
 </div>
 </div>
 
@@ -46,9 +93,9 @@
 </div>
     <div>
       <div class="post-meta">
-        <span title="post date" class="post-info">2020-02-22</span>
-        <span title="last modification date" class="post-info">2020-02-23</span>
-        <span title="tags" class="post-info"><a href="/tags/inject/">inject</a></span>
+        <span title="post date" class="post-info">2020-03-07</span>
+        <span title="last modification date" class="post-info">2020-03-07</span>
+        <span title="tags" class="post-info"><a href="/tags/lpc/">LPC</a></span>
         <span title="author" class="post-info"></span>
       </div>
       <section>

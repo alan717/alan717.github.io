@@ -33,9 +33,9 @@
 <div class="post">
 <h1>Linux go deep 阅读及实践笔记</h1>
 
-<div id="outline-container-org2fefe45" class="outline-4">
-<h4 id="org2fefe45">note</h4>
-<div class="outline-text-4" id="text-org2fefe45">
+<div id="outline-container-orgb8a23ee" class="outline-4">
+<h4 id="orgb8a23ee">note</h4>
+<div class="outline-text-4" id="text-orgb8a23ee">
 <p>
 <a href="http://nicephil.blinkenshell.org/my_book/index.html">http://nicephil.blinkenshell.org/my_book/index.html</a>
 old linux pdf书阅读
@@ -44,26 +44,26 @@ old linux pdf书阅读
 </div>
 
 
-<div id="outline-container-org4197635" class="outline-2">
-<h2 id="org4197635">2020/03/03 阅读</h2>
-<div class="outline-text-2" id="text-org4197635">
+<div id="outline-container-org7ac71ae" class="outline-2">
+<h2 id="org7ac71ae">2020/03/03 阅读</h2>
+<div class="outline-text-2" id="text-org7ac71ae">
 <p>
 old linux 第四章，大堤了解分段模式和分页，文章内容太刻板
 </p>
 </div>
 </div>
 
-<div id="outline-container-org9d89347" class="outline-2">
-<h2 id="org9d89347">2020/03/07 阅读</h2>
-<div class="outline-text-2" id="text-org9d89347">
+<div id="outline-container-orgcd75ecf" class="outline-2">
+<h2 id="orgcd75ecf">2020/03/07 阅读</h2>
+<div class="outline-text-2" id="text-orgcd75ecf">
 <p>
 old linux chapter five.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf220784" class="outline-2">
-<h2 id="orgf220784">分段</h2>
-<div class="outline-text-2" id="text-orgf220784">
+<div id="outline-container-orgccee863" class="outline-2">
+<h2 id="orgccee863">分段</h2>
+<div class="outline-text-2" id="text-orgccee863">
 <p>
 内存处理页错误的代码在mm/memory.c
 ldt本身在gdt索引的一部分
@@ -71,27 +71,27 @@ ldt本身在gdt索引的一部分
 </div>
 </div>
 
-<div id="outline-container-orgd0df42b" class="outline-2">
-<h2 id="orgd0df42b">分页</h2>
-<div class="outline-text-2" id="text-orgd0df42b">
+<div id="outline-container-orgcf61c6e" class="outline-2">
+<h2 id="orgcf61c6e">分页</h2>
+<div class="outline-text-2" id="text-orgcf61c6e">
 <p>
 文章的概念很大程度上是罗嗦.感觉各个章节不是一个人写的。前后的名词不太统一
 例如:页项 页表，一级页表和二级页表
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1ef295" class="outline-2">
-<h2 id="orgd1ef295">中断</h2>
-<div class="outline-text-2" id="text-orgd1ef295">
+<div id="outline-container-org4c13267" class="outline-2">
+<h2 id="org4c13267">中断</h2>
+<div class="outline-text-2" id="text-org4c13267">
 <p>
 cli清楚中断 不响应
 sli设置中断 响应
 </p>
 </div>
 </div>
-<div id="outline-container-org908c803" class="outline-2">
-<h2 id="org908c803">syscall</h2>
-<div class="outline-text-2" id="text-org908c803">
+<div id="outline-container-org8847f2b" class="outline-2">
+<h2 id="org8847f2b">syscall</h2>
+<div class="outline-text-2" id="text-org8847f2b">
 <p>
 系统的syscall在unistd.h 文件中
 不通过libc的write等系统call封装可以使用 
@@ -149,6 +149,39 @@ return -1; \
 
 <p>
 参数传递 超过3个的，看一下==select==系统调用的实现，传了一个参数指针进去。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org285221f" class="outline-2">
+<h2 id="org285221f">定时器</h2>
+</div>
+
+
+
+
+
+<div id="outline-container-org14e7718" class="outline-2">
+<h2 id="org14e7718">linux进程控制</h2>
+</div>
+<div id="outline-container-orgc619b58" class="outline-2">
+<h2 id="orgc619b58">堆栈使用</h2>
+</div>
+<div id="outline-container-orgf151050" class="outline-2">
+<h2 id="orgf151050">0.12文件系统</h2>
+</div>
+<div id="outline-container-org707529b" class="outline-2">
+<h2 id="org707529b">5.10 内核文件结构</h2>
+</div>
+<div id="outline-container-orgcdf20c1" class="outline-2">
+<h2 id="orgcdf20c1">内核和应用程序的关系</h2>
+</div>
+<div id="outline-container-org71c2665" class="outline-2">
+<h2 id="org71c2665">makefile文件</h2>
+<div class="outline-text-2" id="text-org71c2665">
+<p>
+<i>第5章的大体就看完了，下来第六章 boot引导</i>
 </p>
 </div>
 </div>
