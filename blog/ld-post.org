@@ -1,0 +1,11 @@
+#+TITLE:       link&loader
+#+AUTHOR:      
+#+EMAIL:       tonki@poi
+#+DATE:        2020-03-11 Wed
+#+URI:         /blog/%y/%m/%d/link&loader
+#+KEYWORDS:    link
+#+TAGS:        load,link
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: link&loader
+**** LD_DEBUG=all

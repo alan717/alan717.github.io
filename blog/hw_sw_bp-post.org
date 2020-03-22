@@ -1,0 +1,19 @@
+#+TITLE:       硬件断点和软件断点
+#+AUTHOR:      
+#+EMAIL:       tonki@poi
+#+DATE:        2020-03-08 Sun
+#+URI:         /blog/%y/%m/%d/硬件断点和软件断点
+#+KEYWORDS:    linux,arm
+#+TAGS:        linux,arm
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: hw sw bp
+
+* 硬件断点 hw bp
+- jtag自带硬件断点支持
+- linux内核支持
++ 硬件断点数量有限。
+* 软件断点 sw bp
+
+x86 插入软件断点int 3 (opcode 0xcc)
+大部分的调试 单步指令，等可以下很多断点的都是软件断点
