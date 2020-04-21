@@ -4,10 +4,24 @@
     <title>山门凯的部落格</title>
     <link>https://alan717.github.io</link>
     <description>Blah blah...</description>
-    <pubDate>Sun, 22 Mar 2020 20:01:07 CST</pubDate>
-    <lastBuildDate>Sun, 22 Mar 2020 20:01:07 CST</lastBuildDate>
+    <pubDate>Tue, 21 Apr 2020 20:51:53 CST</pubDate>
+    <lastBuildDate>Tue, 21 Apr 2020 20:51:53 CST</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>PLT&amp;GOT表ELF</title>
+      <link>https://alan717.github.io/blog/2020/02/16/plt&amp;got</link>
+      <description><![CDATA[linux elf plt got]]></description>
+      <pubDate>2020-04-21</pubDate>
+      <guid>https://alan717.github.io/blog/2020/02/16/plt&amp;got</guid>
+    </item>
+    <item>
+      <title>32位64位</title>
+      <link>https://alan717.github.io/blog/2020/02/17/32位64位</link>
+      <description><![CDATA[Linux32位和64位差异化]]></description>
+      <pubDate>2020-04-21</pubDate>
+      <guid>https://alan717.github.io/blog/2020/02/17/32位64位</guid>
+    </item>
     <item>
       <title>第一篇测试</title>
       <link>https://alan717.github.io/blog/2020/02/15/第一篇测试</link>
@@ -23,25 +37,11 @@
       <guid>https://alan717.github.io/blog/2020/02/17/linux-go-deep</guid>
     </item>
     <item>
-      <title>Uni5.12 reading plan</title>
-      <link>https://alan717.github.io/blog/2020/03/07/uni512-reading-plan</link>
-      <description><![CDATA[Linux 5.12 reading plan]]></description>
-      <pubDate>2020-03-07</pubDate>
-      <guid>https://alan717.github.io/blog/2020/03/07/uni512-reading-plan</guid>
-    </item>
-    <item>
       <title>LPC 逆</title>
       <link>https://alan717.github.io/blog/2020/03/07/lpc-逆</link>
       <description><![CDATA[lpc单片机]]></description>
       <pubDate>2020-03-07</pubDate>
       <guid>https://alan717.github.io/blog/2020/03/07/lpc-逆</guid>
-    </item>
-    <item>
-      <title>Android Hook方法总结</title>
-      <link>https://alan717.github.io/blog/2020/03/01/android-hook方法总结</link>
-      <description><![CDATA[android hook方法总结]]></description>
-      <pubDate>2020-03-01</pubDate>
-      <guid>https://alan717.github.io/blog/2020/03/01/android-hook方法总结</guid>
     </item>
     <item>
       <title>elisp阅读00</title>
@@ -51,13 +51,6 @@
       <guid>https://alan717.github.io/blog/2020/02/16/elisp阅读00</guid>
     </item>
     <item>
-      <title>Emacs Autoload</title>
-      <link>https://alan717.github.io/blog/2020/02/24/emacs-autoload</link>
-      <description><![CDATA[Emacs autoload specific]]></description>
-      <pubDate>2020-03-01</pubDate>
-      <guid>https://alan717.github.io/blog/2020/02/24/emacs-autoload</guid>
-    </item>
-    <item>
       <title>Emacs插件开发</title>
       <link>https://alan717.github.io/blog/2020/02/16/emacs插件开发</link>
       <description><![CDATA[emacs插件开发]]></description>
@@ -65,18 +58,25 @@
       <guid>https://alan717.github.io/blog/2020/02/16/emacs插件开发</guid>
     </item>
     <item>
-      <title>Emacs for Py</title>
-      <link>https://alan717.github.io/blog/2020/03/01/emacs-for-py</link>
-      <description><![CDATA[Emacs Python IDE]]></description>
-      <pubDate>2020-03-01</pubDate>
-      <guid>https://alan717.github.io/blog/2020/03/01/emacs-for-py</guid>
-    </item>
-    <item>
       <title>i3wm使用</title>
       <link>https://alan717.github.io/blog/2020/03/01/i3wm使用</link>
       <description><![CDATA[i3wm usage]]></description>
       <pubDate>2020-03-01</pubDate>
       <guid>https://alan717.github.io/blog/2020/03/01/i3wm使用</guid>
+    </item>
+    <item>
+      <title>protobuf流反解析</title>
+      <link>https://alan717.github.io/blog/2020/02/22/protobuf流反解析</link>
+      <description><![CDATA[protobuf反解析]]></description>
+      <pubDate>2020-02-23</pubDate>
+      <guid>https://alan717.github.io/blog/2020/02/22/protobuf流反解析</guid>
+    </item>
+    <item>
+      <title>注入进程</title>
+      <link>https://alan717.github.io/blog/2020/02/22/注入进程</link>
+      <description><![CDATA[linux inject]]></description>
+      <pubDate>2020-02-23</pubDate>
+      <guid>https://alan717.github.io/blog/2020/02/22/注入进程</guid>
     </item>
   </channel>
 </rss>
