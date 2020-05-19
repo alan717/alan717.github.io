@@ -42,9 +42,9 @@
 <div class="post">
 <h1>Linux go deep 阅读及实践笔记</h1>
 
-<div id="outline-container-orgc6aa541" class="outline-4">
-<h4 id="orgc6aa541">note</h4>
-<div class="outline-text-4" id="text-orgc6aa541">
+<div id="outline-container-org0ca5e10" class="outline-4">
+<h4 id="org0ca5e10">note</h4>
+<div class="outline-text-4" id="text-org0ca5e10">
 <p>
 <a href="http://nicephil.blinkenshell.org/my_book/index.html">http://nicephil.blinkenshell.org/my_book/index.html</a>
 old linux pdf书阅读
@@ -53,26 +53,26 @@ old linux pdf书阅读
 </div>
 
 
-<div id="outline-container-org669d348" class="outline-2">
-<h2 id="org669d348">2020/03/03 阅读</h2>
-<div class="outline-text-2" id="text-org669d348">
+<div id="outline-container-org429d858" class="outline-2">
+<h2 id="org429d858">2020/03/03 阅读</h2>
+<div class="outline-text-2" id="text-org429d858">
 <p>
 old linux 第四章，大堤了解分段模式和分页，文章内容太刻板
 </p>
 </div>
 </div>
 
-<div id="outline-container-org3c81dda" class="outline-2">
-<h2 id="org3c81dda">2020/03/07 阅读</h2>
-<div class="outline-text-2" id="text-org3c81dda">
+<div id="outline-container-org8bed3e1" class="outline-2">
+<h2 id="org8bed3e1">2020/03/07 阅读</h2>
+<div class="outline-text-2" id="text-org8bed3e1">
 <p>
 old linux chapter five.
 </p>
 </div>
 </div>
-<div id="outline-container-org0b4feb2" class="outline-2">
-<h2 id="org0b4feb2">分段</h2>
-<div class="outline-text-2" id="text-org0b4feb2">
+<div id="outline-container-org940e8f6" class="outline-2">
+<h2 id="org940e8f6">分段</h2>
+<div class="outline-text-2" id="text-org940e8f6">
 <p>
 内存处理页错误的代码在mm/memory.c
 ldt本身在gdt索引的一部分
@@ -80,27 +80,27 @@ ldt本身在gdt索引的一部分
 </div>
 </div>
 
-<div id="outline-container-org613c26e" class="outline-2">
-<h2 id="org613c26e">分页</h2>
-<div class="outline-text-2" id="text-org613c26e">
+<div id="outline-container-orge8a8da2" class="outline-2">
+<h2 id="orge8a8da2">分页</h2>
+<div class="outline-text-2" id="text-orge8a8da2">
 <p>
 文章的概念很大程度上是罗嗦.感觉各个章节不是一个人写的。前后的名词不太统一
 例如:页项 页表，一级页表和二级页表
 </p>
 </div>
 </div>
-<div id="outline-container-orgecc4801" class="outline-2">
-<h2 id="orgecc4801">中断</h2>
-<div class="outline-text-2" id="text-orgecc4801">
+<div id="outline-container-orge4d6764" class="outline-2">
+<h2 id="orge4d6764">中断</h2>
+<div class="outline-text-2" id="text-orge4d6764">
 <p>
 cli清楚中断 不响应
 sli设置中断 响应
 </p>
 </div>
 </div>
-<div id="outline-container-org668ab7f" class="outline-2">
-<h2 id="org668ab7f">syscall</h2>
-<div class="outline-text-2" id="text-org668ab7f">
+<div id="outline-container-orged14926" class="outline-2">
+<h2 id="orged14926">syscall</h2>
+<div class="outline-text-2" id="text-orged14926">
 <p>
 系统的syscall在unistd.h 文件中
 不通过libc的write等系统call封装可以使用 
@@ -163,32 +163,32 @@ return -1; \
 </div>
 
 
-<div id="outline-container-org6b2e967" class="outline-2">
-<h2 id="org6b2e967">定时器</h2>
+<div id="outline-container-org840cf52" class="outline-2">
+<h2 id="org840cf52">定时器</h2>
 </div>
 
 
 
 
 
-<div id="outline-container-org3641ae6" class="outline-2">
-<h2 id="org3641ae6">linux进程控制</h2>
+<div id="outline-container-org9487e00" class="outline-2">
+<h2 id="org9487e00">linux进程控制</h2>
 </div>
-<div id="outline-container-orgf3a9eac" class="outline-2">
-<h2 id="orgf3a9eac">堆栈使用</h2>
+<div id="outline-container-org44976ad" class="outline-2">
+<h2 id="org44976ad">堆栈使用</h2>
 </div>
-<div id="outline-container-org271414e" class="outline-2">
-<h2 id="org271414e">0.12文件系统</h2>
+<div id="outline-container-org56c636f" class="outline-2">
+<h2 id="org56c636f">0.12文件系统</h2>
 </div>
-<div id="outline-container-org2301486" class="outline-2">
-<h2 id="org2301486">5.10 内核文件结构</h2>
+<div id="outline-container-orgce1659b" class="outline-2">
+<h2 id="orgce1659b">5.10 内核文件结构</h2>
 </div>
-<div id="outline-container-org5ae6e69" class="outline-2">
-<h2 id="org5ae6e69">内核和应用程序的关系</h2>
+<div id="outline-container-org88f561f" class="outline-2">
+<h2 id="org88f561f">内核和应用程序的关系</h2>
 </div>
-<div id="outline-container-org5ed8740" class="outline-2">
-<h2 id="org5ed8740">makefile文件</h2>
-<div class="outline-text-2" id="text-org5ed8740">
+<div id="outline-container-org333da2a" class="outline-2">
+<h2 id="org333da2a">makefile文件</h2>
+<div class="outline-text-2" id="text-org333da2a">
 <p>
 <i>第5章的大体就看完了，下来第六章 boot引导</i>
 </p>
