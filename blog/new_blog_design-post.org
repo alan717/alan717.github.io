@@ -1,0 +1,30 @@
+#+TITLE:       新静态博客设计
+#+AUTHOR:      
+#+EMAIL:       tonki@poi
+#+DATE:        2020-04-21 Tue
+#+URI:         /blog/%y/%m/%d/新静态博客设计
+#+KEYWORDS:    blog,design
+#+TAGS:        web
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: web
+
+** 目标
+设计一个新布局的响应式的博客系统
+
+** 想法
+
+1) 响应式，使手机下边也不会受影响
+2) 界面变好看
+3) 更多的订制空间，不是原本老套的布局
+
+** 实施计划
+
+1. 首先设置大的框架布局
+2. 编写生成代码
+3. 调试发布
+
+
+** 进展
+4.21 准备基础的CSS和颜色主题
+

@@ -1,0 +1,25 @@
+#+TITLE:       编译llvm
+#+AUTHOR:      
+#+EMAIL:       tonki@poi
+#+DATE:        2020-05-19 Tue
+#+URI:         /blog/%y/%m/%d/编译llvm
+#+KEYWORDS:    llvm
+#+TAGS:        llvm
+#+LANGUAGE:    en
+#+OPTIONS:     H:3 num:nil toc:nil \n:nil ::t |:t ^:nil -:nil f:t *:t <:t
+#+DESCRIPTION: llvm build 
+
+* 目标
+编译LLVM
+
+* 思路
+1. 从官网下载源码包
+2. 配置编译脚本，根据构建脚本提示安装编译依赖包
+3. 编译ing
+4. 部署编译好的库文件
+
+* 详细步骤 
+1.首先从官网下载到llvm-7.0.1的源码包，解压确定构建系统
+[[file:2020-05-19_20-38.png][folder content]]
+ 
+
