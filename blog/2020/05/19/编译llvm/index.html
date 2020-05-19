@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>i3wm使用 - 山门凯的部落格</title>
+    <title>编译llvm - 山门凯的部落格</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="description" content="i3wm usage" />
-    <meta name="keywords" content="i3" />
+    <meta name="description" content="llvm build " />
+    <meta name="keywords" content="llvm" />
     <link rel="stylesheet" href="/media/css/main.css" type="text/css">
     <link rel="stylesheet" href="/media/css/prettify.css" type="text/css">
     <script>
@@ -40,50 +40,36 @@
 
 <div>
 <div class="post">
-<h1>i3wm使用</h1>
-<div id="outline-container-orgddd7527" class="outline-2">
-<h2 id="orgddd7527">i3</h2>
-<div class="outline-text-2" id="text-orgddd7527">
-</div>
-<div id="outline-container-org88380cb" class="outline-3">
-<h3 id="org88380cb">锁屏</h3>
-<div class="outline-text-3" id="text-org88380cb">
+<h1>编译llvm</h1>
+
+<div id="outline-container-org7cb6bd2" class="outline-2">
+<h2 id="org7cb6bd2">目标</h2>
+<div class="outline-text-2" id="text-org7cb6bd2">
 <p>
-锁屏时候使用当前桌面的图片高度马赛克然后锁屏，输入密码即可解锁
+编译LLVM
 </p>
+</div>
+</div>
 
+<div id="outline-container-org6e09136" class="outline-2">
+<h2 id="org6e09136">思路</h2>
+<div class="outline-text-2" id="text-org6e09136">
+<ol class="org-ol">
+<li>从官网下载源码包</li>
+<li>配置编译脚本，根据构建脚本提示安装编译依赖包</li>
+<li>编译ing</li>
+<li>部署编译好的库文件</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org897b037" class="outline-2">
+<h2 id="org897b037">详细步骤</h2>
+<div class="outline-text-2" id="text-org897b037">
 <p>
-首先写一个锁屏脚本保存在$HOME/.config/i3/lock.sh
+1.首先从官网下载到llvm-7.0.1的源码包，解压确定构建系统
+<a href="/assets/2020-05-19_20-38.png">folder content</a>
 </p>
-<div class="org-src-container">
-<pre class="src src-shell">img=/tmp/i3lock.png
-scrot $img
-convert $img -scale 10% -scale 1000% $img
-
-i3lock -u -i $img
-
-</pre>
-</div>
-
-<p>
-配置i3 config文件
-</p>
-<div class="org-src-container">
-<pre class="src src-shell">set $i3lockwall sh ~/.config/i3/lock.sh
-bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
-</pre>
-</div>
-
-<p>
-结果演示：
-</p>
-
-
-<div class="figure">
-<p><img src="/assets/assets/916780050.jpg" alt="916780050.jpg" />
-</p>
-</div>
-</div>
 </div>
 </div>
 
@@ -91,9 +77,9 @@ bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
 </div>
     <div>
       <div class="post-meta">
-        <span title="post date" class="post-info">2020-03-01</span>
-        <span title="last modification date" class="post-info">2020-03-01</span>
-        <span title="tags" class="post-info"><a href="/tags/linux/">linux</a></span>
+        <span title="post date" class="post-info">2020-05-19</span>
+        <span title="last modification date" class="post-info">2020-05-19</span>
+        <span title="tags" class="post-info"><a href="/tags/llvm/">llvm</a></span>
         <span title="author" class="post-info"></span>
       </div>
       <section>

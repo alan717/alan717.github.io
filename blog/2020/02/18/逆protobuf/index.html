@@ -42,18 +42,18 @@
 <div class="post">
 <h1>逆protobuf</h1>
 
-<div id="outline-container-org4477ab6" class="outline-2">
-<h2 id="org4477ab6">goal</h2>
-<div class="outline-text-2" id="text-org4477ab6">
+<div id="outline-container-org54bacee" class="outline-2">
+<h2 id="org54bacee">goal</h2>
+<div class="outline-text-2" id="text-org54bacee">
 <p>
 逆一个protobuf二进制bin程序
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5462245" class="outline-2">
-<h2 id="org5462245">困难</h2>
-<div class="outline-text-2" id="text-org5462245">
+<div id="outline-container-org00ee1e0" class="outline-2">
+<h2 id="org00ee1e0">困难</h2>
+<div class="outline-text-2" id="text-org00ee1e0">
 <ul class="org-ul">
 <li>静态链接protobuf符号被抹去，默认release都是抹除掉，么的说</li>
 <li>嵌入式程序的protobuf</li>
@@ -64,9 +64,9 @@
 </div>
 </div>
 
-<div id="outline-container-org9cc5e4d" class="outline-2">
-<h2 id="org9cc5e4d">思路</h2>
-<div class="outline-text-2" id="text-org9cc5e4d">
+<div id="outline-container-orgad4293c" class="outline-2">
+<h2 id="orgad4293c">思路</h2>
+<div class="outline-text-2" id="text-orgad4293c">
 <ol class="org-ol">
 <li>首先确定出来prottobuf的版本，sub_cb538函数这个函数是2004001这个版本号，我编译的是3010001.所以我编译的版本高，降级;</li>
 <li>其次，编译出对应的protobuf进行静态链接，进行静态分析</li>
@@ -80,31 +80,31 @@
 
 
 
-<div id="outline-container-org0f65c0f" class="outline-2">
-<h2 id="org0f65c0f">实践</h2>
-<div class="outline-text-2" id="text-org0f65c0f">
+<div id="outline-container-orgaf5437e" class="outline-2">
+<h2 id="orgaf5437e">实践</h2>
+<div class="outline-text-2" id="text-orgaf5437e">
 </div>
-<div id="outline-container-orgdd42469" class="outline-3">
-<h3 id="orgdd42469">编译protobuf</h3>
-<div class="outline-text-3" id="text-orgdd42469">
+<div id="outline-container-orgafeed80" class="outline-3">
+<h3 id="orgafeed80">编译protobuf</h3>
+<div class="outline-text-3" id="text-orgafeed80">
 <p>
 android studio linux 复制到native然后cmake添加即可
 具体的cmake不写了太长
 </p>
 </div>
 </div>
-<div id="outline-container-org138590d" class="outline-3">
-<h3 id="org138590d">生成对应的message文件</h3>
-<div class="outline-text-3" id="text-org138590d">
+<div id="outline-container-orgd3b5781" class="outline-3">
+<h3 id="orgd3b5781">生成对应的message文件</h3>
+<div class="outline-text-3" id="text-orgd3b5781">
 <p>
 用对应2.4.1 版本的protoc生成对应要针对的proto c,cpp文件
 </p>
 </div>
 </div>
 
-<div id="outline-container-org1381dc1" class="outline-3">
-<h3 id="org1381dc1">分析策略</h3>
-<div class="outline-text-3" id="text-org1381dc1">
+<div id="outline-container-orgbe477aa" class="outline-3">
+<h3 id="orgbe477aa">分析策略</h3>
+<div class="outline-text-3" id="text-orgbe477aa">
 <p>
 针对解流饭序列化，匹配找到保存的局部变量，然后根据过程来遍历找到签名算法。
 </p>
@@ -116,9 +116,9 @@ android studio linux 复制到native然后cmake添加即可
 
 
 
-<div id="outline-container-org487b5b3" class="outline-2">
-<h2 id="org487b5b3">最终结果</h2>
-<div class="outline-text-2" id="text-org487b5b3">
+<div id="outline-container-org848378c" class="outline-2">
+<h2 id="org848378c">最终结果</h2>
+<div class="outline-text-2" id="text-org848378c">
 <p>
 还没有实际上机器试，等假期结束了放图
 </p>
