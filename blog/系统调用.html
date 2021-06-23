@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="VNote">
+
+    <title>系统调用</title>
+    <link rel="icon" href="https://github.com/tamlok/vnote/raw/master/src/resources/icons/vnote.ico">
+
+    <style type="text/css">
+    /* STYLE_GLOBAL_PLACE_HOLDER */
+    </style>
+
+    <style type="text/css">
+    /* STYLE_OUTLINE_PLACE_HOLDER */
+    @keyframes flash { 
+  0% { color: rgb(252, 100, 35); }
+  10% { color: rgb(252, 100, 35); }
+  40% { color: rgb(252, 100, 35); }
+  50% { color: rgb(252, 100, 35); }
+  60% { color: rgb(252, 100, 35); }
+  90% { color: rgb(252, 100, 35); }
+}
+.highlighted-anchor { animation: flash 1s; }
+div.mark-rect { background: transparent; border: 5px solid rgb(87, 104, 196); border-radius: 2px; position: absolute; }
+#vnote-footer { width: 100%; text-align: center; opacity: 0.2; margin-top: 3rem; }
+#vnote-footer p { font-size: 0.8rem; }
+#vnote-footer a { color: inherit !important; }
+x-eqs { display: flex; flex-direction: row; align-content: space-between; align-items: center; }
+x-eqs > x-eqn { width: 100%; margin-left: 3rem; }
+x-eqs > span { text-align: right; }
+.view-image, .view-svg { transition: 0.3s; }
+.modal-box { display: none; position: fixed; z-index: 1000; padding-top: 50px; left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; background-color: rgba(68, 68, 68, 0.952941); }
+.modal-content { margin: auto; display: block; width: auto; height: auto; cursor: move; }
+.modal-content { animation-name: zoom; animation-duration: 0.6s; }
+@-webkit-keyframes zoom { 
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+@keyframes zoom { 
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+span.modal-close { position: absolute; z-index: 1000; top: 15px; right: 35px; color: rgb(218, 218, 218); font-size: 40px; font-weight: bold; transition: 0.3s; }
+span.modal-close:hover, span.modal-close:focus { color: rgb(238, 238, 238); text-decoration: none; cursor: pointer; }
+@media print {
+  pre, pre code, td.hljs-ln-code { white-space: pre-wrap !important; word-break: break-all !important; }
+  code, a { word-break: break-all !important; }
+  div.flowchart-diagram, div.mermaid-diagram, div.plantuml-diagram { overflow: hidden !important; }
+  img { max-width: 100% !important; height: auto !important; }
+  #vnote-footer { display: none !important; }
+}
+.alert { position: relative; padding: 0.75rem 1.25rem; margin-bottom: 1rem; border: 1px solid transparent; border-radius: 0.25rem; }
+.alert-primary { color: rgb(0, 64, 133); background-color: rgb(204, 229, 255); border-color: rgb(184, 218, 255); }
+.alert-secondary { color: rgb(56, 61, 65); background-color: rgb(226, 227, 229); border-color: rgb(214, 216, 219); }
+.alert-success { color: rgb(21, 87, 36); background-color: rgb(212, 237, 218); border-color: rgb(195, 230, 203); }
+.alert-info { color: rgb(12, 84, 96); background-color: rgb(209, 236, 241); border-color: rgb(190, 229, 235); }
+.alert-warning { color: rgb(133, 100, 4); background-color: rgb(255, 243, 205); border-color: rgb(255, 238, 186); }
+.alert-danger { color: rgb(114, 28, 36); background-color: rgb(248, 215, 218); border-color: rgb(245, 198, 203); }
+.alert-light { color: rgb(129, 129, 130); background-color: rgb(254, 254, 254); border-color: rgb(253, 253, 254); }
+.alert-dark { color: rgb(27, 30, 33); background-color: rgb(214, 216, 217); border-color: rgb(198, 200, 202); }
+.vnote-anchor { font-weight: 400; color: rgba(0, 123, 255, 0.498039); transition: color 0.16s linear; padding-left: 0.375em; -webkit-font-smoothing: antialiased; text-decoration: none; opacity: 0; }
+.vnote-anchor:hover { color: rgb(0, 123, 255); text-decoration: none; opacity: 1; }
+.vnote-anchor::after { content: attr(data-anchor-icon); }
+.vnote-btn { position: relative; display: inline-block; padding: 6px 12px; font-size: 13px; font-weight: 700; line-height: 20px; white-space: nowrap; vertical-align: middle; cursor: pointer; border: none; user-select: none; -webkit-appearance: none; }
+.vnote-copy-clipboard-btn { transition: opacity 0.3s ease-in-out; opacity: 0; padding: 2px 6px; position: absolute; top: 5px; right: 5px; }
+pre:hover .vnote-copy-clipboard-btn { opacity: 1; }
+pre.vnote-snippet { position: relative; }
+*, ::before, ::after { box-sizing: border-box; }
+body { font-family: "Microsoft YaHei", "Helvetica Neue", "Microsoft YaHei UI", Arial, "Times New Roman", "Hiragino Sans GB", STHeiti, "WenQuanYi Micro Hei", SimSun, Song, sans-serif; color: rgb(85, 85, 85); line-height: 2em; font-size: 16px; max-width: 800px; margin: 20px auto; padding: 0px 10px; background-color: rgb(255, 255, 255); }
+h1, h2, h3, h4, h5, h6 { font-weight: bold; line-height: 1.2em; margin: 1.2em 0px 0.6em; }
+p { display: block; margin: 0px 0px 1.1em; letter-spacing: 0.04em; }
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.2em; }
+h5 { font-size: 1.08em; }
+h6 { font-size: 1em; }
+a { color: rgb(25, 128, 230); text-decoration: none; transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
+a:hover, a:focus { color: rgb(15, 77, 138); text-decoration: underline; }
+a:focus { outline: -webkit-focus-ring-color auto 5px; outline-offset: -2px; }
+ul, ol { margin: 0px 0px 1.4em 1.4em; padding-left: 0px; }
+li { }
+pre, code { font-family: "Source Code Pro", "YaHei Consolas Hybrid", "Microsoft YaHei Mono", Consolas, monospace; }
+pre { display: block; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 0px; border: 0px; margin: 0px 0px 10.5px; }
+code { color: rgb(199, 37, 78); background-color: rgb(249, 242, 244); border-radius: 4px; white-space: normal; padding: 2px 4px; font-size: 90%; }
+pre code { border-radius: 0px; white-space: pre; background-color: transparent; line-height: 1.5em; padding: 1em !important; }
+pre code.markdown-metadata { border-left: 0px; }
+aside { display: block; float: right; width: 390px; }
+blockquote { border-left: 10px solid rgba(102, 128, 153, 0.0745098); background-color: rgba(102, 128, 153, 0.0470588); border-top-right-radius: 5px; border-bottom-right-radius: 5px; padding: 10px 15px; margin-left: 0px; }
+blockquote p { margin-bottom: 1.1em; font-size: 1em; font-weight: 300; }
+blockquote p:last-child { margin-bottom: 0px; }
+hr { margin: 2em 0px; border-width: 1px 0px 0px; border-right-style: initial; border-bottom-style: initial; border-left-style: initial; border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image: initial; border-top-style: solid; border-top-color: rgba(102, 128, 153, 0.0980392); box-sizing: content-box; height: 0px; }
+table { margin-bottom: 20px; border-collapse: collapse; max-width: 100%; background-color: transparent; }
+table tr { border-top: 1px solid rgb(221, 221, 221); background-color: transparent; margin: 0px; padding: 0px; }
+table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+table tr th { font-weight: bold; border: 1px solid rgb(221, 221, 221); margin: 0px; padding: 0.5em; background-color: rgb(248, 248, 248); }
+table tr td { border: 1px solid rgb(221, 221, 221); margin: 0px; padding: 0.5em; }
+table tr th :first-child, table tr td :first-child { margin-top: 0px; }
+table tr th :last-child, table tr td :last-child { margin-bottom: 0px; }
+div.mermaid-diagram { margin: 16px 0px; overflow-y: hidden; }
+div.flowchart-diagram { padding: 0px 5px; margin: 16px 0px; width: fit-content; overflow: hidden; }
+div.plantuml-diagram { padding: 5px 5px 0px; margin: 16px 0px; width: fit-content; overflow: hidden; }
+.img-package { text-align: center; }
+img.img-center { display: block; margin-left: auto; margin-right: auto; }
+div.img-caption { min-width: 20%; max-width: 80%; display: inline-block; padding: 10px; margin: 0px auto; border-bottom: 1px solid rgb(192, 192, 192); color: rgb(108, 108, 108); text-align: center; line-height: 1.5; }
+.emoji_zero, .emoji_one, .emoji_two, .emoji_three, .emoji_four, .emoji_five, .emoji_six, .emoji_seven, .emoji_eight, .emoji_nine { margin-left: 5px; margin-right: 8px; }
+div.preview-hint { opacity: 0.5; margin-top: 30%; margin-bottom: 30%; align-items: center; display: flex; flex-direction: column; justify-content: center; }
+table.hljs-ln tr { border: none; background-color: transparent; }
+table.hljs-ln tr td { border: none; background-color: transparent; }
+table.hljs-ln tr td.hljs-ln-numbers { user-select: none; text-align: center; color: rgb(170, 170, 170); border-right: 1px solid rgb(204, 204, 204); vertical-align: top; padding-right: 5px; white-space: nowrap; }
+table.hljs-ln tr td.hljs-ln-code { padding-left: 10px; }
+::-webkit-scrollbar { background-color: rgb(234, 234, 234); width: 14px; height: 14px; border: none; }
+::-webkit-scrollbar-corner { background-color: rgb(234, 234, 234); }
+::-webkit-scrollbar-button { height: 14px; width: 14px; background-color: rgb(234, 234, 234); }
+::-webkit-scrollbar-button:hover { background-color: rgb(208, 208, 208); }
+::-webkit-scrollbar-button:active { background-color: rgb(178, 178, 178); }
+::-webkit-scrollbar-track { background-color: rgb(234, 234, 234); }
+::-webkit-scrollbar-thumb { border: none; background-color: rgb(218, 218, 218); }
+::-webkit-scrollbar-thumb:hover { background-color: rgb(208, 208, 208); }
+::-webkit-scrollbar-thumb:active { background-color: rgb(178, 178, 178); }
+::-webkit-scrollbar-button:horizontal:increment { background-image: url('data:image/svg+xml;utf8,<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <g>    <g transform="rotate(-90 256.00000000000006,256) " id="svg_1">   <polygon fill="%23333333" id="svg_2" points="128,192 256,320 384,192  "/>  </g> </g></svg>'); background-repeat: no-repeat; background-size: contain; }
+::-webkit-scrollbar-button:horizontal:decrement { background-image: url('data:image/svg+xml;utf8,<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <g>    <g transform="rotate(90 255.99999999999997,256.00000000000006) " id="svg_1">   <polygon points="128,192 256,320 384,192  " id="svg_2" fill="%23333333"/>  </g> </g></svg>'); background-repeat: no-repeat; background-size: contain; }
+::-webkit-scrollbar-button:vertical:increment { background-image: url('data:image/svg+xml;utf8,<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <g>    <g transform="null" id="svg_1">   <polygon points="128,192 256,320 384,192  " id="svg_2" fill="%23333333"/>  </g> </g></svg>'); background-repeat: no-repeat; background-size: contain; }
+::-webkit-scrollbar-button:vertical:decrement { background-image: url('data:image/svg+xml;utf8,<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"> <g>    <g transform="rotate(180 255.99999999999997,256) " id="svg_1">   <polygon points="128,192 256,320 384,192  " id="svg_2" fill="%23333333"/>  </g> </g></svg>'); background-repeat: no-repeat; background-size: contain; }
+::selection { background: rgb(25, 118, 210); color: rgb(245, 245, 245); }
+.modal-box { background-color: rgba(234, 234, 234, 0.952941); }
+span.modal-close { color: rgb(102, 102, 102); }
+span.modal-close:hover, span.modal-close:focus { color: rgb(47, 47, 47); }
+.hljs-comment, .hljs-quote { color: rgb(142, 144, 140); }
+.hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion { color: rgb(200, 40, 41); }
+.hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link { color: rgb(245, 135, 31); }
+.hljs-attribute { color: rgb(234, 183, 0); }
+.hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition { color: rgb(113, 140, 0); }
+.hljs-title, .hljs-section { color: rgb(66, 113, 174); }
+.hljs-keyword, .hljs-selector-tag { color: rgb(137, 89, 168); }
+.hljs { display: block; overflow-x: auto; background: rgb(247, 247, 247); color: rgb(77, 77, 76); padding: 0.5em; }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: bold; }
+
+    </style>
+
+    <!-- EXTRA_PLACE_HOLDER -->
+
+<!-- HEAD_PLACE_HOLDER -->
+</head>
+<body>
+<div class="container-fluid">
+<div class="row flex-xl-nowrap">
+    <div id="outline-panel" style="display:none;" class="d-none d-md-block d-xl-block col-md-3 col-xl-2 bd-toc">
+        <div id="outline-content" class="section-nav"></div>
+    </div>
+    <div id="post-content" class="col-12 col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content">
+    <h1 id="toc_0">[基础]系统调用SYSCALL<a class="vnote-anchor" href="#toc_0" data-anchor-icon="#"></a></h1>
+<h1 id="toc_1">X86<a class="vnote-anchor" href="#toc_1" data-anchor-icon="#"></a></h1>
+<p>x64的大同小异</p>
+<h2 id="toc_2">Linux<a class="vnote-anchor" href="#toc_2" data-anchor-icon="#"></a></h2>
+<p>linux使用80号中断INT80调用系统调用，调用系统时使用EAX存入对应调用函数编号，具体函数可在linux syscall table得知.</p>
+<h2 id="toc_3">Windows<a class="vnote-anchor" href="#toc_3" data-anchor-icon="#"></a></h2>
+<p>windows程序使用0x2e /int 0x2e或者是指令SYSENTER访问系统调用.<br>
+详细的编号可以在MSDN查阅</p>
+<h1 id="toc_4">ARM<a class="vnote-anchor" href="#toc_4" data-anchor-icon="#"></a></h1>
+<p>ARM64暂不区分</p>
+<h2 id="toc_5">Linux<a class="vnote-anchor" href="#toc_5" data-anchor-icon="#"></a></h2>
+<p>SVC 0请求系统调用<br>
+R7 存入调用编号<br>
+一般来讲，除此之外有一个0xF0002这个调用号是清除指令缓存的syscall.</p>
+
+    </div>
+</div>
+</div>
+
+<div id="container-floating" style="display:none;" class="d-none d-md-block d-xl-block">
+    <div id="floating-button" onclick="toggleMore()">
+        <p id="floating-more" class="more">&gt;</p>
+    </div>
+</div>
+
+<!--
+<div class="footer" id="vnote-footer">
+    <p>Generated by <em><a href="https://tamlok.github.io/vnote/">VNote</a></em>.</p>
+</div>
+-->
+</body>
+</html>
