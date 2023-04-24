@@ -3,7 +3,24 @@
 &lt;p&gt;尝试使用markdown来写一些blog，把原本网站的内容迁移过来。
 谢谢&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
-提取linuxloader文件。&lt;/p&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
+提取linuxloader文件。&lt;/p&gt;
+&lt;h3&gt;分析linuxloader文件&lt;/h3&gt;
+&lt;p&gt;根据加载时候出现的调试信息
+“/work/home/jenkins/18821_STABLE_R_HYDROGEN_MP/AP/SM8150/android/out/target/product/msmnile/obj/ABL_OBJ/Build/DEBUG_CLANG35/AARCH64/QcomModulePkg/Application/LinuxLoader/LinuxLoader/DEBUG/LinuxLoader.dl”
+知道这是高通的linuxloader。&lt;/p&gt;
+&lt;h3&gt;下载linuxloader&lt;/h3&gt;
+&lt;p&gt;https://git.codelinaro.org/clo/le/abl/tianocore/edk2/-/blob/clo/main/QcomModulePkg/Application/LinuxLoader/LinuxLoader.c
+这里得到对应的函数。&lt;/p&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;分析lua的很多了，这里记录一下我的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;词法分析&lt;/h3&gt;
+&lt;p&gt;lua-5.1词法分析在llex.c中，为了表达状态机lua实现了lexstate来存储使用的数据其中Mbuffer类型的buff每次会情况重置，然后从zio中再读一个字节
+赋给current， next()会读一个字符，如图：
+&lt;img alt="Image" src="./pic/lua-5.1.1.png"&gt;
+前端将文件token化读入，token化
+&lt;img alt="Image" src="./pic/lua-5.1.2.png"&gt;
+解析变量名luaX_newstring转换成一个tstring存进语义seminfo中，然后返回当前为token_name类型。&lt;/p&gt;
+&lt;h3&gt;lookahead&lt;/h3&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
 &lt;p&gt;手里有一个nexus5手机，想分析研究一下。&lt;/p&gt;
 &lt;h3&gt;实践&lt;/h3&gt;
 &lt;h4&gt;准备&lt;/h4&gt;

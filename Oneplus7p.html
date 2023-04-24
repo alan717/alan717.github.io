@@ -47,6 +47,13 @@
   <h3>下载固件</h3>
 <p>根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。</p>
+<h3>分析linuxloader文件</h3>
+<p>根据加载时候出现的调试信息
+“/work/home/jenkins/18821_STABLE_R_HYDROGEN_MP/AP/SM8150/android/out/target/product/msmnile/obj/ABL_OBJ/Build/DEBUG_CLANG35/AARCH64/QcomModulePkg/Application/LinuxLoader/LinuxLoader/DEBUG/LinuxLoader.dl”
+知道这是高通的linuxloader。</p>
+<h3>下载linuxloader</h3>
+<p>https://git.codelinaro.org/clo/le/abl/tianocore/edk2/-/blob/clo/main/QcomModulePkg/Application/LinuxLoader/LinuxLoader.c
+这里得到对应的函数。</p>
 
 
     </main>

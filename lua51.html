@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="初步编译器分析">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>Lua-5.1 编译分析一 | LK's blog</title>
+  </head>
+
+  <body>
+    <header>
+      <h1><a href="/">大丈夫之志,应如长江,东奔大海</a></h1>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h2>Lua-5.1 编译分析一</h2>
+  
+
+  <aside>
+    <p>published on 2019-08-13
+
+    
+    · tagged with
+      
+        <a href="/tags/compiler.html">#compiler</a>, 
+        <a href="/tags/lua.html">#lua</a> and 
+        <a href="/tags/vm.html">#vm</a>
+    
+    </p>
+  </aside>
+
+
+  <blockquote>
+<p>分析lua的很多了，这里记录一下我的</p>
+</blockquote>
+<h3>词法分析</h3>
+<p>lua-5.1词法分析在llex.c中，为了表达状态机lua实现了lexstate来存储使用的数据其中Mbuffer类型的buff每次会情况重置，然后从zio中再读一个字节
+赋给current， next()会读一个字符，如图：
+<img alt="Image" src="./pic/lua-5.1.1.png">
+前端将文件token化读入，token化
+<img alt="Image" src="./pic/lua-5.1.2.png">
+解析变量名luaX_newstring转换成一个tstring存进语义seminfo中，然后返回当前为token_name类型。</p>
+<h3>lookahead</h3>
+
+
+    </main>
+
+  </body>
+
+</html>
