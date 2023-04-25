@@ -192,3 +192,8 @@ header h2 {
       margin: 0 auto;
       width: 60%;
     }
+main p {
+    word-wrap:break-word;
+
+}
+
