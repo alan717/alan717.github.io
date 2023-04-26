@@ -11,8 +11,10 @@
   </head>
 
   <body>
-    <header>
-      <h1><a href="/">大丈夫之志,应如长江,东奔大海</a></h1>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">大丈夫之志,应如长江,东奔大海</a></h1>
+         </div>
       <nav>
         <h2>LK's blog</h2>
         <ul>
@@ -47,15 +49,17 @@
   <blockquote>
 <p>分析lua的很多了，这里记录一下我的</p>
 </blockquote>
-<h3>词法分析</h3>
+<h2>词法分析</h2>
 <p>lua-5.1词法分析在llex.c中，为了表达状态机lua实现了lexstate来存储使用的数据其中Mbuffer类型的buff每次会情况重置，然后从zio中再读一个字节
 赋给current， next()会读一个字符，如图：
 <img alt="Image" src="./pic/lua-5.1.1.png">
 前端将文件token化读入，token化
 <img alt="Image" src="./pic/lua-5.1.2.png">
 解析变量名luaX_newstring转换成一个tstring存进语义seminfo中，然后返回当前为token_name类型。</p>
-<h4>lookahead</h4>
-<h3>语法分析</h3>
+<h3>lookahead</h3>
+<h2>字节码转换指令生成</h2>
+<h2>后端执行</h2>
+<p>后端执行在执行在vm中执行，在<code>\src\lvm.c</code>是vm代码。luaV_execute执行指令。这里执行的指令已经是翻译好的字节码了。</p>
 
 
     </main>

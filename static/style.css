@@ -61,7 +61,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   line-height: 1.5;
-  padding: 0rem 0.5rem;
+  /* padding: 0rem 0.5rem;*/
 }
 
 aside {
@@ -78,10 +78,16 @@ h5,
 h6,
 strong {
     color: var(--foreground-heavy);
+
+    font-family: -apple-system,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;
+    line-height: 1.7;
+    line-height: 1.1;
+    font-weight: 700;
 }
 
-a {
-    color: var(--primary-color);
+.site-heading a {
+    /*color: var(--primary-color);*/
+        color: #fff;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -103,6 +109,9 @@ nav li {
 nav li + li:before {
   content: " · ";
   margin: 0 0.5ex;
+}
+nav h2 {
+ padding: 0rem 0.2rem;
 }
 
 article header {
@@ -174,26 +183,61 @@ body footer {
 header nav {
    display: flex;
    flex-direction: row;
+   background: #ffffff; /* fallback color */background: #ffffff99;
    /*justify-content: space-between;*/
 }
-
+/*
 header h1 {
   margin: 0 auto;
   color: var(--primary-color);
 }
+*/
 
 header h2 {
   display: inline;
   font-size: 1.2rem;
 }
 
- img {
+img {
       display: block;
       margin: 0 auto;
       width: 60%;
-    }
-main p {
-    word-wrap:break-word;
-
+}
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-wrap: break-word;
+  padding: 0rem 0.5rem;
+  /* padding-top: 4rem;
+  padding-bottom: 4rem; */
 }
 
+.intro-header .site-heading {
+    text-align: center;
+
+}
+.intro-header{
+    background: no-repeat center center;
+background-color: #a3a3a3;
+background-attachment: scroll;
+background-size: cover;
+-webkit-background-size: cover;
+margin-bottom: 0;
+}
+
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1;
+    border-top: 1px solid #eee;
+}
+
+hr {
+    height: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}

@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>大丈夫之志,应如长江,东奔大海</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-04-23T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>My First Document</title><link href="alan717.github.io/Hello_Blog.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/Hello_Blog.html</id><summary type="html">A brief description of my first document.</summary><content type="html">&lt;h3&gt;topic&lt;/h3&gt;
-&lt;p&gt;尝试使用markdown来写一些blog，把原本网站的内容迁移过来。
-谢谢&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>大丈夫之志,应如长江,东奔大海</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-04-23T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>My First Document</title><link href="alan717.github.io/Hello_Blog.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/Hello_Blog.html</id><summary type="html">A brief description of my first document.</summary><content type="html">&lt;h2&gt;topic&lt;/h2&gt;
+&lt;p&gt;尝试使用markdown来写一些blog，把原本网站的内容迁移过来。然后在这里记录一下，制作blog时遇到的问题。
+谢谢&lt;/p&gt;
+&lt;h2&gt;网页生成&lt;/h2&gt;
+&lt;p&gt;网页根据templates中的base.html模板进行填充,文章|内容填充在&lt;main&gt;标签之内,具体的网页头都在这个之中。&lt;/p&gt;
+&lt;h2&gt;css&lt;/h2&gt;
+&lt;h3&gt;display:flex,block区别&lt;/h3&gt;
+&lt;h3&gt;padding&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ex:
+     padding: 0rem 0.2rem;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;第一个参数为上下,第二个为左右.&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。&lt;/p&gt;
 &lt;h3&gt;分析linuxloader文件&lt;/h3&gt;
@@ -13,15 +23,17 @@
 这里得到对应的函数。&lt;/p&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;分析lua的很多了，这里记录一下我的&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3&gt;词法分析&lt;/h3&gt;
+&lt;h2&gt;词法分析&lt;/h2&gt;
 &lt;p&gt;lua-5.1词法分析在llex.c中，为了表达状态机lua实现了lexstate来存储使用的数据其中Mbuffer类型的buff每次会情况重置，然后从zio中再读一个字节
 赋给current， next()会读一个字符，如图：
 &lt;img alt="Image" src="./pic/lua-5.1.1.png"&gt;
 前端将文件token化读入，token化
 &lt;img alt="Image" src="./pic/lua-5.1.2.png"&gt;
 解析变量名luaX_newstring转换成一个tstring存进语义seminfo中，然后返回当前为token_name类型。&lt;/p&gt;
-&lt;h4&gt;lookahead&lt;/h4&gt;
-&lt;h3&gt;语法分析&lt;/h3&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
+&lt;h3&gt;lookahead&lt;/h3&gt;
+&lt;h2&gt;字节码转换指令生成&lt;/h2&gt;
+&lt;h2&gt;后端执行&lt;/h2&gt;
+&lt;p&gt;后端执行在执行在vm中执行，在&lt;code&gt;\src\lvm.c&lt;/code&gt;是vm代码。luaV_execute执行指令。这里执行的指令已经是翻译好的字节码了。&lt;/p&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
 &lt;p&gt;手里有一个nexus5手机，想分析研究一下。&lt;/p&gt;
 &lt;h3&gt;实践&lt;/h3&gt;
 &lt;h4&gt;准备&lt;/h4&gt;

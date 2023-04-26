@@ -11,8 +11,10 @@
   </head>
 
   <body>
-    <header>
-      <h1><a href="/">大丈夫之志,应如长江,东奔大海</a></h1>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">大丈夫之志,应如长江,东奔大海</a></h1>
+         </div>
       <nav>
         <h2>LK's blog</h2>
         <ul>
@@ -42,9 +44,19 @@
   </aside>
 
 
-  <h3>topic</h3>
-<p>尝试使用markdown来写一些blog，把原本网站的内容迁移过来。
+  <h2>topic</h2>
+<p>尝试使用markdown来写一些blog，把原本网站的内容迁移过来。然后在这里记录一下，制作blog时遇到的问题。
 谢谢</p>
+<h2>网页生成</h2>
+<p>网页根据templates中的base.html模板进行填充,文章|内容填充在<main>标签之内,具体的网页头都在这个之中。</p>
+<h2>css</h2>
+<h3>display:flex,block区别</h3>
+<h3>padding</h3>
+<div class="codehilite"><pre><span></span><code>ex:
+     padding: 0rem 0.2rem;
+</code></pre></div>
+
+<p>第一个参数为上下,第二个为左右.</p>
 
 
     </main>
