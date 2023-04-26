@@ -11,7 +11,11 @@
      padding: 0rem 0.2rem;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;第一个参数为上下,第二个为左右.&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
+&lt;p&gt;第一个参数为上下,第二个为左右.&lt;/p&gt;
+&lt;h3&gt;@media&lt;/h3&gt;
+&lt;p&gt;判断设备参数.&lt;/p&gt;
+&lt;h3&gt;em&lt;/h3&gt;
+&lt;p&gt;em：相對單位，每個子元素透過「倍數」乘以父元素的 px 值。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。&lt;/p&gt;
 &lt;h3&gt;分析linuxloader文件&lt;/h3&gt;
