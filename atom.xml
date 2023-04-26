@@ -25,19 +25,53 @@
 &lt;h3&gt;下载linuxloader&lt;/h3&gt;
 &lt;p&gt;https://git.codelinaro.org/clo/le/abl/tianocore/edk2/-/blob/clo/main/QcomModulePkg/Application/LinuxLoader/LinuxLoader.c
 这里得到对应的函数。&lt;/p&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
-&lt;p&gt;分析lua的很多了，这里记录一下我的&lt;/p&gt;
+&lt;p&gt;分析lua的很多了，这里记录一下我的。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;词法分析&lt;/h2&gt;
 &lt;p&gt;lua-5.1词法分析在llex.c中，为了表达状态机lua实现了lexstate来存储使用的数据其中Mbuffer类型的buff每次会情况重置，然后从zio中再读一个字节
 赋给current， next()会读一个字符，如图：
-&lt;img alt="Image" src="./pic/lua-5.1.1.png"&gt;
+&lt;img alt="Image" src="./pic/lua-5.1.1.png"&gt;&lt;br&gt;
 前端将文件token化读入，token化
-&lt;img alt="Image" src="./pic/lua-5.1.2.png"&gt;
+&lt;img alt="Image" src="./pic/lua-5.1.2.png"&gt;&lt;br&gt;
 解析变量名luaX_newstring转换成一个tstring存进语义seminfo中，然后返回当前为token_name类型。&lt;/p&gt;
+&lt;h3&gt;zio&lt;/h3&gt;
+&lt;p&gt;其中zio读取文件到内存中处理,省去频繁文件i/o读增加效率.&lt;/p&gt;
 &lt;h3&gt;lookahead&lt;/h3&gt;
 &lt;h2&gt;字节码转换指令生成&lt;/h2&gt;
+&lt;p&gt;例如：
+&lt;code&gt;helloworld.lua&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;-- the first program in every language
+
+io.write(&amp;quot;Hello world, from &amp;quot;,_VERSION,&amp;quot;!\n&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;首先读的- 然后判断第二个token是不是‘-’如果是则为注释。
+然后根据chunk处理&lt;br&gt;
+&lt;code&gt;/* chunk -&amp;gt; { stat [`;'] } */&lt;/code&gt;&lt;br&gt;
+然后展开为stat：  &lt;br&gt;
+&lt;code&gt;/* stat -&amp;gt; func | assignment */&lt;/code&gt;&lt;br&gt;
+自上而下展开，主表达式primaryexp：  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt; /* primaryexp -&amp;gt;
+        prefixexp { `.&amp;#39; NAME | `[&amp;#39; exp `]&amp;#39; | `:&amp;#39; NAME funcargs | funcargs } */
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;然后根据 . token展开：field 展开-》luaK_dischargevars
+来判断变量类型：展开成lua5.1字节码存储起来成表达式信息。
+如图：
+&lt;img alt="Image" src="./pic/lua-5.1.3.png"&gt;&lt;br&gt;
+然后读io 为token_name类型，则认为时global变VGLOBAL，
+&lt;img alt="Image" src="./pic/4.png"&gt;&lt;br&gt;
+然后展开.write函数.
+再到primaryexp函数解析函数（）调用:
+&lt;img alt="Image" src="./pic/5.png"&gt;&lt;br&gt;
+生成调用函数的call 寄存器保存指令，然后 保存函数参数到hash表，然后保存栈，然后括号匹配.
+完成后下一行语句。
+&lt;img alt="Image" src="./pic/6.png"&gt;&lt;br&gt;
+整体自上而下展开。&lt;/p&gt;
 &lt;h2&gt;后端执行&lt;/h2&gt;
-&lt;p&gt;后端执行在执行在vm中执行，在&lt;code&gt;\src\lvm.c&lt;/code&gt;是vm代码。luaV_execute执行指令。这里执行的指令已经是翻译好的字节码了。&lt;/p&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
+&lt;p&gt;后端执行在执行在vm中执行，在&lt;code&gt;\src\lvm.c&lt;/code&gt;是vm代码。luaV_execute执行指令。这里执行的指令已经是翻译好的字节码了。&lt;/p&gt;
+&lt;h2&gt;ZJ&lt;/h2&gt;
+&lt;p&gt;没有过多的剖析代码的细节，只分析总体大纲，在基础上有清楚认识之后开始单独分析。下面二、三将分析具体的实现细节。&lt;/p&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
 &lt;p&gt;手里有一个nexus5手机，想分析研究一下。&lt;/p&gt;
 &lt;h3&gt;实践&lt;/h3&gt;
 &lt;h4&gt;准备&lt;/h4&gt;

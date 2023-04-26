@@ -47,19 +47,53 @@
 
 
   <blockquote>
-<p>分析lua的很多了，这里记录一下我的</p>
+<p>分析lua的很多了，这里记录一下我的。</p>
 </blockquote>
 <h2>词法分析</h2>
 <p>lua-5.1词法分析在llex.c中，为了表达状态机lua实现了lexstate来存储使用的数据其中Mbuffer类型的buff每次会情况重置，然后从zio中再读一个字节
 赋给current， next()会读一个字符，如图：
-<img alt="Image" src="./pic/lua-5.1.1.png">
+<img alt="Image" src="./pic/lua-5.1.1.png"><br>
 前端将文件token化读入，token化
-<img alt="Image" src="./pic/lua-5.1.2.png">
+<img alt="Image" src="./pic/lua-5.1.2.png"><br>
 解析变量名luaX_newstring转换成一个tstring存进语义seminfo中，然后返回当前为token_name类型。</p>
+<h3>zio</h3>
+<p>其中zio读取文件到内存中处理,省去频繁文件i/o读增加效率.</p>
 <h3>lookahead</h3>
 <h2>字节码转换指令生成</h2>
+<p>例如：
+<code>helloworld.lua</code></p>
+<div class="codehilite"><pre><span></span><code>-- the first program in every language
+
+io.write(&quot;Hello world, from &quot;,_VERSION,&quot;!\n&quot;)
+</code></pre></div>
+
+<p>首先读的- 然后判断第二个token是不是‘-’如果是则为注释。
+然后根据chunk处理<br>
+<code>/* chunk -&gt; { stat [`;'] } */</code><br>
+然后展开为stat：  <br>
+<code>/* stat -&gt; func | assignment */</code><br>
+自上而下展开，主表达式primaryexp：  </p>
+<div class="codehilite"><pre><span></span><code> /* primaryexp -&gt;
+        prefixexp { `.&#39; NAME | `[&#39; exp `]&#39; | `:&#39; NAME funcargs | funcargs } */
+</code></pre></div>
+
+<p>然后根据 . token展开：field 展开-》luaK_dischargevars
+来判断变量类型：展开成lua5.1字节码存储起来成表达式信息。
+如图：
+<img alt="Image" src="./pic/lua-5.1.3.png"><br>
+然后读io 为token_name类型，则认为时global变VGLOBAL，
+<img alt="Image" src="./pic/4.png"><br>
+然后展开.write函数.
+再到primaryexp函数解析函数（）调用:
+<img alt="Image" src="./pic/5.png"><br>
+生成调用函数的call 寄存器保存指令，然后 保存函数参数到hash表，然后保存栈，然后括号匹配.
+完成后下一行语句。
+<img alt="Image" src="./pic/6.png"><br>
+整体自上而下展开。</p>
 <h2>后端执行</h2>
 <p>后端执行在执行在vm中执行，在<code>\src\lvm.c</code>是vm代码。luaV_execute执行指令。这里执行的指令已经是翻译好的字节码了。</p>
+<h2>ZJ</h2>
+<p>没有过多的剖析代码的细节，只分析总体大纲，在基础上有清楚认识之后开始单独分析。下面二、三将分析具体的实现细节。</p>
 
 
     </main>
