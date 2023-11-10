@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="使用dll生成对应的lib文件">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>使用dll生成对应的lib文件 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">大丈夫之志,应如长江,东奔大海</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>使用dll生成对应的lib文件</h1>
+  
+
+  <aside>
+    <p>published on 2020-07-03
+
+    
+    · tagged with
+      
+        <a href="/tags/dll.html">#dll</a>
+    
+    </p>
+  </aside>
+
+
+  <h1>使用dll生成对应的lib文件</h1>
+<blockquote>
+<p>有时候没有lib文件，只有头文件，怎么生成lib文件呢~</p>
+</blockquote>
+<h2>导出信息</h2>
+<p><code>dumpbin /exports C:\yourpath\yourlib.dll</code></p>
+<p>输出如:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">   </span><span class="n">ordinal</span><span class="w"> </span><span class="n">hint</span><span class="w"> </span><span class="n">RVA</span><span class="w">      </span><span class="n">name</span>
+
+<span class="w">          </span><span class="mh">1</span><span class="w">    </span><span class="mh">0</span><span class="w"> </span><span class="mh">00001080</span><span class="w"> </span><span class="n">cs_close</span>
+<span class="w">          </span><span class="mh">2</span><span class="w">    </span><span class="mh">1</span><span class="w"> </span><span class="mh">00001120</span><span class="w"> </span><span class="n">cs_disasm</span>
+<span class="w">          </span><span class="mh">3</span><span class="w">    </span><span class="mh">2</span><span class="w"> </span><span class="mh">00001590</span><span class="w"> </span><span class="n">cs_disasm_ex</span>
+<span class="w">          </span><span class="mh">4</span><span class="w">    </span><span class="mh">3</span><span class="w"> </span><span class="mh">000015</span><span class="n">A0</span><span class="w"> </span><span class="n">cs_disasm_iter</span>
+<span class="w">          </span><span class="mh">5</span><span class="w">    </span><span class="mh">4</span><span class="w"> </span><span class="mh">00001790</span><span class="w"> </span><span class="n">cs_errno</span>
+<span class="w">          </span><span class="mh">6</span><span class="w">    </span><span class="mh">5</span><span class="w"> </span><span class="mh">000017</span><span class="n">A0</span><span class="w"> </span><span class="n">cs_free</span>
+<span class="w">          </span><span class="mh">7</span><span class="w">    </span><span class="mh">6</span><span class="w"> </span><span class="mf">000017F</span><span class="mh">0</span><span class="w"> </span><span class="n">cs_group_name</span>
+<span class="w">          </span><span class="mh">8</span><span class="w">    </span><span class="mh">7</span><span class="w"> </span><span class="mh">00001810</span><span class="w"> </span><span class="n">cs_insn_group</span>
+<span class="w">          </span><span class="mh">9</span><span class="w">    </span><span class="mh">8</span><span class="w"> </span><span class="mh">00001850</span><span class="w"> </span><span class="n">cs_insn_name</span>
+<span class="w">         </span><span class="mh">10</span><span class="w">    </span><span class="mh">9</span><span class="w"> </span><span class="mh">00001870</span><span class="w"> </span><span class="n">cs_malloc</span>
+<span class="w">         </span><span class="mh">11</span><span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="mf">000018F</span><span class="mh">0</span><span class="w"> </span><span class="n">cs_op_count</span>
+<span class="w">         </span><span class="mh">12</span><span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="mh">00001</span><span class="n">C00</span><span class="w"> </span><span class="n">cs_op_index</span>
+<span class="w">         </span><span class="mh">13</span><span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="mh">00002050</span><span class="w"> </span><span class="n">cs_open</span>
+<span class="w">         </span><span class="mh">14</span><span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="mh">000021</span><span class="n">A0</span><span class="w"> </span><span class="n">cs_option</span>
+<span class="w">         </span><span class="mh">15</span><span class="w">    </span><span class="n">E</span><span class="w"> </span><span class="mh">000024</span><span class="n">C0</span><span class="w"> </span><span class="n">cs_reg_name</span>
+<span class="w">         </span><span class="mh">16</span><span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="mf">000024E0</span><span class="w"> </span><span class="n">cs_reg_read</span>
+<span class="w">         </span><span class="mh">17</span><span class="w">   </span><span class="mh">10</span><span class="w"> </span><span class="mh">00002520</span><span class="w"> </span><span class="n">cs_reg_write</span>
+<span class="w">         </span><span class="mh">18</span><span class="w">   </span><span class="mh">11</span><span class="w"> </span><span class="mh">00002560</span><span class="w"> </span><span class="n">cs_regs_access</span>
+<span class="w">         </span><span class="mh">19</span><span class="w">   </span><span class="mh">12</span><span class="w"> </span><span class="mh">00002620</span><span class="w"> </span><span class="n">cs_strerror</span>
+<span class="w">         </span><span class="mh">20</span><span class="w">   </span><span class="mh">13</span><span class="w"> </span><span class="mh">00002700</span><span class="w"> </span><span class="n">cs_support</span>
+<span class="w">         </span><span class="mh">21</span><span class="w">   </span><span class="mh">14</span><span class="w"> </span><span class="mh">00002730</span><span class="w"> </span><span class="n">cs_version</span>
+</code></pre></div>
+
+<p>然后复制name
+保存一个文件叫<code>lib_name.def</code></p>
+<div class="codehilite"><pre><span></span><code>EXPORTS
+cs_close
+cs_disasm
+cs_disasm_ex
+cs_disasm_iter
+cs_errno
+cs_free
+cs_group_name
+cs_insn_group
+cs_insn_name
+cs_malloc
+cs_op_count
+cs_op_index
+cs_open
+cs_option
+cs_reg_name
+cs_reg_read
+cs_reg_write
+cs_regs_access
+cs_strerror
+cs_support
+cs_version
+</code></pre></div>
+
+<p>然后使用lib.exe</p>
+<blockquote>
+<p>lib.exe  /DEF:C:\Users\Kian\Desktop\capstone.def /OUT:C:\Users\Kian\Desktop\capstone.lib
+生成对应的lib文件。
+</p>
+</blockquote>
+
+
+    </main>
+
+  </body>
+
+</html>

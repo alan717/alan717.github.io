@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>大丈夫之志,应如长江,东奔大海</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-04-23T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>My First Document</title><link href="alan717.github.io/Hello_Blog.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/Hello_Blog.html</id><summary type="html">A brief description of my first document.</summary><content type="html">&lt;h2&gt;topic&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>大丈夫之志,应如长江,东奔大海</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-04-23T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
+&lt;h2&gt;数学分析&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;wiki描述: Base64（基底64）是一种基于64个可打印字符来表示二进制数据的表示方法
+用64个符号表示二进制，求一下表示64个字符需要多少位用log2(64)=6,需要六位，而二进制一个字节8位，最大公约数
+为24为三个字节，表示为4个字符。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>My First Document</title><link href="alan717.github.io/Hello_Blog.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/Hello_Blog.html</id><summary type="html">A brief description of my first document.</summary><content type="html">&lt;h2&gt;topic&lt;/h2&gt;
 &lt;p&gt;尝试使用markdown来写一些blog，把原本网站的内容迁移过来。然后在这里记录一下，制作blog时遇到的问题。
 谢谢&lt;/p&gt;
 &lt;h2&gt;网页生成&lt;/h2&gt;
@@ -24,7 +31,75 @@
 知道这是高通的linuxloader。&lt;/p&gt;
 &lt;h3&gt;下载linuxloader&lt;/h3&gt;
 &lt;p&gt;https://git.codelinaro.org/clo/le/abl/tianocore/edk2/-/blob/clo/main/QcomModulePkg/Application/LinuxLoader/LinuxLoader.c
-这里得到对应的函数。&lt;/p&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
+这里得到对应的函数。&lt;/p&gt;</content></entry><entry><title>https过程</title><link href="alan717.github.io/tls1_2.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/tls1_2.html</id><summary type="html">分析https通信及抓包详情</summary><content type="html">&lt;h2&gt;HTTPS 大概过程&lt;/h2&gt;
+&lt;p&gt;其中分析具体点看wireshark抓包比较详细的数据结构。
+大致过程如下:
+1. 客户端发送一个消息中同时包含生成的一个 48 字节的预备主密钥，其中前 2 个字节是 ProtocolVersion，后 46 字节是随机数,
+ 用 Server 的公钥加密之后通过 Client Key Exchange 子消息发给 Server
+2. &lt;/p&gt;</content></entry><entry><title>使用dll生成对应的lib文件</title><link href="alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-07-03:alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html</id><summary type="html">使用dll生成对应的lib文件</summary><content type="html">&lt;h1&gt;使用dll生成对应的lib文件&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有时候没有lib文件，只有头文件，怎么生成lib文件呢~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;导出信息&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;dumpbin /exports C:\yourpath\yourlib.dll&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;输出如:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="n"&gt;ordinal&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;hint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;RVA&lt;/span&gt;&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
+
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001080&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_close&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;2&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001120&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_disasm&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;3&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001590&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_disasm_ex&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;4&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;3&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;000015&lt;/span&gt;&lt;span class="n"&gt;A0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_disasm_iter&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;5&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;4&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001790&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_errno&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;6&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;5&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;000017&lt;/span&gt;&lt;span class="n"&gt;A0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_free&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;7&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;6&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;000017F&lt;/span&gt;&lt;span class="mh"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_group_name&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;8&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;7&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001810&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_insn_group&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="mh"&gt;9&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;8&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001850&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_insn_name&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="mh"&gt;9&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001870&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_malloc&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;11&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;000018F&lt;/span&gt;&lt;span class="mh"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_op_count&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;12&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00001&lt;/span&gt;&lt;span class="n"&gt;C00&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_op_index&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;13&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00002050&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_open&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;000021&lt;/span&gt;&lt;span class="n"&gt;A0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_option&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;15&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;000024&lt;/span&gt;&lt;span class="n"&gt;C0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_reg_name&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;16&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;F&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mf"&gt;000024E0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_reg_read&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;17&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="mh"&gt;10&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00002520&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_reg_write&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;18&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="mh"&gt;11&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00002560&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_regs_access&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;19&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="mh"&gt;12&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00002620&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_strerror&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;20&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="mh"&gt;13&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00002700&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_support&lt;/span&gt;
+&lt;span class="w"&gt;         &lt;/span&gt;&lt;span class="mh"&gt;21&lt;/span&gt;&lt;span class="w"&gt;   &lt;/span&gt;&lt;span class="mh"&gt;14&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mh"&gt;00002730&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;cs_version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;然后复制name
+保存一个文件叫&lt;code&gt;lib_name.def&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;EXPORTS
+cs_close
+cs_disasm
+cs_disasm_ex
+cs_disasm_iter
+cs_errno
+cs_free
+cs_group_name
+cs_insn_group
+cs_insn_name
+cs_malloc
+cs_op_count
+cs_op_index
+cs_open
+cs_option
+cs_reg_name
+cs_reg_read
+cs_reg_write
+cs_regs_access
+cs_strerror
+cs_support
+cs_version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;然后使用lib.exe&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;lib.exe  /DEF:C:\Users\Kian\Desktop\capstone.def /OUT:C:\Users\Kian\Desktop\capstone.lib
+生成对应的lib文件。
+&lt;/p&gt;
+&lt;/blockquote&gt;</content></entry><entry><title>Lua-5.1 long string comments分析四</title><link href="alan717.github.io/lua51-longSC.html" rel="alternate"></link><published>2019-09-26T00:00:00+08:00</published><updated>2019-09-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-26:alan717.github.io/lua51-longSC.html</id><summary type="html">注释和长字符。</summary><content type="html"></content></entry><entry><title>Lua-5.1 varargs分析三</title><link href="alan717.github.io/lua51-varargs.html" rel="alternate"></link><published>2019-09-20T00:00:00+08:00</published><updated>2019-09-20T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-20:alan717.github.io/lua51-varargs.html</id><summary type="html">varargs特性.</summary><content type="html"></content></entry><entry><title>Lua-5.1 gc分析二</title><link href="alan717.github.io/lua51-gc.html" rel="alternate"></link><published>2019-09-10T00:00:00+08:00</published><updated>2019-09-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-10:alan717.github.io/lua51-gc.html</id><summary type="html">garbase collect.</summary><content type="html"></content></entry><entry><title>Lua-5.1 coroutine分析二</title><link href="alan717.github.io/lua51-coroutine.html" rel="alternate"></link><published>2019-08-26T00:00:00+08:00</published><updated>2019-08-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-26:alan717.github.io/lua51-coroutine.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;h2&gt;coroutine&lt;/h2&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;分析lua的很多了，这里记录一下我的。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;词法分析&lt;/h2&gt;

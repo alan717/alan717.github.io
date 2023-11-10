@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="LK.">
-    <meta name="description" content="LK's blog">
+    <meta name="description" content="分析https通信及抓包详情">
     <link rel="stylesheet" href="/static/style.css" type="text/css">
-    <title>Tag life | LK's blog</title>
+    <title>https过程 | LK's blog</title>
   </head>
 
   <body>
@@ -28,31 +28,28 @@
     <main>
     
 
-
   
-  <h1><a href="/base64算法分析总结.html">Base64算法分析</a></h1>
-
-  
-  <p>— A brief description of base64 algorithm.</p>
+  <h1>https过程</h1>
   
 
-  
+  <aside>
+    <p>published on 2020-10-05
 
-  <p>Written on 2023-04-23.</p>
+    
+    · tagged with
+      
+        <a href="/tags/https.html">#https</a>
+    
+    </p>
+  </aside>
 
 
-
-  
-  <h1><a href="/Hello_Blog.html">My First Document</a></h1>
-
-  
-  <p>— A brief description of my first document.</p>
-  
-
-  
-
-  <p>Written on 2023-04-23.</p>
-
+  <h2>HTTPS 大概过程</h2>
+<p>其中分析具体点看wireshark抓包比较详细的数据结构。
+大致过程如下:
+1. 客户端发送一个消息中同时包含生成的一个 48 字节的预备主密钥，其中前 2 个字节是 ProtocolVersion，后 46 字节是随机数,
+ 用 Server 的公钥加密之后通过 Client Key Exchange 子消息发给 Server
+2. </p>
 
 
     </main>
