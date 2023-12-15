@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="sockets">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>windows本地监听和转发 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>windows本地监听和转发</h1>
+  
+
+  <aside>
+    <p>published on 2020-09-20
+
+    
+    · tagged with
+      
+        <a href="/tags/port forward.html">#port forward</a> and 
+        <a href="/tags/sockets.html">#sockets</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env:</h2>
+<div class="codehilite"><pre><span></span><code>Edition Windows 10 Pro
+Version 22H2
+Installed on    ‎5/‎7/‎2021
+OS build    19045.3324
+Experience  Windows Feature Experience Pack 1000.19041.1000.0
+</code></pre></div>
+
+<h2>方法1：本地和监听转发使用powershell</h2>
+<p><code>powershell.exe -executionpolicy bypass -file .\Script.ps1</code><br>
+<code>https://raw.githubusercontent.com/deepzec/Win-PortFwd/master/win-portfwd.ps1</code></p>
+<h2>方法2：使用netsh</h2>
+<h3>开端口,总览,重置</h3>
+<p><code>netsh interface portproxy show all</code><br>
+<code>netsh interface portproxy add v4tov4 listenaddress=$Lhost listenport=$Lport connectaddress=$Rhost connectport=$Rport</code><br>
+<code>netsh interface portproxy reset</code>  </p>
+<h3>开防火墙</h3>
+<h4>Old command:</h4>
+<p><code>netsh firewall add portopening TCP 80 "Open Port 80"</code></p>
+<h4>New ~~command~~:</h4>
+<p><code>netsh advfirewall firewall add rule name= "Open Port 80" dir=in action=allow protocol=TCP localport=80</code></p>
+<h2>总结</h2>
+<p>两个方法本质都是</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://telegram.me/wesshb">wesshb@Telegram</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>

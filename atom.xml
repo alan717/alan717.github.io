@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>大丈夫之志,应如长江,东奔大海</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-04-23T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-08-25T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">自己折腾摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;</content></entry><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
 &lt;h2&gt;数学分析&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;wiki描述: Base64（基底64）是一种基于64个可打印字符来表示二进制数据的表示方法
 用64个符号表示二进制，求一下表示64个字符需要多少位用log2(64)=6,需要六位，而二进制一个字节8位，最大公约数
 为24为三个字节，表示为4个字符。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>My First Document</title><link href="alan717.github.io/Hello_Blog.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/Hello_Blog.html</id><summary type="html">A brief description of my first document.</summary><content type="html">&lt;h2&gt;topic&lt;/h2&gt;
-&lt;p&gt;尝试使用markdown来写一些blog，把原本网站的内容迁移过来。然后在这里记录一下，制作blog时遇到的问题。
-谢谢&lt;/p&gt;
-&lt;h2&gt;网页生成&lt;/h2&gt;
-&lt;p&gt;网页根据templates中的base.html模板进行填充,文章|内容填充在&lt;main&gt;标签之内,具体的网页头都在这个之中。&lt;/p&gt;
-&lt;h2&gt;css&lt;/h2&gt;
-&lt;h3&gt;display:flex,block区别&lt;/h3&gt;
-&lt;h3&gt;padding&lt;/h3&gt;
-&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ex:
-     padding: 0rem 0.2rem;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;第一个参数为上下,第二个为左右.&lt;/p&gt;
-&lt;h3&gt;@media&lt;/h3&gt;
-&lt;p&gt;判断设备参数.&lt;/p&gt;
-&lt;h3&gt;em&lt;/h3&gt;
-&lt;p&gt;em：相對單位，每個子元素透過「倍數」乘以父元素的 px 值。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
+&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。&lt;/p&gt;
 &lt;h3&gt;分析linuxloader文件&lt;/h3&gt;
@@ -36,7 +21,84 @@
 大致过程如下:
 1. 客户端发送一个消息中同时包含生成的一个 48 字节的预备主密钥，其中前 2 个字节是 ProtocolVersion，后 46 字节是随机数,
  用 Server 的公钥加密之后通过 Client Key Exchange 子消息发给 Server
-2. &lt;/p&gt;</content></entry><entry><title>使用dll生成对应的lib文件</title><link href="alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-07-03:alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html</id><summary type="html">使用dll生成对应的lib文件</summary><content type="html">&lt;h1&gt;使用dll生成对应的lib文件&lt;/h1&gt;
+2. &lt;/p&gt;</content></entry><entry><title>windows本地监听和转发</title><link href="alan717.github.io/%E6%9C%AC%E5%9C%B0%E7%9B%91%E5%90%AC%E5%92%8C%E8%BD%AC%E5%8F%91.html" rel="alternate"></link><published>2020-09-20T00:00:00+08:00</published><updated>2020-09-20T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-09-20:alan717.github.io/%E6%9C%AC%E5%9C%B0%E7%9B%91%E5%90%AC%E5%92%8C%E8%BD%AC%E5%8F%91.html</id><summary type="html">sockets</summary><content type="html">&lt;h2&gt;env:&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;Edition Windows 10 Pro
+Version 22H2
+Installed on    ‎5/‎7/‎2021
+OS build    19045.3324
+Experience  Windows Feature Experience Pack 1000.19041.1000.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;方法1：本地和监听转发使用powershell&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;powershell.exe -executionpolicy bypass -file .\Script.ps1&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;https://raw.githubusercontent.com/deepzec/Win-PortFwd/master/win-portfwd.ps1&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;方法2：使用netsh&lt;/h2&gt;
+&lt;h3&gt;开端口,总览,重置&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;netsh interface portproxy show all&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;netsh interface portproxy add v4tov4 listenaddress=$Lhost listenport=$Lport connectaddress=$Rhost connectport=$Rport&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;netsh interface portproxy reset&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;开防火墙&lt;/h3&gt;
+&lt;h4&gt;Old command:&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;netsh firewall add portopening TCP 80 "Open Port 80"&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;New ~~command~~:&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;netsh advfirewall firewall add rule name= "Open Port 80" dir=in action=allow protocol=TCP localport=80&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;两个方法本质都是&lt;/p&gt;</content></entry><entry><title>Android tcp &amp; https capture 抓包</title><link href="alan717.github.io/capture.html" rel="alternate"></link><published>2020-08-25T00:00:00+08:00</published><updated>2020-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-25:alan717.github.io/capture.html</id><summary type="html">tcp capture</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;Android 13
+tcpdump 
+rooted devices.&lt;/p&gt;
+&lt;h2&gt;TCP&lt;/h2&gt;
+&lt;h3&gt;抓包命令&lt;/h3&gt;
+&lt;p&gt;一般手机有tcpdump命令，无需下载
+&lt;code&gt;/data/local/tcpdump -i any -p -s 0 -w /sdcard/capture.pcap&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;capture.pcap包分析&lt;/h3&gt;
+&lt;p&gt;直接拖进wireshark分析.&lt;/p&gt;
+&lt;h4&gt;分析细节纪要&lt;/h4&gt;
+&lt;p&gt;wireshark 打开对应tcp包的 链路层变成linux cooked capture v1.&lt;/p&gt;
+&lt;h5&gt;Linux cooked-mode capture (SLL)&lt;/h5&gt;
+&lt;p&gt;为何链路层名称为linux cooked capture？而不是Ethernet Ⅱ
+因为包是在linux中使用tcpdump，且指定参数-i any来捕获设备上所有网卡上的包。它会把所有包的以太网头都换成linux cooked capture，wireshark对此解释为虚假的协议。
+tcpdump抓包时，如果-i选项指定为一个网卡地址，那么抓取的数据包数据链路层是以太网头部；如果指定any，则以太网头部将被替换为linux cooked capture头部&lt;/p&gt;
+&lt;h2&gt;https&lt;/h2&gt;
+&lt;p&gt;fiddler 导出证书
+&lt;code&gt;openssl x509 -inform DER -in C:\Users\Kian\Desktop\FiddlerRoot.cer -out C:\Users\Kian\Desktop\FiddlerRoot.pem&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;openssl x509 -inform PEM -subject_hash -in C:\Users\Kian\Desktop\FiddlerRoot.pem&lt;/code&gt;  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;035f9290
+-----BEGIN CERTIFICATE-----
+MIIDsjCCApqgAwIBAgIQF05TM2cD64tNXZ9wqO5YuDANBgkqhkiG9w0BAQsFADBn
+MSswKQYDVQQLDCJDcmVhdGVkIGJ5IGh0dHA6Ly93d3cuZmlkZGxlcjIuY29tMRUw
+EwYDVQQKDAxET19OT1RfVFJVU1QxITAfBgNVBAMMGERPX05PVF9UUlVTVF9GaWRk
+bGVyUm9vdDAeFw0yMDExMjQwOTE2MDVaFw0yNDAyMjMwOTE2MDVaMGcxKzApBgNV
+BAsMIkNyZWF0ZWQgYnkgaHR0cDovL3d3dy5maWRkbGVyMi5jb20xFTATBgNVBAoM
+DERPX05PVF9UUlVTVDEhMB8GA1UEAwwYRE9fTk9UX1RSVVNUX0ZpZGRsZXJSb290
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4k9jH8WVyCzKF/PWL2mN
+3228CgqhRBxSuRYUZeOi73d+sRumd3Z2n7uKtUPQTmrWZ34iMLt0fNMn8vliHnnI
+F/vc2WDjGBiK2Bwdbe/vlme1MeGSK+VQKiCUQSGWRtG8vN3bRLKkjeWu7UsqZKHv
+8MQoXdWUBHgMdSUbCA9RStiaK9oZYlFClWm2lxwLvG2FmkupxQDadBUzYUEdxsfx
+VsxglGWpwo+kK3R5ef9dQ68LBzrcImbrClWGYYRQ9hgizJu8uvrmMtTC3eGLhRS0
+C8pPpZ47mNE/saEauXyeF8GczfG5lbyJhWP1hXN16AMNJkWTNdGoU4UBmohL6RUw
+AQIDAQABo1owWDATBgNVHSUEDDAKBggrBgEFBQcDATASBgNVHRMBAf8ECDAGAQH/
+AgEAMB0GA1UdDgQWBBQonuyOhHPvj5K+tL0vA2zVqDp3TDAOBgNVHQ8BAf8EBAMC
+AQYwDQYJKoZIhvcNAQELBQADggEBAAEyHBulbUdWIFWuBYOtxQk6Gt9fQ9mI5GF3
+jq2qvhK3kBhNveARX2LH20S7BD0KsR++BsDzw0FuHikSqfGtUPiuPN5HPAb8jY2N
+GrRdMTnbMEWbmXVHaoXsRTo7YqUjhX/268YDid9UXo6YMGE9S2JkmG+vhGyTUZsd
+oUTmgTQ4fzm8WIgfNLxiLsU5H345gwVbLRDAeeavZzneiZWaRDmu3MSLNIkwgFuF
+3pDp9nSOncjU9wpkopSOp1X1T10cHWe5M2bNZMBkQGR5b7KmK4QhjhZFtgKJTHh1
+KQ3oSWrOun9XpzbCAMfSHzIgC48w/V1+YGR9n5SlY7V73qnMAJU=
+-----END CERTIFICATE-----
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;上图输出的 hash 035f9290
+因此将 .pem 证书重命名为 e5c3944b.0
+手机 magisk 必须要先安装一个模块，如 lsposed
+下面步骤可以使用 MT管理器 或者 ADB 命令操作
+在手机 /data/adb/modules 目录下随便找一个模块的目录，这里我选 lsposed , 进入此目录
+在此目录下创建 system/etc/security/cacerts 目录，将 e5c3944b.0 文件拷贝到新建的这个目录下
+最终证书路径为 /data/adb/modules/xxx/system/etc/security/cacerts/e5c3944b.0
+重启手机，wifi 界面设置代理 xxx.xxx.xxx.xxx:8888 即可抓包&lt;/p&gt;
+&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>gdb</title><link href="alan717.github.io/gdb.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/gdb.html</id><summary type="html">gdb</summary><content type="html">&lt;h2&gt;核心原理&lt;/h2&gt;
+&lt;p&gt;ptrace信号接口.使用ptrace接口和trap信号配合使用.&lt;/p&gt;
+&lt;h2&gt;&lt;/h2&gt;</content></entry><entry><title>使用dll生成对应的lib文件</title><link href="alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-07-03:alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html</id><summary type="html">使用dll生成对应的lib文件</summary><content type="html">&lt;h1&gt;使用dll生成对应的lib文件&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;有时候没有lib文件，只有头文件，怎么生成lib文件呢~&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -169,4 +231,20 @@ load base address是多少了。一般会拿到头部的两个字节，然后根
 &lt;p&gt;除此之外还有证书的部分，这部分的数据，一般在文件头前边或者文件的末尾，这个根据LK的源码或者是分析aboot中的逻辑可以判断出来位置和大小，然后在文件头中找到对应。
 本章完.&lt;/p&gt;
 &lt;h4&gt;参考&lt;/h4&gt;
-&lt;p&gt;[1].http://www.newandroidbook.com/Articles/aboot.html&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;[1].http://www.newandroidbook.com/Articles/aboot.html&lt;/p&gt;</content></entry><entry><title>My First Document</title><link href="alan717.github.io/Hello_Blog.html" rel="alternate"></link><published>2019-01-23T00:00:00+08:00</published><updated>2019-01-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-01-23:alan717.github.io/Hello_Blog.html</id><summary type="html">A brief description of my first document.</summary><content type="html">&lt;h2&gt;topic&lt;/h2&gt;
+&lt;p&gt;尝试使用markdown来写一些blog，把原本网站的内容迁移过来。然后在这里记录一下，制作blog时遇到的问题。
+谢谢&lt;/p&gt;
+&lt;h2&gt;网页生成&lt;/h2&gt;
+&lt;p&gt;网页根据templates中的base.html模板进行填充,文章|内容填充在&lt;main&gt;标签之内,具体的网页头都在这个之中。&lt;/p&gt;
+&lt;h2&gt;css&lt;/h2&gt;
+&lt;h3&gt;display:flex,block区别&lt;/h3&gt;
+&lt;h3&gt;padding&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;ex:
+     padding: 0rem 0.2rem;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;第一个参数为上下,第二个为左右.&lt;/p&gt;
+&lt;h3&gt;@media&lt;/h3&gt;
+&lt;p&gt;判断设备参数.&lt;/p&gt;
+&lt;h3&gt;em&lt;/h3&gt;
+&lt;p&gt;em：相對單位，每個子元素透過「倍數」乘以父元素的 px 值。&lt;/p&gt;</content></entry></feed>

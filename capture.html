@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="tcp capture">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>Android tcp & https capture 抓包 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>Android tcp & https capture 抓包</h1>
+  
+
+  <aside>
+    <p>published on 2020-08-25
+
+    
+    · tagged with
+      
+        <a href="/tags/tcp capure.html">#tcp capure</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env</h2>
+<p>Android 13
+tcpdump 
+rooted devices.</p>
+<h2>TCP</h2>
+<h3>抓包命令</h3>
+<p>一般手机有tcpdump命令，无需下载
+<code>/data/local/tcpdump -i any -p -s 0 -w /sdcard/capture.pcap</code>  </p>
+<h3>capture.pcap包分析</h3>
+<p>直接拖进wireshark分析.</p>
+<h4>分析细节纪要</h4>
+<p>wireshark 打开对应tcp包的 链路层变成linux cooked capture v1.</p>
+<h5>Linux cooked-mode capture (SLL)</h5>
+<p>为何链路层名称为linux cooked capture？而不是Ethernet Ⅱ
+因为包是在linux中使用tcpdump，且指定参数-i any来捕获设备上所有网卡上的包。它会把所有包的以太网头都换成linux cooked capture，wireshark对此解释为虚假的协议。
+tcpdump抓包时，如果-i选项指定为一个网卡地址，那么抓取的数据包数据链路层是以太网头部；如果指定any，则以太网头部将被替换为linux cooked capture头部</p>
+<h2>https</h2>
+<p>fiddler 导出证书
+<code>openssl x509 -inform DER -in C:\Users\Kian\Desktop\FiddlerRoot.cer -out C:\Users\Kian\Desktop\FiddlerRoot.pem</code><br>
+<code>openssl x509 -inform PEM -subject_hash -in C:\Users\Kian\Desktop\FiddlerRoot.pem</code>  </p>
+<div class="codehilite"><pre><span></span><code>035f9290
+-----BEGIN CERTIFICATE-----
+MIIDsjCCApqgAwIBAgIQF05TM2cD64tNXZ9wqO5YuDANBgkqhkiG9w0BAQsFADBn
+MSswKQYDVQQLDCJDcmVhdGVkIGJ5IGh0dHA6Ly93d3cuZmlkZGxlcjIuY29tMRUw
+EwYDVQQKDAxET19OT1RfVFJVU1QxITAfBgNVBAMMGERPX05PVF9UUlVTVF9GaWRk
+bGVyUm9vdDAeFw0yMDExMjQwOTE2MDVaFw0yNDAyMjMwOTE2MDVaMGcxKzApBgNV
+BAsMIkNyZWF0ZWQgYnkgaHR0cDovL3d3dy5maWRkbGVyMi5jb20xFTATBgNVBAoM
+DERPX05PVF9UUlVTVDEhMB8GA1UEAwwYRE9fTk9UX1RSVVNUX0ZpZGRsZXJSb290
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4k9jH8WVyCzKF/PWL2mN
+3228CgqhRBxSuRYUZeOi73d+sRumd3Z2n7uKtUPQTmrWZ34iMLt0fNMn8vliHnnI
+F/vc2WDjGBiK2Bwdbe/vlme1MeGSK+VQKiCUQSGWRtG8vN3bRLKkjeWu7UsqZKHv
+8MQoXdWUBHgMdSUbCA9RStiaK9oZYlFClWm2lxwLvG2FmkupxQDadBUzYUEdxsfx
+VsxglGWpwo+kK3R5ef9dQ68LBzrcImbrClWGYYRQ9hgizJu8uvrmMtTC3eGLhRS0
+C8pPpZ47mNE/saEauXyeF8GczfG5lbyJhWP1hXN16AMNJkWTNdGoU4UBmohL6RUw
+AQIDAQABo1owWDATBgNVHSUEDDAKBggrBgEFBQcDATASBgNVHRMBAf8ECDAGAQH/
+AgEAMB0GA1UdDgQWBBQonuyOhHPvj5K+tL0vA2zVqDp3TDAOBgNVHQ8BAf8EBAMC
+AQYwDQYJKoZIhvcNAQELBQADggEBAAEyHBulbUdWIFWuBYOtxQk6Gt9fQ9mI5GF3
+jq2qvhK3kBhNveARX2LH20S7BD0KsR++BsDzw0FuHikSqfGtUPiuPN5HPAb8jY2N
+GrRdMTnbMEWbmXVHaoXsRTo7YqUjhX/268YDid9UXo6YMGE9S2JkmG+vhGyTUZsd
+oUTmgTQ4fzm8WIgfNLxiLsU5H345gwVbLRDAeeavZzneiZWaRDmu3MSLNIkwgFuF
+3pDp9nSOncjU9wpkopSOp1X1T10cHWe5M2bNZMBkQGR5b7KmK4QhjhZFtgKJTHh1
+KQ3oSWrOun9XpzbCAMfSHzIgC48w/V1+YGR9n5SlY7V73qnMAJU=
+-----END CERTIFICATE-----
+</code></pre></div>
+
+<p>上图输出的 hash 035f9290
+因此将 .pem 证书重命名为 e5c3944b.0
+手机 magisk 必须要先安装一个模块，如 lsposed
+下面步骤可以使用 MT管理器 或者 ADB 命令操作
+在手机 /data/adb/modules 目录下随便找一个模块的目录，这里我选 lsposed , 进入此目录
+在此目录下创建 system/etc/security/cacerts 目录，将 e5c3944b.0 文件拷贝到新建的这个目录下
+最终证书路径为 /data/adb/modules/xxx/system/etc/security/cacerts/e5c3944b.0
+重启手机，wifi 界面设置代理 xxx.xxx.xxx.xxx:8888 即可抓包</p>
+<p>Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://telegram.me/wesshb">wesshb@Telegram</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>
