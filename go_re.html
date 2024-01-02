@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="go逆向">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>GO1.21.5分析 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>GO1.21.5分析</h1>
+  
+
+  <aside>
+    <p>published on 2022-08-13
+
+    
+    · tagged with
+      
+        <a href="/tags/go.html">#go</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env</h2>
+<p>版本是1.21.5 最新
+window10</p>
+<h2>pre</h2>
+<p>go编译出来是native代码，所以之间看原生函数吧。</p>
+<blockquote>
+<p>ps:
+由于是二进制的形式，这里go的数据类型识别，如字符串 数据，数据结构都不是重点。
+在此不再过多描述，显得冗余。只关系具体的数据流和算法实现表现，和函数flow。</p>
+<p>最主要的入口是<code>runtime_main</code> 
+在go执行时候首先进行的运行时初始化，判断当前包时lib还是执行程序，有没有进行功能性的函数hook，
+这些代码是编译器模板化的代码， 这部分可以对照go的编译器源码生成的函数具体对待。</p>
+</blockquote>
+<p>具体的分析来看，具体的分析切入点是什么，是分析一个网络程序还是分析追踪一个算法模块。这很重要。</p>
+<h2>难点</h2>
+<h3>难点一 ：符号</h3>
+<p>一般发布的go默认带符号，别人的程序会不带符号
+不带符号就是编译时候直接编译器添加ld flag：  </p>
+<div class="codehilite"><pre><span></span><code>-ldflags=&quot;-s -w&quot;
+</code></pre></div>
+
+<p>效果如图：<br>
+before<br>
+<img alt="" src="./img/go1.png">
+after<br>
+<img alt="" src="./img/go2.png"></p>
+<p>这部分可用diff binary实现识别。</p>
+<h3>难点二：加二进制壳</h3>
+<p>常见的二进制壳：upx 等变种
+此类壳主要是找到函数entry point.关键找到函数入口，需要动态调试和多次加载识别。</p>
+<h3>难度三：函数复杂性</h3>
+<p>函数的复杂性在于指令流和go编译器的自修改。 通常是通过修改go编译器来加入垃圾指令特殊原语。<br>
+这类分析主要是找到关键函数进行回溯数据，回溯栈，难点在于追踪，需要经验和时间。</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://telegram.me/wesshb">wesshb@Telegram</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>

@@ -7,7 +7,39 @@
 用64个符号表示二进制，求一下表示64个字符需要多少位用log2(64)=6,需要六位，而二进制一个字节8位，最大公约数
 为24为三个字节，表示为4个字符。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
+&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>GO1.21.5分析</title><link href="alan717.github.io/go_re.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/go_re.html</id><summary type="html">go逆向</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;版本是1.21.5 最新
+window10&lt;/p&gt;
+&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;go编译出来是native代码，所以之间看原生函数吧。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ps:
+由于是二进制的形式，这里go的数据类型识别，如字符串 数据，数据结构都不是重点。
+在此不再过多描述，显得冗余。只关系具体的数据流和算法实现表现，和函数flow。&lt;/p&gt;
+&lt;p&gt;最主要的入口是&lt;code&gt;runtime_main&lt;/code&gt; 
+在go执行时候首先进行的运行时初始化，判断当前包时lib还是执行程序，有没有进行功能性的函数hook，
+这些代码是编译器模板化的代码， 这部分可以对照go的编译器源码生成的函数具体对待。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;具体的分析来看，具体的分析切入点是什么，是分析一个网络程序还是分析追踪一个算法模块。这很重要。&lt;/p&gt;
+&lt;h2&gt;难点&lt;/h2&gt;
+&lt;h3&gt;难点一 ：符号&lt;/h3&gt;
+&lt;p&gt;一般发布的go默认带符号，别人的程序会不带符号
+不带符号就是编译时候直接编译器添加ld flag：  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;-ldflags=&amp;quot;-s -w&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;效果如图：&lt;br&gt;
+before&lt;br&gt;
+&lt;img alt="" src="./img/go1.png"&gt;
+after&lt;br&gt;
+&lt;img alt="" src="./img/go2.png"&gt;&lt;/p&gt;
+&lt;p&gt;这部分可用diff binary实现识别。&lt;/p&gt;
+&lt;h3&gt;难点二：加二进制壳&lt;/h3&gt;
+&lt;p&gt;常见的二进制壳：upx 等变种
+此类壳主要是找到函数entry point.关键找到函数入口，需要动态调试和多次加载识别。&lt;/p&gt;
+&lt;h3&gt;难度三：函数复杂性&lt;/h3&gt;
+&lt;p&gt;函数的复杂性在于指令流和go编译器的自修改。 通常是通过修改go编译器来加入垃圾指令特殊原语。&lt;br&gt;
+这类分析主要是找到关键函数进行回溯数据，回溯栈，难点在于追踪，需要经验和时间。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。&lt;/p&gt;
 &lt;h3&gt;分析linuxloader文件&lt;/h3&gt;
