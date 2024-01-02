@@ -81,7 +81,12 @@ after&lt;br&gt;
 此类壳主要是找到函数entry point.关键找到函数入口，需要动态调试和多次加载识别。&lt;/p&gt;
 &lt;h3&gt;难度三：函数复杂性&lt;/h3&gt;
 &lt;p&gt;函数的复杂性在于指令流和go编译器的自修改。 通常是通过修改go编译器来加入垃圾指令特殊原语。&lt;br&gt;
-这类分析主要是找到关键函数进行回溯数据，回溯栈，难点在于追踪，需要经验和时间。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
+这类分析主要是找到关键函数进行回溯数据，回溯栈，难点在于追踪，需要经验和时间。
+其中还包括语言特性（反射实现，协程实现，伸缩栈，延迟执行defer，调用约定，cgo）&lt;/p&gt;
+&lt;h3&gt;难度四：数据结构复杂度&lt;/h3&gt;
+&lt;p&gt;在go中的切片 数组结构体，字典都有自定义的数据结构需要来识别。在没有魔改的情况下，直接对照源码可以分析，如果进行了魔改就要凭借经验来识别并进行分析处理。&lt;/p&gt;
+&lt;h4&gt;string&lt;/h4&gt;
+&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。&lt;/p&gt;
 &lt;h3&gt;分析linuxloader文件&lt;/h3&gt;
