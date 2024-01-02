@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-08-25T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">自己折腾摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
-&lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;</content></entry><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
+&lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;
+&lt;h3&gt;spec&lt;/h3&gt;
+&lt;p&gt;| sepc             | value                  | 品牌            |
+|------------------|------------------------|---------------|
+| 发动机              | 单缸四冲程 油冷·650cc         |               |
+| 发动机型号            | 1100YMT                |               |
+| 排量：              | 650                    |               |
+| 精确排量cc:          | 644                    |               |
+| 缸径x行程(mm)：       | 100x82                 |               |
+| 发动机冲程            | 四冲程                    |               |
+| 压缩比              | 8.3:1                  |               |
+| 冷却方式             | 油冷                     |               |
+| 马力Ps             | 40.8                   |               |
+| 最大功率             | 30                     |               |
+| 最大功率转速(rpm)      | 6000                   |               |
+| 最大扭矩             | 50                     |               |
+| 最大扭矩转速           | 5000                   |               |
+| 供油方式             | 电喷                     |               |
+| 官方平均油耗(L/100km)  | 4.5                    |               |
+| 变速器              | 国际5档                   |               |
+| 离合器              | 湿式多片离合                 |               |
+| 前轮规格             | 100/90-19              | 建大            |
+| 后轮规格             | 130/80-18              |               |
+| 轮胎形式             | 真空胎                    |               |
+| 轮辋               | 钢制辐条式                  |               |
+| 前制动系统            | 320mm单碟对置四活塞卡钳         |               |
+| 后制动系统            | 240mm单碟双活塞卡钳           |               |
+| 前后灯              | led                    |               |
+| 转向灯              | 卤素                     |               |
+| ABS防抱死系统         | 标配前后                   |               |
+| 油门配置             | 单拉线油门                  |               |
+| 干重(kg)           | 173                    |               |
+| 整备质量(kg)         | 183                    |               |
+| 前倾角度(°)          | 28                     |               |
+| 最小转弯半径(m)        | 2.45                   |               |
+| 最大有效载荷(kg)       | 333                    |               |
+| 前悬挂系统            | φ41mm双正置液压弹簧减震,行程110mm |               |
+| 后悬挂系统            | φ62mm双液压弹簧复合减震,行程50mm  |               |
+| 最小离地间隙(mm)       | 160                    |               |
+| 轴距(mm)           | 1420                   |               |
+| 座高(mm)           | 800                    |               |
+| 高度(mm)           | 1150                   |               |
+| 宽度(mm)           | 790                    |               |
+| 长度(mm)           | 2110                   |               |&lt;/p&gt;
+&lt;h2&gt;改装&lt;/h2&gt;
+&lt;h3&gt;问题点：引擎运行不平顺，有感觉供油不足的情况&lt;/h3&gt;
+&lt;p&gt;初步分析是引擎ecu 程序处理进气和喷油问题，需要分析ECU.&lt;/p&gt;
+&lt;h4&gt;ECU&lt;/h4&gt;
+&lt;p&gt;购买了同型号ECU，拆解ECU，并尝试PC通信，焊接JTAG管脚供电，然后dump binary程序。
+分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
 &lt;h2&gt;数学分析&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;wiki描述: Base64（基底64）是一种基于64个可打印字符来表示二进制数据的表示方法
