@@ -2,61 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-08-25T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">自己折腾摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;
 &lt;h3&gt;spec&lt;/h3&gt;
-&lt;p&gt;| sepc             | value                  | 品牌            |
-|------------------|------------------------|---------------|
-| 发动机              | 单缸四冲程 油冷·650cc         |               |
-| 发动机型号            | 1100YMT                |               |
-| 排量：              | 650                    |               |
-| 精确排量cc:          | 644                    |               |
-| 缸径x行程(mm)：       | 100x82                 |               |
-| 发动机冲程            | 四冲程                    |               |
-| 压缩比              | 8.3:1                  |               |
-| 冷却方式             | 油冷                     |               |
-| 马力Ps             | 40.8                   |               |
-| 最大功率             | 30                     |               |
-| 最大功率转速(rpm)      | 6000                   |               |
-| 最大扭矩             | 50                     |               |
-| 最大扭矩转速           | 5000                   |               |
-| 供油方式             | 电喷                     |               |
-| 官方平均油耗(L/100km)  | 4.5                    |               |
-| 变速器              | 国际5档                   |               |
-| 离合器              | 湿式多片离合                 |               |
-| 前轮规格             | 100/90-19              | 建大            |
-| 后轮规格             | 130/80-18              |               |
-| 轮胎形式             | 真空胎                    |               |
-| 轮辋               | 钢制辐条式                  |               |
-| 前制动系统            | 320mm单碟对置四活塞卡钳         |               |
-| 后制动系统            | 240mm单碟双活塞卡钳           |               |
-| 前后灯              | led                    |               |
-| 转向灯              | 卤素                     |               |
-| ABS防抱死系统         | 标配前后                   |               |
-| 油门配置             | 单拉线油门                  |               |
-| 干重(kg)           | 173                    |               |
-| 整备质量(kg)         | 183                    |               |
-| 前倾角度(°)          | 28                     |               |
-| 最小转弯半径(m)        | 2.45                   |               |
-| 最大有效载荷(kg)       | 333                    |               |
-| 前悬挂系统            | φ41mm双正置液压弹簧减震,行程110mm |               |
-| 后悬挂系统            | φ62mm双液压弹簧复合减震,行程50mm  |               |
-| 最小离地间隙(mm)       | 160                    |               |
-| 轴距(mm)           | 1420                   |               |
-| 座高(mm)           | 800                    |               |
-| 高度(mm)           | 1150                   |               |
-| 宽度(mm)           | 790                    |               |
-| 长度(mm)           | 2110                   |               |&lt;/p&gt;
+&lt;p&gt;| sepc            | value                  | 品牌            |&lt;br&gt;
+|-----------------|------------------------|---------------|
+| 发动机             | 单缸四冲程 油冷·650cc         |               |
+| 发动机型号           | 1100YMT                |               |
+| 排量：             | 650                    |               |
+| 精确排量cc:         | 644                    |               |
+| 缸径x行程(mm)：      | 100x82                 |               |
+| 发动机冲程           | 四冲程                    |               |
+| 压缩比             | 8.3:1                  |               |
+| 冷却方式            | 油冷                     |               |
+| 马力Ps            | 40.8                   |               |
+| 最大功率            | 30                     |               |
+| 最大功率转速(rpm)     | 6000                   |               |
+| 最大扭矩            | 50                     |               |
+| 最大扭矩转速          | 5000                   |               |
+| 供油方式            | 电喷                     |               |
+| 官方平均油耗(L/100km) | 4.5                    |               |
+| 变速器             | 国际5档                   |               |
+| 离合器             | 湿式多片离合                 |               |
+| 前轮规格            | 100/90-19              | 建大            |
+| 后轮规格            | 130/80-18              |               |
+| 轮胎形式            | 真空胎                    |               |
+| 轮辋              | 钢制辐条式                  |               |
+| 前制动系统           | 320mm单碟对置四活塞卡钳         |               |
+| 后制动系统           | 240mm单碟双活塞卡钳           |               |
+| 前后灯             | led                    |               |
+| 转向灯             | 卤素                     |               |
+| ABS防抱死系统        | 标配前后                   |               |
+| 油门配置            | 单拉线油门                  |               |
+| 干重(kg)          | 173                    |               |
+| 整备质量(kg)        | 183                    |               |
+| 前倾角度(°)         | 28                     |               |
+| 最小转弯半径(m)       | 2.45                   |               |
+| 最大有效载荷(kg)      | 333                    |               |
+| 前悬挂系统           | φ41mm双正置液压弹簧减震,行程110mm |               |
+| 后悬挂系统           | φ62mm双液压弹簧复合减震,行程50mm  |               |
+| 最小离地间隙(mm)      | 160                    |               |
+| 轴距(mm)          | 1420                   |               |
+| 座高(mm)          | 800                    |               |
+| 高度(mm)          | 1150                   |               |
+| 宽度(mm)          | 790                    |               |
+| 长度(mm)          | 2110                   |               |&lt;/p&gt;
 &lt;h2&gt;改装&lt;/h2&gt;
 &lt;h3&gt;问题点：引擎运行不平顺，有感觉供油不足的情况&lt;/h3&gt;
 &lt;p&gt;初步分析是引擎ecu 程序处理进气和喷油问题，需要分析ECU.&lt;/p&gt;
 &lt;h4&gt;ECU&lt;/h4&gt;
 &lt;p&gt;购买了同型号ECU，拆解ECU，并尝试PC通信，焊接JTAG管脚供电，然后dump binary程序。
-分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2023-04-23T00:00:00+08:00</published><updated>2023-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
-&lt;h2&gt;数学分析&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;wiki描述: Base64（基底64）是一种基于64个可打印字符来表示二进制数据的表示方法
-用64个符号表示二进制，求一下表示64个字符需要多少位用log2(64)=6,需要六位，而二进制一个字节8位，最大公约数
-为24为三个字节，表示为4个字符。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>GO1.21.5分析</title><link href="alan717.github.io/go_re.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/go_re.html</id><summary type="html">go逆向</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>GO1.21.5分析</title><link href="alan717.github.io/go_re.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/go_re.html</id><summary type="html">go逆向</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;版本是1.21.5 最新
 window10&lt;/p&gt;
 &lt;h2&gt;pre&lt;/h2&gt;
@@ -177,9 +170,25 @@ KQ3oSWrOun9XpzbCAMfSHzIgC48w/V1+YGR9n5SlY7V73qnMAJU=
 在此目录下创建 system/etc/security/cacerts 目录，将 e5c3944b.0 文件拷贝到新建的这个目录下
 最终证书路径为 /data/adb/modules/xxx/system/etc/security/cacerts/e5c3944b.0
 重启手机，wifi 界面设置代理 xxx.xxx.xxx.xxx:8888 即可抓包&lt;/p&gt;
-&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>gdb</title><link href="alan717.github.io/gdb.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/gdb.html</id><summary type="html">gdb</summary><content type="html">&lt;h2&gt;核心原理&lt;/h2&gt;
-&lt;p&gt;ptrace信号接口.使用ptrace接口和trap信号配合使用.&lt;/p&gt;
-&lt;h2&gt;&lt;/h2&gt;</content></entry><entry><title>使用dll生成对应的lib文件</title><link href="alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-07-03:alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html</id><summary type="html">使用dll生成对应的lib文件</summary><content type="html">&lt;h1&gt;使用dll生成对应的lib文件&lt;/h1&gt;
+&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>gdb调试</title><link href="alan717.github.io/gdb.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/gdb.html</id><summary type="html">gdb</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;android、linux&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不涉及基础命令，基础命令请直接看document.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;核心原理&lt;/h2&gt;
+&lt;p&gt;ptrace信号接口.使用ptrace接口和trap信号配合使用.具体实现直接看代码.&lt;/p&gt;
+&lt;h2&gt;分析框架&lt;/h2&gt;
+&lt;p&gt;主要看gdbserve之间的通信协议。ida 是支持gdb协议的，gdbserver的通信协议很简单主要是明文十六进制传输，在这种情况下，配合qiling和unicorn框架
+在load gdbserver二进制之后处理程序逻辑有很大的便利和方便，直接整机的dump，然后进行仿真执行，直接能看到具体的问题点，这些问题点需要想象和经验来判断&lt;br&gt;
+判断完成之后进行仿真和bypass操作即可完成处理。&lt;/p&gt;
+&lt;h2&gt;调试办法&lt;/h2&gt;
+&lt;h3&gt;dump调试&lt;/h3&gt;
+&lt;p&gt;直接整进程dump 直接qemu或者是qiling仿真，直接gdb  &lt;code&gt;-s -S&lt;/code&gt;调试。识别到关键的函数和数据会很快解决问题。&lt;/p&gt;
+&lt;h3&gt;暂停stop specially process&lt;/h3&gt;
+&lt;p&gt;直接发信号暂停整个进程，然后回溯处理。&lt;/p&gt;
+&lt;h3&gt;特殊数据处理&lt;/h3&gt;
+&lt;p&gt;这种情况属于开发阶段的处理情况，直接查看文档就可以解决。&lt;/p&gt;</content></entry><entry><title>使用dll生成对应的lib文件</title><link href="alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html" rel="alternate"></link><published>2020-07-03T00:00:00+08:00</published><updated>2020-07-03T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-07-03:alan717.github.io/%E4%BD%BF%E7%94%A8dll%E7%94%9F%E6%88%90%E5%AF%B9%E5%BA%94lib%E6%96%87%E4%BB%B6.html</id><summary type="html">使用dll生成对应的lib文件</summary><content type="html">&lt;h1&gt;使用dll生成对应的lib文件&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;有时候没有lib文件，只有头文件，怎么生成lib文件呢~&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -289,7 +298,14 @@ io.write(&amp;quot;Hello world, from &amp;quot;,_VERSION,&amp;quot;!\n&amp;quot;
 &lt;h2&gt;后端执行&lt;/h2&gt;
 &lt;p&gt;后端执行在执行在vm中执行，在&lt;code&gt;\src\lvm.c&lt;/code&gt;是vm代码。luaV_execute执行指令。这里执行的指令已经是翻译好的字节码了。&lt;/p&gt;
 &lt;h2&gt;ZJ&lt;/h2&gt;
-&lt;p&gt;没有过多的剖析代码的细节，只分析总体大纲，在基础上有清楚认识之后开始单独分析。下面二、三将分析具体的实现细节。&lt;/p&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
+&lt;p&gt;没有过多的剖析代码的细节，只分析总体大纲，在基础上有清楚认识之后开始单独分析。下面二、三将分析具体的实现细节。&lt;/p&gt;</content></entry><entry><title>Base64算法分析</title><link href="alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html" rel="alternate"></link><published>2019-04-23T00:00:00+08:00</published><updated>2019-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-04-23:alan717.github.io/base64%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E6%80%BB%E7%BB%93.html</id><summary type="html">A brief description of base64 algorithm.</summary><content type="html">&lt;h1&gt;base64&lt;/h1&gt;
+&lt;h2&gt;数学分析&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;wiki描述: Base64（基底64）是一种基于64个可打印字符来表示二进制数据的表示方法
+用64个符号表示二进制，求一下表示64个字符需要多少位用log2(64)=6,需要六位，而二进制一个字节8位，最大公约数
+为24为三个字节，表示为4个字符。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;算法如下：&lt;/p&gt;</content></entry><entry><title>aboot分析一</title><link href="alan717.github.io/aboot.html" rel="alternate"></link><published>2019-03-05T00:00:00+08:00</published><updated>2019-03-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-03-05:alan717.github.io/aboot.html</id><summary type="html">分析nexus5的android boot.</summary><content type="html">&lt;h3&gt;前提&lt;/h3&gt;
 &lt;p&gt;手里有一个nexus5手机，想分析研究一下。&lt;/p&gt;
 &lt;h3&gt;实践&lt;/h3&gt;
 &lt;h4&gt;准备&lt;/h4&gt;

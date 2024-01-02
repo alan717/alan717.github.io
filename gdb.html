@@ -7,7 +7,7 @@
     <meta name="author" content="LK.">
     <meta name="description" content="gdb">
     <link rel="stylesheet" href="/static/style.css" type="text/css">
-    <title>gdb | LK's blog</title>
+    <title>gdb调试 | LK's blog</title>
   </head>
 
   <body>
@@ -29,7 +29,7 @@
     
 
   
-  <h1>gdb</h1>
+  <h1>gdb调试</h1>
   
 
   <aside>
@@ -44,9 +44,25 @@
   </aside>
 
 
-  <h2>核心原理</h2>
-<p>ptrace信号接口.使用ptrace接口和trap信号配合使用.</p>
-<h2></h2>
+  <h2>env</h2>
+<p>android、linux</p>
+<blockquote>
+<p>不涉及基础命令，基础命令请直接看document.
+</p>
+</blockquote>
+<h2>核心原理</h2>
+<p>ptrace信号接口.使用ptrace接口和trap信号配合使用.具体实现直接看代码.</p>
+<h2>分析框架</h2>
+<p>主要看gdbserve之间的通信协议。ida 是支持gdb协议的，gdbserver的通信协议很简单主要是明文十六进制传输，在这种情况下，配合qiling和unicorn框架
+在load gdbserver二进制之后处理程序逻辑有很大的便利和方便，直接整机的dump，然后进行仿真执行，直接能看到具体的问题点，这些问题点需要想象和经验来判断<br>
+判断完成之后进行仿真和bypass操作即可完成处理。</p>
+<h2>调试办法</h2>
+<h3>dump调试</h3>
+<p>直接整进程dump 直接qemu或者是qiling仿真，直接gdb  <code>-s -S</code>调试。识别到关键的函数和数据会很快解决问题。</p>
+<h3>暂停stop specially process</h3>
+<p>直接发信号暂停整个进程，然后回溯处理。</p>
+<h3>特殊数据处理</h3>
+<p>这种情况属于开发阶段的处理情况，直接查看文档就可以解决。</p>
 
 
     </main>
@@ -56,7 +72,7 @@
       Subscribe to the <a href="/atom.xml">atom feed</a>.
       <br>
       Contact me via
-        <a rel="me" href="https://telegram.me/wesshb">wesshb@Telegram</a> or
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
         <a href="https://github.com/alan717">alan717@Github</a>.
       </p>
     </footer>
