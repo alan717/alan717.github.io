@@ -117,7 +117,7 @@ Experience  Windows Feature Experience Pack 1000.19041.1000.0
 &lt;h4&gt;New ~~command~~:&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;netsh advfirewall firewall add rule name= "Open Port 80" dir=in action=allow protocol=TCP localport=80&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;总结&lt;/h2&gt;
-&lt;p&gt;两个方法本质都是&lt;/p&gt;</content></entry><entry><title>Android tcp &amp; https capture 抓包</title><link href="alan717.github.io/capture.html" rel="alternate"></link><published>2020-08-25T00:00:00+08:00</published><updated>2020-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-25:alan717.github.io/capture.html</id><summary type="html">tcp capture</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;两个方法本质都是netsh.&lt;/p&gt;</content></entry><entry><title>Android tcp &amp; https capture 抓包</title><link href="alan717.github.io/capture.html" rel="alternate"></link><published>2020-08-25T00:00:00+08:00</published><updated>2020-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-25:alan717.github.io/capture.html</id><summary type="html">tcp capture</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;Android 13
 tcpdump 
 rooted devices.&lt;/p&gt;
