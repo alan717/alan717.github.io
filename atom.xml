@@ -86,7 +86,16 @@ after&lt;br&gt;
 &lt;h3&gt;难度四：数据结构复杂度&lt;/h3&gt;
 &lt;p&gt;在go中的切片 数组结构体，字典都有自定义的数据结构需要来识别。在没有魔改的情况下，直接对照源码可以分析，如果进行了魔改就要凭借经验来识别并进行分析处理。&lt;/p&gt;
 &lt;h4&gt;string&lt;/h4&gt;
-&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
+&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>Bruker质谱仪分析</title><link href="alan717.github.io/bruker.html" rel="alternate"></link><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2021-04-23:alan717.github.io/bruker.html</id><summary type="html">A brief description of bruker device.</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;偶然去一个实验室看到这个设备。
+设备&lt;code&gt;D8 VENTURE&lt;/code&gt;：&lt;code&gt;SINGLE CRYSTAL X-RAY DIFFRACTION (SC-XRD)&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;分析&lt;/h2&gt;
+&lt;p&gt;系统使用了rtlinux内核加iram的initrd作为rootfs，和各个模块全部分装成ko形式来访问管理，设备的初始化全部使用rc来管理。
+整个系统直接被剪裁成最小化的形式。然后各个文件系统是根据需要然后loop挂在到关键目录然后进行访问。
+整个磁盘无法直接看到内核文件，这是不挂在内核到文件系统下， 整个系统盘要进行dd 然后找到偏移定位内核位置。整体通过网口还要进行一次ssh的访问，具体的访问&lt;/p&gt;
+&lt;p&gt;要在整机之下进行调试分析。时间有限，暂时没有这么操作，大概看了一下衍射传感器和系统的连接直接fpga高速直连，然后通过pcie直接驱动。&lt;/p&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;驱动的设计和通信方式基本通过ko驱动在文件系统中已经摸清楚，因为自己没有这方面的研究所以没在这个上边投入时间了。文件系统我保存了一份。&lt;/p&gt;</content></entry><entry><title>op7p分析一</title><link href="alan717.github.io/Oneplus7p.html" rel="alternate"></link><published>2020-10-05T00:00:00+08:00</published><updated>2020-10-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-10-05:alan717.github.io/Oneplus7p.html</id><summary type="html">分析oneplus7p 引导.</summary><content type="html">&lt;h3&gt;下载固件&lt;/h3&gt;
 &lt;p&gt;根据手机的固件版本信息，在大侠阿木下载站下载固件，解包得到payload.bin，然后dump payload.bin得到bootloader abl.img文件，使用imgtool解包
 提取linuxloader文件。&lt;/p&gt;
 &lt;h3&gt;分析linuxloader文件&lt;/h3&gt;

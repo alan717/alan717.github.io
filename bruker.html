@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="A brief description of bruker device.">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>Bruker质谱仪分析 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>Bruker质谱仪分析</h1>
+  
+
+  <aside>
+    <p>published on 2021-04-23
+
+    
+    · tagged with
+      
+        <a href="/tags/bruker.html">#bruker</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env</h2>
+<p>偶然去一个实验室看到这个设备。
+设备<code>D8 VENTURE</code>：<code>SINGLE CRYSTAL X-RAY DIFFRACTION (SC-XRD)</code></p>
+<h2>分析</h2>
+<p>系统使用了rtlinux内核加iram的initrd作为rootfs，和各个模块全部分装成ko形式来访问管理，设备的初始化全部使用rc来管理。
+整个系统直接被剪裁成最小化的形式。然后各个文件系统是根据需要然后loop挂在到关键目录然后进行访问。
+整个磁盘无法直接看到内核文件，这是不挂在内核到文件系统下， 整个系统盘要进行dd 然后找到偏移定位内核位置。整体通过网口还要进行一次ssh的访问，具体的访问</p>
+<p>要在整机之下进行调试分析。时间有限，暂时没有这么操作，大概看了一下衍射传感器和系统的连接直接fpga高速直连，然后通过pcie直接驱动。</p>
+<h2>总结</h2>
+<p>驱动的设计和通信方式基本通过ko驱动在文件系统中已经摸清楚，因为自己没有这方面的研究所以没在这个上边投入时间了。文件系统我保存了一份。</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>
