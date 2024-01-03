@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="一个安捷伦衍射仪的分析">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>安捷伦衍射仪分析 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>安捷伦衍射仪分析</h1>
+  
+
+  <aside>
+    <p>published on 2022-11-23
+
+    
+    · tagged with
+      
+        <a href="/tags/bruker.html">#bruker</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env</h2>
+<p>接触了一个实验室的安捷伦衍射仪的分析
+全称是:<code>6230B 飞行时间 (TOF) 液质联用系统</code>
+这个衍射仪还很火，看到很多学校的实验室都有这个设备原名tofserver
+这个设备情况比较简单，pc104通过高速plx连接fpga和dsp通过pcie和dsp的高速io直接访问获取数据。整体使用的是slackware linux 2.6的系统，也是ko实现高速
+dma操作，整体的系统功能解耦设计很棒，代码符号在设备中也有存根。重点在于他的高速io直接通信效率特别高。可以自己进行二次开发。</p>
+<h2>分析</h2>
+<p>解决好的原因是 排查了系统的启动问题和内存memory corruption问题发现tofserver在分配内存malloc时候使用的大小为0 ，这个0是来自于dsp直接在dma  中
+存放的数据大小。由此直接上机测试。问题找到解决。</p>
+<h2>总结</h2>
+<p>slackware linux 第一次接触，古老稳健的linux发行版。挺有意思。这种高速采集设备都是通过fpga和dsp实现的图形设别算法获取针对测量值。</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>

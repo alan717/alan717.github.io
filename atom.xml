@@ -49,7 +49,17 @@
 &lt;p&gt;初步分析是引擎ecu 程序处理进气和喷油问题，需要分析ECU.&lt;/p&gt;
 &lt;h4&gt;ECU&lt;/h4&gt;
 &lt;p&gt;购买了同型号ECU，拆解ECU，并尝试PC通信，焊接JTAG管脚供电，然后dump binary程序。
-分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>GO1.21.5分析</title><link href="alan717.github.io/go_re.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/go_re.html</id><summary type="html">go逆向</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>安捷伦衍射仪分析</title><link href="alan717.github.io/anjielun.html" rel="alternate"></link><published>2022-11-23T00:00:00+08:00</published><updated>2022-11-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-11-23:alan717.github.io/anjielun.html</id><summary type="html">一个安捷伦衍射仪的分析</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;接触了一个实验室的安捷伦衍射仪的分析
+全称是:&lt;code&gt;6230B 飞行时间 (TOF) 液质联用系统&lt;/code&gt;
+这个衍射仪还很火，看到很多学校的实验室都有这个设备原名tofserver
+这个设备情况比较简单，pc104通过高速plx连接fpga和dsp通过pcie和dsp的高速io直接访问获取数据。整体使用的是slackware linux 2.6的系统，也是ko实现高速
+dma操作，整体的系统功能解耦设计很棒，代码符号在设备中也有存根。重点在于他的高速io直接通信效率特别高。可以自己进行二次开发。&lt;/p&gt;
+&lt;h2&gt;分析&lt;/h2&gt;
+&lt;p&gt;解决好的原因是 排查了系统的启动问题和内存memory corruption问题发现tofserver在分配内存malloc时候使用的大小为0 ，这个0是来自于dsp直接在dma  中
+存放的数据大小。由此直接上机测试。问题找到解决。&lt;/p&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;slackware linux 第一次接触，古老稳健的linux发行版。挺有意思。这种高速采集设备都是通过fpga和dsp实现的图形设别算法获取针对测量值。&lt;/p&gt;</content></entry><entry><title>GO1.21.5分析</title><link href="alan717.github.io/go_re.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/go_re.html</id><summary type="html">go逆向</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;版本是1.21.5 最新
 window10&lt;/p&gt;
 &lt;h2&gt;pre&lt;/h2&gt;
