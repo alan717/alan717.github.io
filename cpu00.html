@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="朋友给了一个cpu需要分析一下程序.">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>一款日本CPU的分析 | LK's blog</title>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>一款日本CPU的分析</h1>
+  
+
+  <aside>
+    <p>published on 2021-08-11
+
+    
+    · tagged with
+      
+        <a href="/tags/cpu.html">#cpu</a> and 
+        <a href="/tags/nec.html">#nec</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env</h2>
+<p>朋友做维修，找我分析一个cpu
+<img alt="" src="img/cpu00.jpg"></p>
+<p>如图型号是：<code>D70F3453GC JAPAN 1218KP421</code>
+通过检索大概判定是nec的一个芯片。</p>
+<h2>分析</h2>
+<p>这个芯片大概看了,是V850E指令集的芯片，日本瑞萨的，分析起来不费什么工作。
+主要找到这个cpu的ds手册，但是没有sdk和pg手册，所以正向的分析使用是不可取的了。 
+因为芯片里边有rom flash 存储，这使得代码不容易获取（已经攻击另说）
+根据手册相同的cpu指令和型号类型能够获取同型号的设备的文档和代码，作为突破口，确保boot code执行的入口没有问题，然后进行初始化其它设备，整个分析的情况下是在黑盒子的情况进行的</p>
+<p>主要就是猜，目的是同型号推断出此型号的设备信息。然后逐步追踪获取self-programming指令，和串口编程，当然有了他的指令集，剩下的编译部分就容易多了，不是什么</p>
+<p>棘手问题，直接推就完事了。</p>
+<h2>总结</h2>
+<p>只是给我分享了照片，还没有空取他哪里拿设备。设备拿来之后再进行分析。手册在这里<a href="misc/UPD70F3451GC-UBT-A.PDF"></a>.</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>
