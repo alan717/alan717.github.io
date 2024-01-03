@@ -109,7 +109,7 @@ after&lt;br&gt;
 &lt;p&gt;主要就是猜，目的是同型号推断出此型号的设备信息。然后逐步追踪获取self-programming指令，和串口编程，当然有了他的指令集，剩下的编译部分就容易多了，不是什么&lt;/p&gt;
 &lt;p&gt;棘手问题，直接推就完事了。&lt;/p&gt;
 &lt;h2&gt;总结&lt;/h2&gt;
-&lt;p&gt;只是给我分享了照片，还没有空取他哪里拿设备。设备拿来之后再进行分析。手册在这里&lt;a href="misc/UPD70F3451GC-UBT-A.PDF"&gt;&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Bruker质谱仪分析</title><link href="alan717.github.io/bruker.html" rel="alternate"></link><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2021-04-23:alan717.github.io/bruker.html</id><summary type="html">A brief description of bruker device.</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;只是给我分享了照片，还没有空取他哪里拿设备。设备拿来之后再进行分析。手册在这里&lt;a href="misc/UPD70F3451GC-UBT-A.PDF"&gt;link1&lt;/a&gt;.&lt;/p&gt;</content></entry><entry><title>Bruker质谱仪分析</title><link href="alan717.github.io/bruker.html" rel="alternate"></link><published>2021-04-23T00:00:00+08:00</published><updated>2021-04-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2021-04-23:alan717.github.io/bruker.html</id><summary type="html">A brief description of bruker device.</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;偶然去一个实验室看到这个设备。
 设备&lt;code&gt;D8 VENTURE&lt;/code&gt;：&lt;code&gt;SINGLE CRYSTAL X-RAY DIFFRACTION (SC-XRD)&lt;/code&gt;&lt;/p&gt;
 &lt;h2&gt;分析&lt;/h2&gt;
