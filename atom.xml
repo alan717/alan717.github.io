@@ -369,7 +369,61 @@ cs_version
   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Is file-page: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;is_file_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;entry&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Page count: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_pagecount&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
   &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Page flags: {}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;hex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_page_flags&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;线性地址转换（MMU）4-levle页表&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;地址是直接传递给MMU而非物理地址&lt;/li&gt;
+&lt;li&gt;64-bit linear address is split into some parts. Only low 48 bits are significant, it means that &lt;code&gt;2^48&lt;/code&gt; or &lt;code&gt;256&lt;/code&gt; TBytes of linear-address space may be accessed at any given time.&lt;/li&gt;
+&lt;li&gt;cr3 register stores the address of the 4 top-level paging structure.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;47:39&lt;/code&gt; bits of the given linear address store an index into the paging structure level-4, &lt;code&gt;38:30&lt;/code&gt; bits store index into the paging structure level-3, &lt;code&gt;29:21&lt;/code&gt; bits store an index into the paging structure level-2, &lt;code&gt;20:12&lt;/code&gt; bits store an index into the paging structure level-1 and 11:0 bits provide the offset into the physical page in byte.
+&lt;img alt="" src="img/4_level_paging.png"&gt;&lt;blockquote&gt;
+&lt;p&gt;如图：
+分别为page global dir -&amp;gt; page upper dir -&amp;gt;page mid dir -&amp;gt;page table-&amp;gt; offset
+PGD-&amp;gt;PUD-&amp;gt;PMD-&amp;gt;PTE
+Every access to a linear address is either a supervisor-mode access or a user-mode access. This access is determined by the CPL (current privilege level). If CPL &amp;lt; 3 it is a supervisor mode access level, otherwise it is a user mode access level. For example, the top level page table entry contains access bits and has the following structure (See arch/x86/include/asm/pgtable_types.h for the bit offset definitions):&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;63  62                  52 51                                                    32
+ --------------------------------------------------------------------------------
+| N |                     |                                                     |
+|   |     Available       |     Address of the paging structure on lower level  |
+| X |                     |                                                     |
+ --------------------------------------------------------------------------------
+31                                              12 11  9 8 7 6 5   4   3 2 1     0
+ --------------------------------------------------------------------------------
+|                                                |     | M |I| | P | P |U|W|    |
+| Address of the paging structure on lower level | AVL | B |G|A| C | W | | |  P |
+|                                                |     | Z |N| | D | T |S|R|    |
+ --------------------------------------------------------------------------------
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;63 bit - N/X bit (No Execute Bit) which presents ability to execute the code from physical pages mapped by the table entry;&lt;/li&gt;
+&lt;li&gt;62:52 bits - ignored by CPU, used by system software;&lt;/li&gt;
+&lt;li&gt;51:12 bits - stores physical address of the lower level paging structure;&lt;/li&gt;
+&lt;li&gt;11: 9 bits - ignored by CPU;&lt;/li&gt;
+&lt;li&gt;MBZ - must be zero bits;&lt;/li&gt;
+&lt;li&gt;Ignored bits;&lt;/li&gt;
+&lt;li&gt;A - accessed bit indicates was physical page or page structure accessed;&lt;/li&gt;
+&lt;li&gt;PWT and PCD used for cache;&lt;/li&gt;
+&lt;li&gt;U/S - user/supervisor bit controls user access to all the physical pages mapped by this table entry;&lt;/li&gt;
+&lt;li&gt;R/W - read/write bit controls read/write access to all the physical pages mapped by this table entry;&lt;/li&gt;
+&lt;li&gt;P - present bit. Current bit indicates was page table or physical page loaded into primary memory or not.
+Ok, we know about the paging structures and their entries. Now let&amp;rsquo;s see some details about 4-level paging in the Linux kernel.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4级页表存在19年以前的发行版中，新的发行版已经是默认支持5级页表了。5级页表支持64TB以上的ram内存。&lt;/p&gt;
+&lt;p&gt;关闭内核5级页表使用&lt;code&gt;no5lvl&lt;/code&gt;或者检查是否开启5级页表用&lt;code&gt;lscpu | grep -i la57&lt;/code&gt;
+还有就是&lt;code&gt;CONFIG_X86_5LEVEL&lt;/code&gt;配置可以直接看到 
+5级页表本质上在PUD的前一级加了一个P4D,然后在位数上从48位拓冲到57位。&lt;/p&gt;
+&lt;h2&gt;Translation Lookaside Buffer (TLB)&lt;/h2&gt;
+&lt;p&gt;TLB中保存的是线性地址和对应的物理地址
+一般分为指令缓存和数据缓存。修改CR3寄存器可使得TLB刷新。&lt;/p&gt;
+&lt;h2&gt;windows系统的内存分页&lt;/h2&gt;
+&lt;p&gt;32位系统下的xp系统分no-pxe 和pxe 分别分页是10-10-12分页和2-9-9-12分页.
+差别就是一个是32位，一个是36位，多了4位的寻址。能支持64GB寻址。&lt;/p&gt;</content></entry><entry><title>Lua-5.1 编译分析一</title><link href="alan717.github.io/lua51.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/lua51.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;blockquote&gt;
 &lt;p&gt;分析lua的很多了，这里记录一下我的。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;词法分析&lt;/h2&gt;

@@ -137,6 +137,60 @@
   <span class="k">print</span> <span class="s2">&quot;Page flags: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">get_page_flags</span><span class="p">(</span><span class="n">pfn</span><span class="p">)))</span>
 </code></pre></div>
 
+<h2>线性地址转换（MMU）4-levle页表</h2>
+<ul>
+<li>地址是直接传递给MMU而非物理地址</li>
+<li>64-bit linear address is split into some parts. Only low 48 bits are significant, it means that <code>2^48</code> or <code>256</code> TBytes of linear-address space may be accessed at any given time.</li>
+<li>cr3 register stores the address of the 4 top-level paging structure.</li>
+<li><code>47:39</code> bits of the given linear address store an index into the paging structure level-4, <code>38:30</code> bits store index into the paging structure level-3, <code>29:21</code> bits store an index into the paging structure level-2, <code>20:12</code> bits store an index into the paging structure level-1 and 11:0 bits provide the offset into the physical page in byte.
+<img alt="" src="img/4_level_paging.png"><blockquote>
+<p>如图：
+分别为page global dir -&gt; page upper dir -&gt;page mid dir -&gt;page table-&gt; offset
+PGD-&gt;PUD-&gt;PMD-&gt;PTE
+Every access to a linear address is either a supervisor-mode access or a user-mode access. This access is determined by the CPL (current privilege level). If CPL &lt; 3 it is a supervisor mode access level, otherwise it is a user mode access level. For example, the top level page table entry contains access bits and has the following structure (See arch/x86/include/asm/pgtable_types.h for the bit offset definitions):</p>
+</blockquote>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>63  62                  52 51                                                    32
+ --------------------------------------------------------------------------------
+| N |                     |                                                     |
+|   |     Available       |     Address of the paging structure on lower level  |
+| X |                     |                                                     |
+ --------------------------------------------------------------------------------
+31                                              12 11  9 8 7 6 5   4   3 2 1     0
+ --------------------------------------------------------------------------------
+|                                                |     | M |I| | P | P |U|W|    |
+| Address of the paging structure on lower level | AVL | B |G|A| C | W | | |  P |
+|                                                |     | Z |N| | D | T |S|R|    |
+ --------------------------------------------------------------------------------
+</code></pre></div>
+
+<p>Where:</p>
+<ul>
+<li>63 bit - N/X bit (No Execute Bit) which presents ability to execute the code from physical pages mapped by the table entry;</li>
+<li>62:52 bits - ignored by CPU, used by system software;</li>
+<li>51:12 bits - stores physical address of the lower level paging structure;</li>
+<li>11: 9 bits - ignored by CPU;</li>
+<li>MBZ - must be zero bits;</li>
+<li>Ignored bits;</li>
+<li>A - accessed bit indicates was physical page or page structure accessed;</li>
+<li>PWT and PCD used for cache;</li>
+<li>U/S - user/supervisor bit controls user access to all the physical pages mapped by this table entry;</li>
+<li>R/W - read/write bit controls read/write access to all the physical pages mapped by this table entry;</li>
+<li>P - present bit. Current bit indicates was page table or physical page loaded into primary memory or not.
+Ok, we know about the paging structures and their entries. Now let&rsquo;s see some details about 4-level paging in the Linux kernel.</li>
+</ul>
+<p>4级页表存在19年以前的发行版中，新的发行版已经是默认支持5级页表了。5级页表支持64TB以上的ram内存。</p>
+<p>关闭内核5级页表使用<code>no5lvl</code>或者检查是否开启5级页表用<code>lscpu | grep -i la57</code>
+还有就是<code>CONFIG_X86_5LEVEL</code>配置可以直接看到 
+5级页表本质上在PUD的前一级加了一个P4D,然后在位数上从48位拓冲到57位。</p>
+<h2>Translation Lookaside Buffer (TLB)</h2>
+<p>TLB中保存的是线性地址和对应的物理地址
+一般分为指令缓存和数据缓存。修改CR3寄存器可使得TLB刷新。</p>
+<h2>windows系统的内存分页</h2>
+<p>32位系统下的xp系统分no-pxe 和pxe 分别分页是10-10-12分页和2-9-9-12分页.
+差别就是一个是32位，一个是36位，多了4位的寻址。能支持64GB寻址。</p>
+
 
     </main>
     <footer>
