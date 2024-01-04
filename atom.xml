@@ -291,15 +291,15 @@ cs_version
 &lt;/blockquote&gt;</content></entry><entry><title>Lua-5.1 long string comments分析四</title><link href="alan717.github.io/lua51-longSC.html" rel="alternate"></link><published>2019-09-26T00:00:00+08:00</published><updated>2019-09-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-26:alan717.github.io/lua51-longSC.html</id><summary type="html">注释和长字符。</summary><content type="html"></content></entry><entry><title>Lua-5.1 varargs分析三</title><link href="alan717.github.io/lua51-varargs.html" rel="alternate"></link><published>2019-09-20T00:00:00+08:00</published><updated>2019-09-20T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-20:alan717.github.io/lua51-varargs.html</id><summary type="html">varargs特性.</summary><content type="html"></content></entry><entry><title>Lua-5.1 gc分析二</title><link href="alan717.github.io/lua51-gc.html" rel="alternate"></link><published>2019-09-10T00:00:00+08:00</published><updated>2019-09-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-10:alan717.github.io/lua51-gc.html</id><summary type="html">garbase collect.</summary><content type="html"></content></entry><entry><title>Lua-5.1 coroutine分析二</title><link href="alan717.github.io/lua51-coroutine.html" rel="alternate"></link><published>2019-08-26T00:00:00+08:00</published><updated>2019-08-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-26:alan717.github.io/lua51-coroutine.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;h2&gt;coroutine&lt;/h2&gt;</content></entry><entry><title>kernel-mm内存页</title><link href="alan717.github.io/krnl_mm.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/krnl_mm.html</id><summary type="html">krnl</summary><content type="html">&lt;h2&gt;pagemap页映射：&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;/proc/pid/pagemap&lt;/code&gt;
 该文件允许用户空间程序找出每个虚拟页映射到物理帧。每个虚拟页面对应一个64位的值。包含以下数据（fs/proc/task_mmu.c，pagemap_read方法读取）
-* Bits 0-54 page frame number (PFN) if present
-* Bits 0-4 swap type if swapped
-* Bits 5-54 swap offset if swapped
-* Bit 55 pte is soft-dirty (see Documentation/admin-guide/mm/soft-dirty.rst)
-* Bit 56 page exclusively mapped (since 4.2)
-* Bits 57-60 zero
-* Bit 61 page is file-page or shared-anon (since 3.5)
-* Bit 62 page swapped
-* Bit 63 page present&lt;/p&gt;
+* Bits 0-54 page frame number (PFN) if present&lt;br&gt;
+&lt;em&gt; Bits 0-4 swap type if swapped&lt;br&gt;
+&lt;/em&gt; Bits 5-54 swap offset if swapped&lt;br&gt;
+&lt;em&gt; Bit 55 pte is soft-dirty (see Documentation/admin-guide/mm/soft-dirty.rst)&lt;br&gt;
+&lt;/em&gt; Bit 56 page exclusively mapped (since 4.2)&lt;br&gt;
+&lt;em&gt; Bits 57-60 zero&lt;br&gt;
+&lt;/em&gt; Bit 61 page is file-page or shared-anon (since 3.5)&lt;br&gt;
+&lt;em&gt; Bit 62 page swapped&lt;br&gt;
+&lt;/em&gt; Bit 63 page present  &lt;/p&gt;
 &lt;p&gt;其中&lt;br&gt;
 &lt;code&gt;使用/proc/pid/maps可以高效的确定映射的内存区域、跳过未映射的区域。&lt;/code&gt;&lt;br&gt;
 &lt;code&gt;/proc/kpagecount：这个文件包含64位计数 ， 表示每一页被映射的次数，按照PFN值固定索引。&lt;/code&gt;&lt;br&gt;

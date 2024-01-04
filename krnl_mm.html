@@ -57,15 +57,15 @@
   <h2>pagemap页映射：</h2>
 <p><code>/proc/pid/pagemap</code>
 该文件允许用户空间程序找出每个虚拟页映射到物理帧。每个虚拟页面对应一个64位的值。包含以下数据（fs/proc/task_mmu.c，pagemap_read方法读取）
-* Bits 0-54 page frame number (PFN) if present
-* Bits 0-4 swap type if swapped
-* Bits 5-54 swap offset if swapped
-* Bit 55 pte is soft-dirty (see Documentation/admin-guide/mm/soft-dirty.rst)
-* Bit 56 page exclusively mapped (since 4.2)
-* Bits 57-60 zero
-* Bit 61 page is file-page or shared-anon (since 3.5)
-* Bit 62 page swapped
-* Bit 63 page present</p>
+* Bits 0-54 page frame number (PFN) if present<br>
+<em> Bits 0-4 swap type if swapped<br>
+</em> Bits 5-54 swap offset if swapped<br>
+<em> Bit 55 pte is soft-dirty (see Documentation/admin-guide/mm/soft-dirty.rst)<br>
+</em> Bit 56 page exclusively mapped (since 4.2)<br>
+<em> Bits 57-60 zero<br>
+</em> Bit 61 page is file-page or shared-anon (since 3.5)<br>
+<em> Bit 62 page swapped<br>
+</em> Bit 63 page present  </p>
 <p>其中<br>
 <code>使用/proc/pid/maps可以高效的确定映射的内存区域、跳过未映射的区域。</code><br>
 <code>/proc/kpagecount：这个文件包含64位计数 ， 表示每一页被映射的次数，按照PFN值固定索引。</code><br>
