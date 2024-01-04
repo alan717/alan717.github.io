@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="krnl">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>kernel-mm内存页 | LK's blog</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81WR95YF48"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-81WR95YF48');
+    </script>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>kernel-mm内存页</h1>
+  
+
+  <aside>
+    <p>published on 2019-08-13
+
+    
+    · tagged with
+      
+        <a href="/tags/kernel.html">#kernel</a> and 
+        <a href="/tags/mm.html">#mm</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>pagemap页映射：</h2>
+<p><code>/proc/pid/pagemap</code>
+该文件允许用户空间程序找出每个虚拟页映射到物理帧。每个虚拟页面对应一个64位的值。包含以下数据（fs/proc/task_mmu.c，pagemap_read方法读取）
+* Bits 0-54 page frame number (PFN) if present
+* Bits 0-4 swap type if swapped
+* Bits 5-54 swap offset if swapped
+* Bit 55 pte is soft-dirty (see Documentation/admin-guide/mm/soft-dirty.rst)
+* Bit 56 page exclusively mapped (since 4.2)
+* Bits 57-60 zero
+* Bit 61 page is file-page or shared-anon (since 3.5)
+* Bit 62 page swapped
+* Bit 63 page present</p>
+<p>其中<br>
+<code>使用/proc/pid/maps可以高效的确定映射的内存区域、跳过未映射的区域。</code><br>
+<code>/proc/kpagecount：这个文件包含64位计数 ， 表示每一页被映射的次数，按照PFN值固定索引。</code><br>
+<code>/proc/kpageflags：此文件包含为64位的标志集 ，表示该页的属性，按照PFN索引。</code>   </p>
+<p>使用下边测试程序来读页指针：</p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/python</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">binascii</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="k">def</span> <span class="nf">read_entry</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Read /proc/$PID/pagemap</span>
+<span class="k">def</span> <span class="nf">get_pagemap_entry</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+  <span class="n">maps_path</span> <span class="o">=</span> <span class="s2">&quot;/proc/{0}/pagemap&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">maps_path</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s2">&quot;Process {0} doesn&#39;t exist.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="n">page_size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">sysconf</span><span class="p">(</span><span class="s2">&quot;SC_PAGE_SIZE&quot;</span><span class="p">)</span>
+  <span class="n">pagemap_entry_size</span> <span class="o">=</span> <span class="mi">8</span>
+  <span class="n">offset</span>  <span class="o">=</span> <span class="p">(</span><span class="n">addr</span> <span class="o">/</span> <span class="n">page_size</span><span class="p">)</span> <span class="o">*</span> <span class="n">pagemap_entry_size</span>
+
+  <span class="k">return</span> <span class="n">read_entry</span><span class="p">(</span><span class="n">maps_path</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_pfn</span><span class="p">(</span><span class="n">entry</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">entry</span> <span class="o">&amp;</span> <span class="mh">0x7FFFFFFFFFFFFF</span>
+
+<span class="k">def</span> <span class="nf">is_present</span><span class="p">(</span><span class="n">entry</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">((</span><span class="n">entry</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">63</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">is_file_page</span><span class="p">(</span><span class="n">entry</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">((</span><span class="n">entry</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">61</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">##########################################################</span>
+
+<span class="c1"># Read /proc/kpagecount</span>
+<span class="k">def</span> <span class="nf">get_pagecount</span><span class="p">(</span><span class="n">pfn</span><span class="p">):</span>
+  <span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/proc/kpagecount&quot;</span>
+  <span class="n">offset</span> <span class="o">=</span> <span class="n">pfn</span> <span class="o">*</span> <span class="mi">8</span>
+  <span class="k">return</span> <span class="n">read_entry</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+
+<span class="c1">##########################################################</span>
+
+<span class="c1"># Read /proc/kpageflags</span>
+<span class="k">def</span> <span class="nf">get_page_flags</span><span class="p">(</span><span class="n">pfn</span><span class="p">):</span>
+  <span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/proc/kpageflags&quot;</span>
+  <span class="n">offset</span> <span class="o">=</span> <span class="n">pfn</span> <span class="o">*</span> <span class="mi">8</span>
+  <span class="k">return</span> <span class="n">read_entry</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+  <span class="n">pid</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;0x&quot;</span><span class="p">):</span>
+    <span class="n">addr</span> <span class="o">=</span> <span class="nb">long</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">base</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">addr</span> <span class="o">=</span> <span class="nb">long</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+  <span class="n">entry</span> <span class="o">=</span> <span class="n">get_pagemap_entry</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+  <span class="n">pfn</span> <span class="o">=</span> <span class="n">get_pfn</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+  <span class="k">print</span> <span class="s2">&quot;PFN: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">pfn</span><span class="p">))</span>
+  <span class="k">print</span> <span class="s2">&quot;Is Present? : {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">is_present</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
+  <span class="k">print</span> <span class="s2">&quot;Is file-page: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">is_file_page</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
+  <span class="k">print</span> <span class="s2">&quot;Page count: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_pagecount</span><span class="p">(</span><span class="n">pfn</span><span class="p">))</span>
+  <span class="k">print</span> <span class="s2">&quot;Page flags: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">hex</span><span class="p">(</span><span class="n">get_page_flags</span><span class="p">(</span><span class="n">pfn</span><span class="p">)))</span>
+</code></pre></div>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>
