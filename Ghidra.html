@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="Ghidra 自动化解决PPC binary更新自动patch问题">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>Ghidra自动化分析PowerPC使用 | LK's blog</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81WR95YF48"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-81WR95YF48');
+    </script>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>Ghidra自动化分析PowerPC使用</h1>
+  
+
+  <aside>
+    <p>published on 2024-01-04
+
+    
+    · tagged with
+      
+        <a href="/tags/ghidra.html">#ghidra</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>env前情提示</h2>
+<p>使用了一个ppc但是ppc的check函数一直变化，地址也随机，但是它单独使用了memcmp函数，只在这个函数使用，所以我们准备patch这个memcmp函数默认返回0.
+问题是要自动化automatically！ </p>
+<p>因此G出Ghidra插件无头化.</p>
+<h2>Go!</h2>
+<p><code>&gt;analyzeHeadless C:\Users\Kian\Desktop\ghidra_pro  control -process licensed  -postScript D:\ghidra_10.2.2_PUBLIC_20221115\ghidra_10.2.2_PUBLIC\Ghidra\Features\Python\ghidra_scripts\ghidra_basics.py</code></p>
+<p>直接运行成功，然后</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>

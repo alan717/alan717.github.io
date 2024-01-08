@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2023-08-25T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>SHINEY650摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">折腾SHINEY650摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-01-08T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>ARM64指令汇总</title><link href="alan717.github.io/ARM64.html" rel="alternate"></link><published>2024-01-08T00:00:00+08:00</published><updated>2024-01-08T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-08:alan717.github.io/ARM64.html</id><summary type="html">arm64下常用的指令</summary><content type="html">&lt;h2&gt;arch&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="" src="img/armv8_a.png"&gt;
+&lt;img alt="" src="img/armv8_a_properties.png"&gt;&lt;/p&gt;
+&lt;h2&gt;instruction&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;STP&lt;/code&gt;=Store Pair
+存一对儿，小端存储顺序，从小到大。&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;寄存器&lt;/h2&gt;
+&lt;p&gt;AArch 拥有 31 个通用寄存器，系统运行在 64 位状态下的时候名字叫 Xn，运行在 32 位的时候就叫 Wn.
+&lt;img alt="" src="img/armv8_reg.png"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;32 位 W 寄存器构成相应 64 位 X 寄存器的下半部分。 也就是说，W0映射到 X0 的低位字，W1 映射到 X1 的低位字。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;ABI&lt;/h2&gt;
+&lt;h3&gt;一般调用&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="img/armv8_register.png"&gt;&lt;/p&gt;
+&lt;h3&gt;浮点调用&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="img/armv8_simd_reg.png"&gt;&lt;/p&gt;</content></entry><entry><title>Linux dtb的探索</title><link href="alan717.github.io/linux_dtb.html" rel="alternate"></link><published>2024-01-05T00:00:00+08:00</published><updated>2024-01-05T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-05:alan717.github.io/linux_dtb.html</id><summary type="html">dtb的历史引入及其老旧Linux系统的支持</summary><content type="html">&lt;h2&gt;HIS&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Starting with the release of Linux 3.5.7, a new feature known as Device Trees has fundamentally changed the way that boards are represented by the kernel. The “C” modules used in earlier kernels has been replaced with Device Tree Blobs (DTBs) as a way of representing the structure and connections for a particular board.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;网上有很多关于这个讨论，在elinux.org上可以查阅。&lt;/p&gt;</content></entry><entry><title>Ghidra自动化分析PowerPC使用</title><link href="alan717.github.io/Ghidra.html" rel="alternate"></link><published>2024-01-04T00:00:00+08:00</published><updated>2024-01-04T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-04:alan717.github.io/Ghidra.html</id><summary type="html">Ghidra 自动化解决PPC binary更新自动patch问题</summary><content type="html">&lt;h2&gt;env前情提示&lt;/h2&gt;
+&lt;p&gt;使用了一个ppc但是ppc的check函数一直变化，地址也随机，但是它单独使用了memcmp函数，只在这个函数使用，所以我们准备patch这个memcmp函数默认返回0.
+问题是要自动化automatically！ &lt;/p&gt;
+&lt;p&gt;因此G出Ghidra插件无头化.&lt;/p&gt;
+&lt;h2&gt;Go!&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;&amp;gt;analyzeHeadless C:\Users\Kian\Desktop\ghidra_pro  control -process licensed  -postScript D:\ghidra_10.2.2_PUBLIC_20221115\ghidra_10.2.2_PUBLIC\Ghidra\Features\Python\ghidra_scripts\ghidra_basics.py&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;直接运行成功，然后&lt;/p&gt;</content></entry><entry><title>SHINEY650摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">折腾SHINEY650摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;
 &lt;h3&gt;spec&lt;/h3&gt;
 &lt;p&gt;| sepc            | value                  | 品牌            |&lt;br&gt;
