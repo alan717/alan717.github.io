@@ -1,12 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-01-08T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>ARM64指令汇总</title><link href="alan717.github.io/ARM64.html" rel="alternate"></link><published>2024-01-08T00:00:00+08:00</published><updated>2024-01-08T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-08:alan717.github.io/ARM64.html</id><summary type="html">arm64下常用的指令</summary><content type="html">&lt;h2&gt;arch&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-01-22T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>提取内核DTB</title><link href="alan717.github.io/extract_dtb.html" rel="alternate"></link><published>2024-01-22T00:00:00+08:00</published><updated>2024-01-22T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-22:alan717.github.io/extract_dtb.html</id><summary type="html">提取DTB</summary><content type="html">&lt;h2&gt;Pre&lt;/h2&gt;
+&lt;p&gt;在新内核3.5.7以后有了DTB，所以要进行提取。之前没有dtb是uboot传递给内核设备信息。&lt;/p&gt;
+&lt;h2&gt;提取思路&lt;/h2&gt;
+&lt;p&gt;DTB_HEADER是= b&amp;rdquo;\xd0\x0d\xfe\xed&amp;rdquo;
+搜索dtb的头标志。然后如出来保存。&lt;/p&gt;
+&lt;h2&gt;具体实现&lt;/h2&gt;
+&lt;p&gt;Py,shell等。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;#!/usr/bin/env python3
+&amp;quot;&amp;quot;&amp;quot;
+Copyright 2017-2021 Pablo Castellano
+
+extract-dtb is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+extract-dtb is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with extract-dtb.  If not, see &amp;lt;http://www.gnu.org/licenses/&amp;gt;.
+&amp;quot;&amp;quot;&amp;quot;
+
+import argparse
+import os
+import string
+
+__version__ = &amp;quot;1.3.dev0&amp;quot;
+
+DTB_HEADER = b&amp;quot;\xd0\x0d\xfe\xed&amp;quot;
+
+
+def dump_file(filename, content):
+    with open(filename, &amp;quot;wb&amp;quot;) as fp:
+        fp.write(content)
+
+
+def safe_output_path(output_dir, dtb_filename_new):
+    &amp;quot;&amp;quot;&amp;quot;Safely combines the output folder with the relative path of the dtb
+    (which may contain subfolders) and creates the necessary folder
+    structure.
+
+    :returns: the resulting file name
+    &amp;quot;&amp;quot;&amp;quot;
+    if &amp;quot;../&amp;quot; in dtb_filename_new + &amp;quot;/&amp;quot;:
+        raise RuntimeException(
+            &amp;quot;DTB file path points outside of extraction&amp;quot;
+            &amp;quot; directory: &amp;quot; + dtb_filename_new
+        )
+    ret = os.path.join(output_dir, dtb_filename_new)
+    os.makedirs(os.path.dirname(ret), exist_ok=True)
+    return ret
+
+
+def split(args):
+    &amp;quot;&amp;quot;&amp;quot;Reads a file and looks for DTB_HEADER occurrences (beginning of each DTB)
+    Then extract each one. If possible, use the device model as filename.
+    &amp;quot;&amp;quot;&amp;quot;
+    positions = []
+
+    with open(args.filename, &amp;quot;rb&amp;quot;) as fp:
+        content = fp.read()
+
+    dtb_next = content.find(DTB_HEADER)
+    while dtb_next != -1:
+        positions.append(dtb_next)
+        dtb_next = content.find(DTB_HEADER, dtb_next + 1)
+
+    if len(positions) == 0:
+        print(&amp;quot;No appended dtbs found&amp;quot;)
+        return
+
+    if args.extract:
+        os.makedirs(args.output_dir, exist_ok=True)
+        begin_pos = 0
+        for n, pos in enumerate(positions, 0):
+            dtb_filename = get_dtb_filename(n)
+            filepath = os.path.join(args.output_dir, dtb_filename)
+            dump_file(filepath, content[begin_pos:pos])
+            if n &amp;gt; 0:
+                dtb_name = get_dtb_model(filepath)
+                if dtb_name:
+                    dtb_filename_new = get_dtb_filename(n, dtb_name)
+                    dtb_filename_new_full = safe_output_path(
+                        args.output_dir, dtb_filename_new
+                    )
+                    os.rename(filepath, dtb_filename_new_full)
+                    dtb_filename = dtb_filename_new
+            print(&amp;quot;Dumped {0}, start={1} end={2}&amp;quot;.format(dtb_filename, begin_pos, pos))
+            begin_pos = pos
+
+        # Last chunk
+        dtb_filename = get_dtb_filename(n + 1)
+        filepath = os.path.join(args.output_dir, dtb_filename)
+        dump_file(filepath, content[begin_pos:])
+        dtb_name = get_dtb_model(filepath)
+        if dtb_name:
+            dtb_filename_new = get_dtb_filename(n + 1, dtb_name)
+            os.rename(
+                os.path.join(filepath), os.path.join(args.output_dir, dtb_filename_new)
+            )
+            dtb_filename = dtb_filename_new
+        print(
+            &amp;quot;Dumped {0}, start={1} end={2}&amp;quot;.format(
+                dtb_filename, begin_pos, len(content)
+            )
+        )
+        print(
+            &amp;quot;Extracted {0} appended dtbs + kernel to {1}&amp;quot;.format(
+                len(positions), args.output_dir
+            )
+        )
+    else:
+        print(&amp;quot;Found {0} appended dtbs&amp;quot;.format(len(positions)))
+
+
+def get_dtb_filename(n, suffix=&amp;quot;&amp;quot;):
+    if n == 0:
+        return &amp;quot;00_kernel&amp;quot;
+    n = str(n).zfill(2)
+    basename = &amp;quot;{0}_dtbdump&amp;quot;.format(n)
+    if suffix != &amp;quot;&amp;quot;:
+        basename += &amp;quot;_&amp;quot; + suffix.replace(&amp;quot; &amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;/&amp;quot;, &amp;quot;_&amp;quot;)
+    return basename + &amp;quot;.dtb&amp;quot;
+
+
+def get_dtb_model(filename, min_length=4):
+    &amp;quot;&amp;quot;&amp;quot;Finds the first printable string in a file with length greater
+    than min_length. Replaces spaces with underscores.
+    &amp;quot;&amp;quot;&amp;quot;
+    with open(filename, errors=&amp;quot;ignore&amp;quot;) as f:
+        result = &amp;quot;&amp;quot;
+        for c in f.read():
+            if c in string.printable:
+                result += c
+                continue
+            if len(result) &amp;gt;= min_length:
+                return result.replace(&amp;quot; &amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;\t&amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;\n&amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;\r&amp;quot;, &amp;quot;_&amp;quot;)
+            result = &amp;quot;&amp;quot;
+        if len(result) &amp;gt;= min_length:  # catch result at EOF
+            return result.replace(&amp;quot; &amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;\t&amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;\n&amp;quot;, &amp;quot;_&amp;quot;).replace(&amp;quot;\r&amp;quot;, &amp;quot;_&amp;quot;)
+    return None
+
+
+def main():
+    parser = argparse.ArgumentParser(description=&amp;quot;Extract dtbs from kernel images.&amp;quot;)
+    parser.add_argument(&amp;quot;filename&amp;quot;, help=&amp;quot;Android kernel image&amp;quot;)
+    parser.add_argument(
+        &amp;quot;-o&amp;quot;, dest=&amp;quot;output_dir&amp;quot;, default=&amp;quot;dtb&amp;quot;, required=False, help=&amp;quot;Output directory&amp;quot;
+    )
+    parser.add_argument(
+        &amp;quot;-n&amp;quot;,
+        dest=&amp;quot;extract&amp;quot;,
+        action=&amp;quot;store_false&amp;quot;,
+        default=True,
+        required=False,
+        help=&amp;quot;Do not extract, just output information&amp;quot;,
+    )
+    parser.add_argument(&amp;quot;-V&amp;quot;, &amp;quot;--version&amp;quot;, action=&amp;quot;version&amp;quot;, version=__version__)
+
+    args = parser.parse_args()
+
+    split(args)
+
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    main()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>kernel build 汇总</title><link href="alan717.github.io/krnl_build.html" rel="alternate"></link><published>2024-01-11T00:00:00+08:00</published><updated>2024-01-11T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-11:alan717.github.io/krnl_build.html</id><summary type="html">内核编译遇到的所有问题汇总</summary><content type="html">&lt;h2&gt;err1&lt;/h2&gt;
+&lt;p&gt;无法生成uimage&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo apt install u-boot-tools&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;err2&lt;/h2&gt;
+&lt;p&gt;error: implicit declaration of function &amp;lsquo;get_user&amp;rsquo;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;h1&gt;include &lt;asm/uaccess.h&gt;&lt;/h1&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;err3&lt;/h2&gt;</content></entry><entry><title>emacs使用记录</title><link href="alan717.github.io/emacs.html" rel="alternate"></link><published>2024-01-10T00:00:00+08:00</published><updated>2024-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-10:alan717.github.io/emacs.html</id><summary type="html">emacs日常使用的方方面面</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;ubuntu 环境下使用emacs.
+emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很不自觉就使用上了。&lt;/p&gt;
+&lt;h2&gt;foundemental&lt;/h2&gt;
+&lt;h3&gt;复制&lt;/h3&gt;
+&lt;p&gt;选择使用shift 然后选择，然后 alt-w 复制，然后使用C-y粘贴。&lt;/p&gt;
+&lt;h3&gt;保存&lt;/h3&gt;
+&lt;p&gt;c-x c-s 保存。&lt;/p&gt;
+&lt;h3&gt;另存为&lt;/h3&gt;
+&lt;p&gt;C-x C-w 按提示，输入文件名，另存为.&lt;/p&gt;
+&lt;h3&gt;打开文件&lt;/h3&gt;
+&lt;p&gt;C—x C-f 打开。&lt;/p&gt;
+&lt;h3&gt;退出&lt;/h3&gt;
+&lt;p&gt;C-x C-c &lt;/p&gt;
+&lt;h2&gt;配置&lt;/h2&gt;
+&lt;h3&gt;关闭备份文件 disable tlide file creation.&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;(setq make-backup-files nil) ; stop creating ~ files&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;use menu bar in terminal mode&lt;/h3&gt;
+&lt;p&gt;F10 或者c-h k查看帮助.&lt;/p&gt;
+&lt;h3&gt;取消 cancel&lt;/h3&gt;
+&lt;p&gt;C-g or ESC ESC ESC tap three times.&lt;/p&gt;
+&lt;h3&gt;&lt;/h3&gt;
+&lt;h2&gt;flycheck&lt;/h2&gt;</content></entry><entry><title>ARM64指令汇总</title><link href="alan717.github.io/ARM64.html" rel="alternate"></link><published>2024-01-08T00:00:00+08:00</published><updated>2024-01-08T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-08:alan717.github.io/ARM64.html</id><summary type="html">arm64下常用的指令</summary><content type="html">&lt;h2&gt;arch&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="" src="img/armv8_a.png"&gt;
 &lt;img alt="" src="img/armv8_a_properties.png"&gt;&lt;/p&gt;
 &lt;h2&gt;instruction&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;STP&lt;/code&gt;=Store Pair
 存一对儿，小端存储顺序，从小到大。&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RSB OP1 OP2&lt;/code&gt; OP2-OP1 反向减法。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MOVK&lt;/code&gt; Move wide with keep 将一个可选移位的 16 位立即值移动到一个寄存器中，保持其他位不变。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;寄存器&lt;/h2&gt;
 &lt;p&gt;AArch 拥有 31 个通用寄存器，系统运行在 64 位状态下的时候名字叫 Xn，运行在 32 位的时候就叫 Wn.
@@ -28,7 +230,70 @@
 &lt;p&gt;因此G出Ghidra插件无头化.&lt;/p&gt;
 &lt;h2&gt;Go!&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;&amp;gt;analyzeHeadless C:\Users\Kian\Desktop\ghidra_pro  control -process licensed  -postScript D:\ghidra_10.2.2_PUBLIC_20221115\ghidra_10.2.2_PUBLIC\Ghidra\Features\Python\ghidra_scripts\ghidra_basics.py&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;直接运行成功，然后&lt;/p&gt;</content></entry><entry><title>SHINEY650摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">折腾SHINEY650摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;直接运行成功，然后&lt;/p&gt;</content></entry><entry><title>记录日语单词</title><link href="alan717.github.io/danci_jp.html" rel="alternate"></link><published>2023-09-23T00:00:00+08:00</published><updated>2023-09-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-09-23:alan717.github.io/danci_jp.html</id><summary type="html">日语单词本</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;目标3000个日语单词 ,N3水平.参加未来的日语考试.&lt;/p&gt;
+&lt;h2&gt;输入法技巧 microsoft jap&lt;/h2&gt;
+&lt;p&gt;微软日语输入法 输入技巧：
+1. っ(促音)双打后一个假名的罗马字发音的第一个辅音，如“もっと”为“motto”。
+2. 拨音ん用nn表示;促音用后面辅音字母表示，如：“はってん”为“hattenn”
+3. 小写的あいうえお 用la,li,lu,le,lo即可。
+4. “コーヒー”中的“ー”是“P”右上方的“-”号键。
+5. 片假名、平假名的转换可用：击F6键变成平假名，击F7键变成片假名。
+6. 在日语输入法中有一个“IME Pad”，里面有手写输入。  &lt;/p&gt;
+&lt;p&gt;注：&lt;br&gt;
+1. &amp;ldquo;IMEパット&amp;rdquo;功能 ：相当于手写板,可以反查日语汉字.不会读音时可以选用此功能.
+2. ALT+~ ：可切换英文输入法Direct Input(图标A) 和日文输入法Hiragana(图标あ)
+3. 快捷键：F6转换为平假名，F8转换为半角片假名，F9转换为全角英文数字，F10转换为半角英文数字
+4. F5偏旁发音输入大法：只要懂偏旁发音可以很快输出怪僻字，如“轼”用くるま+F5输入，出现输入板界面，并看到了该字，点击它就可以把它输入到文档。
+5. 常用符号输入法：
+ * きごう+F5 得到所有记号
+ * たんい 得到所有单位符号
+ * すうがく 得到所有数学符号
+ * ぎりしゃ 得到希腊字母符号&lt;br&gt;
+6. 日文输入法是通过 “回车(Enter)”确定日文，按“空格”选择“汉字”。
+7. 小 “ぁ　ぃ　ぅ　ぇ　ぉ”打法: x+罗马读音,
+例：&lt;br&gt;
+   小「ぁ」「ぃ」「ぅ」「ぇ」「ぉ」&lt;br&gt;
+   x + 读音 「xa」「xi」「xu」「xe」「xo」&lt;br&gt;
+   l +读音　「la」「li」 「lu」 「le」 「lo」 &lt;br&gt;
+8. “ん”怎么打?：打nn即可;
+9. 如何“コーヒー”中的“ー”：打“-”(减号)
+10. “っ”怎么打?：双打后一个假名的罗马字发音的第一个辅音，如“もっと”为“motto”。 长音
+11. 读音和输入方法的差异
+例：&lt;br&gt;
+を　一般读「o」， 但是打字时必须输「wo」。&lt;br&gt;
+へ　一般读「e」， 但是打字时必须输「he」。&lt;br&gt;
+は　一般读「wa」，但是打字时必须输「ha」。&lt;br&gt;
+づ　一般读「zu」，但是打字时必须输「du」。  &lt;/p&gt;
+&lt;h2&gt;list&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://jlptsensei.com/jlpt-n3-grammar-list/#"&gt;ref:link1&lt;/a&gt;
+1. はは　母親
+2. ちち　父親
+3. りょうしん　両親
+4. リョウ・ふたつ　両
+5. 家 家に　いえ家
+6. 近く　ちか
+7. いち　
+8. に
+9. さん
+10. よん
+11. おはよう
+12. しろ
+13. あか
+14. あお
+15. よる
+16. おさけ　
+17. やさい　
+18. すし
+19. てりやき　照り焼き
+20. きたないやさい
+21. あまいすし　　　寿司
+22. すき    喜欢
+23. おはよう 早
+24. こんにちは  你好
+25. さよなら    再见
+26. 住んで　　すんで　住所
+27. 下さい　下さい　&lt;/p&gt;</content></entry><entry><title>SHINEY650摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">折腾SHINEY650摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;
 &lt;h3&gt;spec&lt;/h3&gt;
 &lt;p&gt;| sepc            | value                  | 品牌            |&lt;br&gt;
@@ -78,7 +343,83 @@
 &lt;p&gt;初步分析是引擎ecu 程序处理进气和喷油问题，需要分析ECU.&lt;/p&gt;
 &lt;h4&gt;ECU&lt;/h4&gt;
 &lt;p&gt;购买了同型号ECU，拆解ECU，并尝试PC通信，焊接JTAG管脚供电，然后dump binary程序。
-分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>安捷伦衍射仪分析</title><link href="alan717.github.io/anjielun.html" rel="alternate"></link><published>2022-11-23T00:00:00+08:00</published><updated>2022-11-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-11-23:alan717.github.io/anjielun.html</id><summary type="html">一个安捷伦衍射仪的分析</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+分析中.... 待后续更新。&lt;/p&gt;</content></entry><entry><title>记录日语文法</title><link href="alan717.github.io/%E6%97%A5%E8%AF%ADwenfa.html" rel="alternate"></link><published>2023-07-03T00:00:00+08:00</published><updated>2023-07-03T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-07-03:alan717.github.io/%E6%97%A5%E8%AF%ADwenfa.html</id><summary type="html">日语文法</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;https://www.sigure.tw/learn-japanese/grammar/n5/32.php&lt;/p&gt;
+&lt;h1&gt;文法&lt;/h1&gt;
+&lt;h2&gt;【助詞篇】「で」解析篇&lt;/h2&gt;
+&lt;h4&gt;表動作的立足點&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;文法：場所、位置、空間＋で＋動態動詞
+表示動作施行的立足點，也就是在哪裡做的動作，中文多譯為「在」。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+&lt;li&gt;東京駅で電車を降ります。&lt;br&gt;
+在東京車站下車。&lt;/li&gt;
+&lt;li&gt;図書館で日本語を勉強します。
+在圖書館念日文。&lt;/li&gt;
+&lt;li&gt;日本で生まれました。
+在日本出生。&lt;/li&gt;
+&lt;li&gt;東京で手紙を送ります。
+在東京寄信。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;「で」跟「に」的差別&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;東京で手紙を送ります。
+在東京寄信。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;這句的意思是在東京做了寄信這個動作，動作的立足點在東京，至於寄去哪則沒有提。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;東京に手紙を送ります。
+寄信到東京。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;這句的意思是寄信到東京，「に」表示動作的歸著點，而非立足點，因此在哪寄並不知道。歸著點就是到達點、著落點。&lt;/p&gt;
+&lt;p&gt;端看你想表達的是動作的「立足點」，還是動作的「歸著點」，來決定使用「で」或「に」。基本上很少會同時使用，如「東京で大阪に手紙を送る（不自然）」，一個動作又是立足點又是歸著點，難免會語意不清，基本上就是看想表達哪個就用哪個。如果想說「從東京寄信到大阪」則是說「東京から大阪に手紙を送ります」。&lt;/p&gt;
+&lt;p&gt;「で」基本上就是指在哪裡做的事情，而「に」則是著落的點，因此在表示動作的場所時，「で」較有活動空間，「に」相對來說會侷限得比較小。以「請在這裡稍等一下」為例，會說「ここで待ってください」，而不會說「ここに待ってください」。&lt;/p&gt;
+&lt;h3&gt;总结&lt;/h3&gt;
+&lt;p&gt;小結
+表動作的存在場所時，可以用動態動詞用「で」，靜態動詞用「に」來簡單區別，所謂的動態動詞就是做得出的動作、較明顯的動作，靜態動詞偏向一種狀態，比較不明顯或是做不出來的動作，例如「いる、ある（在）」。&lt;/p&gt;
+&lt;p&gt;例：勉強する（動態動詞）&lt;/p&gt;
+&lt;p&gt;学校で勉強します。&lt;br&gt;
+　 在學校學習。&lt;br&gt;
+学校に勉強します。 x&lt;br&gt;
+　 不自然的用法。  &lt;/p&gt;
+&lt;p&gt;例：咲く（靜態動詞）  &lt;/p&gt;
+&lt;p&gt;庭に花が咲いています。&lt;br&gt;
+　 庭院裡開著花。&lt;br&gt;
+庭で花が咲いています。  x
+　 不自然的用法。&lt;br&gt;
+「勉強」的意思是學習、用功、念書等等，由於學習並非靜止不動（例如寫字、跟老師互動等），因此用「で」，無論你的「勉強」有多靜態都不會用「に」，這樣是不自然的，而「花が咲いています」用「に」是因為花開非常緩慢，幾乎是靜止的動作，「花開」與其說是花的動作，倒不如說是花的狀態，因此也不會用「で」。當然如果是「百花群放」那樣很有動作感的畫面，也是有用「で」的情況，但一般情況原則上都是用「に」。&lt;/p&gt;
+&lt;h2&gt;表狀態的範圍或場所&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文法：範圍＋で＋一番＋具有形容詞性的詞類
+表示某範圍內最極端的狀態，中譯多為「在～之中、在～當中」。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;クラスで一番頭がいい人は誰ですか。&lt;br&gt;
+班上最聰明的人是誰？&lt;br&gt;
+果物の中で何が一番好きですか。&lt;br&gt;
+水果之中你最喜歡哪個？&lt;br&gt;
+こちらは日本で一番有名な画家です。&lt;br&gt;
+這位是日本最有名的畫家。   &lt;/p&gt;
+&lt;h3&gt;什麼時候要加「の中」？&lt;/h3&gt;
+&lt;p&gt;「で」用於表示一個場所，而「～の中」表示「當中、之中」，因此當某個範圍已經屬於整個空間時就不用再加上「の中」，如「世界」。反之，如果這個範圍是有多種類別或是並非整體空間，則加上「の中」，如「アニメの中で～」。&lt;/p&gt;
+&lt;p&gt;ノート：
+已屬整體：クラスで、日本で、世界で、海外で…
+多種分類：果物の中で、外国語の中で、アニメの中で…&lt;/p&gt;
+&lt;h2&gt;表共同參與的人數&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;文法：人數（或類似人數概念）＋で＋動作
+表示參與動作的人數，包含獨自一個人。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一人で食事します。
+一個人吃飯。
+二人で歌を歌います。
+兩人一起唱歌。
+これはみんなで作ったのです。
+這個是大家一起做的。
+自分でパソコンを修理しました。
+自己修好電腦。
+家族で旅行します。
+全家一起去旅行。&lt;/p&gt;</content></entry><entry><title>安捷伦衍射仪分析</title><link href="alan717.github.io/anjielun.html" rel="alternate"></link><published>2022-11-23T00:00:00+08:00</published><updated>2022-11-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-11-23:alan717.github.io/anjielun.html</id><summary type="html">一个安捷伦衍射仪的分析</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;接触了一个实验室的安捷伦衍射仪的分析
 全称是:&lt;code&gt;6230B 飞行时间 (TOF) 液质联用系统&lt;/code&gt;
 这个衍射仪还很火，看到很多学校的实验室都有这个设备原名tofserver
@@ -125,7 +466,14 @@ after&lt;br&gt;
 &lt;h3&gt;难度四：数据结构复杂度&lt;/h3&gt;
 &lt;p&gt;在go中的切片 数组结构体，字典都有自定义的数据结构需要来识别。在没有魔改的情况下，直接对照源码可以分析，如果进行了魔改就要凭借经验来识别并进行分析处理。&lt;/p&gt;
 &lt;h4&gt;string&lt;/h4&gt;
-&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>一款日本CPU的分析</title><link href="alan717.github.io/cpu00.html" rel="alternate"></link><published>2021-08-11T00:00:00+08:00</published><updated>2021-08-11T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2021-08-11:alan717.github.io/cpu00.html</id><summary type="html">朋友给了一个cpu需要分析一下程序.</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>Python高级语法</title><link href="alan717.github.io/python%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/python%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.html</id><summary type="html">py</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;h2&gt;&lt;/h2&gt;</content></entry><entry><title>QEMU调试</title><link href="alan717.github.io/qemu.html" rel="alternate"></link><published>2022-01-10T00:00:00+08:00</published><updated>2022-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-01-10:alan717.github.io/qemu.html</id><summary type="html">qemu调试驱动</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;仿真一个驱动&lt;/p&gt;
+&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;_get_user_1&lt;/code&gt;函数 拷贝一个字符从用户空间。
+ &lt;code&gt;remap_pfn_range&lt;/code&gt;
+ &lt;code&gt;request_threaded_irq&lt;/code&gt;
+ &lt;code&gt;set_bit&lt;/code&gt;&lt;/p&gt;</content></entry><entry><title>一款日本CPU的分析</title><link href="alan717.github.io/cpu00.html" rel="alternate"></link><published>2021-08-11T00:00:00+08:00</published><updated>2021-08-11T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2021-08-11:alan717.github.io/cpu00.html</id><summary type="html">朋友给了一个cpu需要分析一下程序.</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;朋友做维修，找我分析一个cpu
 &lt;img alt="" src="img/cpu00.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;如图型号是：&lt;code&gt;D70F3453GC JAPAN 1218KP421&lt;/code&gt;
@@ -236,7 +584,30 @@ KQ3oSWrOun9XpzbCAMfSHzIgC48w/V1+YGR9n5SlY7V73qnMAJU=
 在此目录下创建 system/etc/security/cacerts 目录，将 e5c3944b.0 文件拷贝到新建的这个目录下
 最终证书路径为 /data/adb/modules/xxx/system/etc/security/cacerts/e5c3944b.0
 重启手机，wifi 界面设置代理 xxx.xxx.xxx.xxx:8888 即可抓包&lt;/p&gt;
-&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>gdb调试</title><link href="alan717.github.io/gdb.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/gdb.html</id><summary type="html">gdb</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>Binary Ninja插件集合</title><link href="alan717.github.io/BinNinja.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/BinNinja.html</id><summary type="html">Binary Ninja</summary><content type="html">&lt;h2&gt;Python API&lt;/h2&gt;
+&lt;p&gt;安装binja的py包。&lt;/p&gt;</content></entry><entry><title>记录英语单词</title><link href="alan717.github.io/danci_en.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/danci_en.html</id><summary type="html">英语单词本</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;记录收集的单词本：目标3000个.&lt;/p&gt;
+&lt;h2&gt;list&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;period：句号&lt;/li&gt;
+&lt;li&gt;comma：逗号&lt;/li&gt;
+&lt;li&gt;colon 冒号：&lt;/li&gt;
+&lt;li&gt;semicolon： 分号：&lt;/li&gt;
+&lt;li&gt;prime：上撇号，如数学分析中的一阶导数 f′(x)&lt;/li&gt;
+&lt;li&gt;underscore：下划线；&lt;/li&gt;
+&lt;li&gt;省略号：ellipsis；&lt;/li&gt;
+&lt;li&gt;exclamation mark：感叹号；&lt;/li&gt;
+&lt;li&gt;dash：横线；Hyphen：连字符；&lt;/li&gt;
+&lt;li&gt;Quotation Marks：双引号，用于引用；&lt;/li&gt;
+&lt;li&gt;apostrophe：上撇，&lt;/li&gt;
+&lt;li&gt;slash：斜线；&lt;/li&gt;
+&lt;li&gt;
+&lt;h1&gt;：number sign；&lt;/h1&gt;
+&lt;/li&gt;
+&lt;li&gt;^：caret，脱字符号，^，中文尚无通用名称，可以是乘方、插入符号、插入符、脱字符号等；英文称为caret (英语发音：/ˈkærət/)，是个倒 V 形的字素；&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</content></entry><entry><title>gdb调试</title><link href="alan717.github.io/gdb.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/gdb.html</id><summary type="html">gdb</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;android、linux&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;不涉及基础命令，基础命令请直接看document.

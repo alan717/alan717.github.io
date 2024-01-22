@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="提取DTB">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>提取内核DTB | LK's blog</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81WR95YF48"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-81WR95YF48');
+    </script>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>提取内核DTB</h1>
+  
+
+  <aside>
+    <p>published on 2024-01-22
+
+    
+    · tagged with
+      
+        <a href="/tags/.html">#</a> and 
+        <a href="/tags/kernel dtb.html">#kernel dtb</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>Pre</h2>
+<p>在新内核3.5.7以后有了DTB，所以要进行提取。之前没有dtb是uboot传递给内核设备信息。</p>
+<h2>提取思路</h2>
+<p>DTB_HEADER是= b&rdquo;\xd0\x0d\xfe\xed&rdquo;
+搜索dtb的头标志。然后如出来保存。</p>
+<h2>具体实现</h2>
+<p>Py,shell等。</p>
+<div class="codehilite"><pre><span></span><code>#!/usr/bin/env python3
+&quot;&quot;&quot;
+Copyright 2017-2021 Pablo Castellano
+
+extract-dtb is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+extract-dtb is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with extract-dtb.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+&quot;&quot;&quot;
+
+import argparse
+import os
+import string
+
+__version__ = &quot;1.3.dev0&quot;
+
+DTB_HEADER = b&quot;\xd0\x0d\xfe\xed&quot;
+
+
+def dump_file(filename, content):
+    with open(filename, &quot;wb&quot;) as fp:
+        fp.write(content)
+
+
+def safe_output_path(output_dir, dtb_filename_new):
+    &quot;&quot;&quot;Safely combines the output folder with the relative path of the dtb
+    (which may contain subfolders) and creates the necessary folder
+    structure.
+
+    :returns: the resulting file name
+    &quot;&quot;&quot;
+    if &quot;../&quot; in dtb_filename_new + &quot;/&quot;:
+        raise RuntimeException(
+            &quot;DTB file path points outside of extraction&quot;
+            &quot; directory: &quot; + dtb_filename_new
+        )
+    ret = os.path.join(output_dir, dtb_filename_new)
+    os.makedirs(os.path.dirname(ret), exist_ok=True)
+    return ret
+
+
+def split(args):
+    &quot;&quot;&quot;Reads a file and looks for DTB_HEADER occurrences (beginning of each DTB)
+    Then extract each one. If possible, use the device model as filename.
+    &quot;&quot;&quot;
+    positions = []
+
+    with open(args.filename, &quot;rb&quot;) as fp:
+        content = fp.read()
+
+    dtb_next = content.find(DTB_HEADER)
+    while dtb_next != -1:
+        positions.append(dtb_next)
+        dtb_next = content.find(DTB_HEADER, dtb_next + 1)
+
+    if len(positions) == 0:
+        print(&quot;No appended dtbs found&quot;)
+        return
+
+    if args.extract:
+        os.makedirs(args.output_dir, exist_ok=True)
+        begin_pos = 0
+        for n, pos in enumerate(positions, 0):
+            dtb_filename = get_dtb_filename(n)
+            filepath = os.path.join(args.output_dir, dtb_filename)
+            dump_file(filepath, content[begin_pos:pos])
+            if n &gt; 0:
+                dtb_name = get_dtb_model(filepath)
+                if dtb_name:
+                    dtb_filename_new = get_dtb_filename(n, dtb_name)
+                    dtb_filename_new_full = safe_output_path(
+                        args.output_dir, dtb_filename_new
+                    )
+                    os.rename(filepath, dtb_filename_new_full)
+                    dtb_filename = dtb_filename_new
+            print(&quot;Dumped {0}, start={1} end={2}&quot;.format(dtb_filename, begin_pos, pos))
+            begin_pos = pos
+
+        # Last chunk
+        dtb_filename = get_dtb_filename(n + 1)
+        filepath = os.path.join(args.output_dir, dtb_filename)
+        dump_file(filepath, content[begin_pos:])
+        dtb_name = get_dtb_model(filepath)
+        if dtb_name:
+            dtb_filename_new = get_dtb_filename(n + 1, dtb_name)
+            os.rename(
+                os.path.join(filepath), os.path.join(args.output_dir, dtb_filename_new)
+            )
+            dtb_filename = dtb_filename_new
+        print(
+            &quot;Dumped {0}, start={1} end={2}&quot;.format(
+                dtb_filename, begin_pos, len(content)
+            )
+        )
+        print(
+            &quot;Extracted {0} appended dtbs + kernel to {1}&quot;.format(
+                len(positions), args.output_dir
+            )
+        )
+    else:
+        print(&quot;Found {0} appended dtbs&quot;.format(len(positions)))
+
+
+def get_dtb_filename(n, suffix=&quot;&quot;):
+    if n == 0:
+        return &quot;00_kernel&quot;
+    n = str(n).zfill(2)
+    basename = &quot;{0}_dtbdump&quot;.format(n)
+    if suffix != &quot;&quot;:
+        basename += &quot;_&quot; + suffix.replace(&quot; &quot;, &quot;_&quot;).replace(&quot;/&quot;, &quot;_&quot;)
+    return basename + &quot;.dtb&quot;
+
+
+def get_dtb_model(filename, min_length=4):
+    &quot;&quot;&quot;Finds the first printable string in a file with length greater
+    than min_length. Replaces spaces with underscores.
+    &quot;&quot;&quot;
+    with open(filename, errors=&quot;ignore&quot;) as f:
+        result = &quot;&quot;
+        for c in f.read():
+            if c in string.printable:
+                result += c
+                continue
+            if len(result) &gt;= min_length:
+                return result.replace(&quot; &quot;, &quot;_&quot;).replace(&quot;\t&quot;, &quot;_&quot;).replace(&quot;\n&quot;, &quot;_&quot;).replace(&quot;\r&quot;, &quot;_&quot;)
+            result = &quot;&quot;
+        if len(result) &gt;= min_length:  # catch result at EOF
+            return result.replace(&quot; &quot;, &quot;_&quot;).replace(&quot;\t&quot;, &quot;_&quot;).replace(&quot;\n&quot;, &quot;_&quot;).replace(&quot;\r&quot;, &quot;_&quot;)
+    return None
+
+
+def main():
+    parser = argparse.ArgumentParser(description=&quot;Extract dtbs from kernel images.&quot;)
+    parser.add_argument(&quot;filename&quot;, help=&quot;Android kernel image&quot;)
+    parser.add_argument(
+        &quot;-o&quot;, dest=&quot;output_dir&quot;, default=&quot;dtb&quot;, required=False, help=&quot;Output directory&quot;
+    )
+    parser.add_argument(
+        &quot;-n&quot;,
+        dest=&quot;extract&quot;,
+        action=&quot;store_false&quot;,
+        default=True,
+        required=False,
+        help=&quot;Do not extract, just output information&quot;,
+    )
+    parser.add_argument(&quot;-V&quot;, &quot;--version&quot;, action=&quot;version&quot;, version=__version__)
+
+    args = parser.parse_args()
+
+    split(args)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>
