@@ -168,7 +168,7 @@ def main():
 
 if __name__ == &amp;quot;__main__&amp;quot;:
     main()
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>kernel build 汇总</title><link href="alan717.github.io/krnl_build.html" rel="alternate"></link><published>2024-01-11T00:00:00+08:00</published><updated>2024-01-11T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-11:alan717.github.io/krnl_build.html</id><summary type="html">内核编译遇到的所有问题汇总</summary><content type="html">&lt;h2&gt;err1&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>托福和雅思</title><link href="alan717.github.io/tuofuvsyasi.html" rel="alternate"></link><published>2024-01-22T00:00:00+08:00</published><updated>2024-01-22T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-22:alan717.github.io/tuofuvsyasi.html</id><summary type="html">english stuff</summary><content type="html"></content></entry><entry><title>kernel build 汇总</title><link href="alan717.github.io/krnl_build.html" rel="alternate"></link><published>2024-01-11T00:00:00+08:00</published><updated>2024-01-11T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-11:alan717.github.io/krnl_build.html</id><summary type="html">内核编译遇到的所有问题汇总</summary><content type="html">&lt;h2&gt;err1&lt;/h2&gt;
 &lt;p&gt;无法生成uimage&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;sudo apt install u-boot-tools&lt;/p&gt;
@@ -233,28 +233,28 @@ emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很�
 &lt;p&gt;直接运行成功，然后&lt;/p&gt;</content></entry><entry><title>记录日语单词</title><link href="alan717.github.io/danci_jp.html" rel="alternate"></link><published>2023-09-23T00:00:00+08:00</published><updated>2023-09-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-09-23:alan717.github.io/danci_jp.html</id><summary type="html">日语单词本</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;目标3000个日语单词 ,N3水平.参加未来的日语考试.&lt;/p&gt;
 &lt;h2&gt;输入法技巧 microsoft jap&lt;/h2&gt;
-&lt;p&gt;微软日语输入法 输入技巧：
-1. っ(促音)双打后一个假名的罗马字发音的第一个辅音，如“もっと”为“motto”。
-2. 拨音ん用nn表示;促音用后面辅音字母表示，如：“はってん”为“hattenn”
-3. 小写的あいうえお 用la,li,lu,le,lo即可。
-4. “コーヒー”中的“ー”是“P”右上方的“-”号键。
-5. 片假名、平假名的转换可用：击F6键变成平假名，击F7键变成片假名。
-6. 在日语输入法中有一个“IME Pad”，里面有手写输入。  &lt;/p&gt;
+&lt;p&gt;微软日语输入法 输入技巧：&lt;br&gt;
+1. っ(促音)双打后一个假名的罗马字发音的第一个辅音，如“もっと”为“motto”。&lt;br&gt;
+2. 拨音ん用nn表示;促音用后面辅音字母表示，如：“はってん”为“hattenn” &lt;br&gt;
+3. 小写的あいうえお 用la,li,lu,le,lo即可。&lt;br&gt;
+4. “コーヒー”中的“ー”是“P”右上方的“-”号键。&lt;br&gt;
+5. 片假名、平假名的转换可用：击F6键变成平假名，击F7键变成片假名。&lt;br&gt;
+6. 在日语输入法中有一个“IME Pad”，里面有手写输入。    &lt;/p&gt;
 &lt;p&gt;注：&lt;br&gt;
-1. &amp;ldquo;IMEパット&amp;rdquo;功能 ：相当于手写板,可以反查日语汉字.不会读音时可以选用此功能.
-2. ALT+~ ：可切换英文输入法Direct Input(图标A) 和日文输入法Hiragana(图标あ)
-3. 快捷键：F6转换为平假名，F8转换为半角片假名，F9转换为全角英文数字，F10转换为半角英文数字
-4. F5偏旁发音输入大法：只要懂偏旁发音可以很快输出怪僻字，如“轼”用くるま+F5输入，出现输入板界面，并看到了该字，点击它就可以把它输入到文档。
-5. 常用符号输入法：
- * きごう+F5 得到所有记号
- * たんい 得到所有单位符号
- * すうがく 得到所有数学符号
- * ぎりしゃ 得到希腊字母符号&lt;br&gt;
-6. 日文输入法是通过 “回车(Enter)”确定日文，按“空格”选择“汉字”。
-7. 小 “ぁ　ぃ　ぅ　ぇ　ぉ”打法: x+罗马读音,
-例：&lt;br&gt;
-   小「ぁ」「ぃ」「ぅ」「ぇ」「ぉ」&lt;br&gt;
-   x + 读音 「xa」「xi」「xu」「xe」「xo」&lt;br&gt;
+1. &amp;ldquo;IMEパット&amp;rdquo;功能 ：相当于手写板,可以反查日语汉字.不会读音时可以选用此功能.&lt;br&gt;
+2. ALT+~ ：可切换英文输入法Direct Input(图标A) 和日文输入法Hiragana(图标あ) &lt;br&gt;
+3. 快捷键：F6转换为平假名，F8转换为半角片假名，F9转换为全角英文数字，F10转换为半角英文数字 &lt;br&gt;
+4. F5偏旁发音输入大法：只要懂偏旁发音可以很快输出怪僻字，如“轼”用くるま+F5输入，出现输入板界面，并看到了该字，点击它就可以把它输入到文档。&lt;br&gt;
+5. 常用符号输入法：&lt;br&gt;
+ * きごう+F5 得到所有记号&lt;br&gt;
+ * たんい 得到所有单位符号&lt;br&gt;
+ * すうがく 得到所有数学符号&lt;br&gt;
+ * ぎりしゃ 得到希腊字母符号  &lt;br&gt;
+6. 日文输入法是通过 “回车(Enter)”确定日文，按“空格”选择“汉字”。&lt;br&gt;
+7. 小 “ぁ　ぃ　ぅ　ぇ　ぉ”打法: x+罗马读音,&lt;br&gt;
+例：  &lt;br&gt;
+   小「ぁ」「ぃ」「ぅ」「ぇ」「ぉ」  &lt;br&gt;
+   x + 读音 「xa」「xi」「xu」「xe」「xo」  &lt;br&gt;
    l +读音　「la」「li」 「lu」 「le」 「lo」 &lt;br&gt;
 8. “ん”怎么打?：打nn即可;
 9. 如何“コーヒー”中的“ー”：打“-”(减号)
@@ -267,33 +267,33 @@ emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很�
 づ　一般读「zu」，但是打字时必须输「du」。  &lt;/p&gt;
 &lt;h2&gt;list&lt;/h2&gt;
 &lt;p&gt;&lt;a href="https://jlptsensei.com/jlpt-n3-grammar-list/#"&gt;ref:link1&lt;/a&gt;
-1. はは　母親
-2. ちち　父親
-3. りょうしん　両親
-4. リョウ・ふたつ　両
-5. 家 家に　いえ家
-6. 近く　ちか
-7. いち　
-8. に
-9. さん
-10. よん
-11. おはよう
-12. しろ
-13. あか
-14. あお
-15. よる
-16. おさけ　
-17. やさい　
-18. すし
-19. てりやき　照り焼き
-20. きたないやさい
-21. あまいすし　　　寿司
-22. すき    喜欢
-23. おはよう 早
-24. こんにちは  你好
-25. さよなら    再见
-26. 住んで　　すんで　住所
-27. 下さい　下さい　&lt;/p&gt;</content></entry><entry><title>SHINEY650摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">折腾SHINEY650摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+1. はは　母親&lt;br&gt;
+2. ちち　父親&lt;br&gt;
+3. りょうしん　両親&lt;br&gt;
+4. リョウ・ふたつ　両&lt;br&gt;
+5. 家 家に　いえ家 &lt;br&gt;
+6. 近く　ちか &lt;br&gt;
+7. いち　&lt;br&gt;
+8. に &lt;br&gt;
+9. さん &lt;br&gt;
+10. よん &lt;br&gt;
+11. おはよう &lt;br&gt;
+12. しろ &lt;br&gt;
+13. あか &lt;br&gt;
+14. あお &lt;br&gt;
+15. よる &lt;br&gt;
+16. おさけ　&lt;br&gt;
+17. やさい　&lt;br&gt;
+18. すし&lt;br&gt;
+19. てりやき　照り焼き &lt;br&gt;
+20. きたないやさい &lt;br&gt;
+21. あまいすし　　　寿司 &lt;br&gt;
+22. すき    喜欢 &lt;br&gt;
+23. おはよう 早 &lt;br&gt;
+24. こんにちは  你好 &lt;br&gt;
+25. さよなら    再见&lt;br&gt;
+26. 住んで　　すんで　住所 &lt;br&gt;
+27. 下さい　下さい　  &lt;/p&gt;</content></entry><entry><title>SHINEY650摩托车改装</title><link href="alan717.github.io/motorcycle.html" rel="alternate"></link><published>2023-08-25T00:00:00+08:00</published><updated>2023-08-25T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-08-25:alan717.github.io/motorcycle.html</id><summary type="html">折腾SHINEY650摩托车的过程</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;8月购买了鑫源650摩托。&lt;/p&gt;
 &lt;h3&gt;spec&lt;/h3&gt;
 &lt;p&gt;| sepc            | value                  | 品牌            |&lt;br&gt;
