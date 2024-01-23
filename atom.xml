@@ -180,13 +180,16 @@ if __name__ == &amp;quot;__main__&amp;quot;:
 &lt;/blockquote&gt;
 &lt;h2&gt;err3&lt;/h2&gt;</content></entry><entry><title>emacs使用记录</title><link href="alan717.github.io/emacs.html" rel="alternate"></link><published>2024-01-10T00:00:00+08:00</published><updated>2024-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-10:alan717.github.io/emacs.html</id><summary type="html">emacs日常使用的方方面面</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;ubuntu 环境下使用emacs.
-emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很不自觉就使用上了。&lt;/p&gt;
-&lt;h2&gt;foundemental&lt;/h2&gt;
+emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很不自觉就使用上了。
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD&lt;/p&gt;
+&lt;h2&gt;foundmental&lt;/h2&gt;
 &lt;h3&gt;复制&lt;/h3&gt;
 &lt;p&gt;选择使用shift 然后选择，然后 alt-w 复制，然后使用C-y粘贴。&lt;/p&gt;
+&lt;h3&gt;退出&lt;/h3&gt;
+&lt;p&gt;C-x C-c&lt;/p&gt;
 &lt;h3&gt;保存&lt;/h3&gt;
 &lt;p&gt;c-x c-s 保存。&lt;/p&gt;
-&lt;h3&gt;另存为&lt;/h3&gt;
+&lt;h4&gt;另存为&lt;/h4&gt;
 &lt;p&gt;C-x C-w 按提示，输入文件名，另存为.&lt;/p&gt;
 &lt;h3&gt;打开文件&lt;/h3&gt;
 &lt;p&gt;C—x C-f 打开。&lt;/p&gt;
@@ -200,7 +203,15 @@ emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很�
 &lt;h3&gt;取消 cancel&lt;/h3&gt;
 &lt;p&gt;C-g or ESC ESC ESC tap three times.&lt;/p&gt;
 &lt;h3&gt;&lt;/h3&gt;
-&lt;h2&gt;flycheck&lt;/h2&gt;</content></entry><entry><title>ARM64指令汇总</title><link href="alan717.github.io/ARM64.html" rel="alternate"></link><published>2024-01-08T00:00:00+08:00</published><updated>2024-01-08T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-08:alan717.github.io/ARM64.html</id><summary type="html">arm64下常用的指令</summary><content type="html">&lt;h2&gt;arch&lt;/h2&gt;
+&lt;h2&gt;flycheck&lt;/h2&gt;
+&lt;h3&gt;行号&lt;/h3&gt;
+&lt;p&gt;add &lt;code&gt;(global-display-line-numbers-mode)&lt;/code&gt; to &lt;code&gt;.emacs.el&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;c/c++ ide&lt;/h2&gt;
+&lt;h3&gt;LSP&lt;/h3&gt;
+&lt;h4&gt;lsp-mode&lt;/h4&gt;
+&lt;h4&gt;treemacs&lt;/h4&gt;
+&lt;h4&gt;lsp-ui&lt;/h4&gt;
+&lt;h3&gt;CScope&lt;/h3&gt;</content></entry><entry><title>ARM64指令汇总</title><link href="alan717.github.io/ARM64.html" rel="alternate"></link><published>2024-01-08T00:00:00+08:00</published><updated>2024-01-08T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-08:alan717.github.io/ARM64.html</id><summary type="html">arm64下常用的指令</summary><content type="html">&lt;h2&gt;arch&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="" src="img/armv8_a.png"&gt;
 &lt;img alt="" src="img/armv8_a_properties.png"&gt;&lt;/p&gt;
 &lt;h2&gt;instruction&lt;/h2&gt;
