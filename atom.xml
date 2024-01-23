@@ -759,7 +759,7 @@ KQ3oSWrOun9XpzbCAMfSHzIgC48w/V1+YGR9n5SlY7V73qnMAJU=
 在此目录下创建 system/etc/security/cacerts 目录，将 e5c3944b.0 文件拷贝到新建的这个目录下
 最终证书路径为 /data/adb/modules/xxx/system/etc/security/cacerts/e5c3944b.0
 重启手机，wifi 界面设置代理 xxx.xxx.xxx.xxx:8888 即可抓包&lt;/p&gt;
-&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>Binary Ninja插件集合</title><link href="alan717.github.io/BinNinja.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/BinNinja.html</id><summary type="html">Binary Ninja</summary><content type="html">&lt;h2&gt;plugin调试&lt;/h2&gt;
+&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>Binary Ninja插件开发</title><link href="alan717.github.io/BinNinja.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/BinNinja.html</id><summary type="html">Binary Ninja</summary><content type="html">&lt;h2&gt;plugin调试&lt;/h2&gt;
 &lt;p&gt;直接在&lt;code&gt;C:\Users\Kian\AppData\Roaming\Binary Ninja\plugins&lt;/code&gt;中写dd.py然后  &lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;  &lt;span class="nn"&gt;dd&lt;/span&gt; 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;importlib&lt;/span&gt;
