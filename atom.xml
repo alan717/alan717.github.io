@@ -477,8 +477,11 @@ after&lt;br&gt;
 &lt;h3&gt;难度四：数据结构复杂度&lt;/h3&gt;
 &lt;p&gt;在go中的切片 数组结构体，字典都有自定义的数据结构需要来识别。在没有魔改的情况下，直接对照源码可以分析，如果进行了魔改就要凭借经验来识别并进行分析处理。&lt;/p&gt;
 &lt;h4&gt;string&lt;/h4&gt;
-&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>Python高级语法</title><link href="alan717.github.io/python%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/python%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.html</id><summary type="html">py</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
-&lt;h2&gt;&lt;/h2&gt;</content></entry><entry><title>QEMU调试</title><link href="alan717.github.io/qemu.html" rel="alternate"></link><published>2022-01-10T00:00:00+08:00</published><updated>2022-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-01-10:alan717.github.io/qemu.html</id><summary type="html">qemu调试驱动</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>Python高级语法</title><link href="alan717.github.io/python_advance.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/python_advance.html</id><summary type="html">py</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;asterisk （*）&lt;/p&gt;
+&lt;h2&gt;基础&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;*args&lt;/code&gt;表示*args enable us to pass the variable number of non-keyword arguments to functions, but we cannot use this to pass keyword arguments. Keyword arguments mean that they contain a key-value pair, like a Python dictionary.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;**kwargs&lt;/code&gt;allows us to pass any number of keyword arguments.&lt;/p&gt;</content></entry><entry><title>QEMU调试</title><link href="alan717.github.io/qemu.html" rel="alternate"></link><published>2022-01-10T00:00:00+08:00</published><updated>2022-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-01-10:alan717.github.io/qemu.html</id><summary type="html">qemu调试驱动</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;仿真一个驱动&lt;/p&gt;
 &lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;_get_user_1&lt;/code&gt;函数 拷贝一个字符从用户空间。
