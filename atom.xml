@@ -478,10 +478,171 @@ after&lt;br&gt;
 &lt;p&gt;在go中的切片 数组结构体，字典都有自定义的数据结构需要来识别。在没有魔改的情况下，直接对照源码可以分析，如果进行了魔改就要凭借经验来识别并进行分析处理。&lt;/p&gt;
 &lt;h4&gt;string&lt;/h4&gt;
 &lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>Python高级语法</title><link href="alan717.github.io/python_advance.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/python_advance.html</id><summary type="html">py</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Read The Fucking Source Code.&lt;/p&gt;
+&lt;p&gt;A picture is worth a thousand words&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;MISC&lt;/h2&gt;
 &lt;p&gt;asterisk （*）&lt;/p&gt;
 &lt;h2&gt;基础&lt;/h2&gt;
+&lt;h3&gt;传参&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;*args&lt;/code&gt;表示*args enable us to pass the variable number of non-keyword arguments to functions, but we cannot use this to pass keyword arguments. Keyword arguments mean that they contain a key-value pair, like a Python dictionary.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;**kwargs&lt;/code&gt;allows us to pass any number of keyword arguments.&lt;/p&gt;</content></entry><entry><title>QEMU调试</title><link href="alan717.github.io/qemu.html" rel="alternate"></link><published>2022-01-10T00:00:00+08:00</published><updated>2022-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-01-10:alan717.github.io/qemu.html</id><summary type="html">qemu调试驱动</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;**kwargs&lt;/code&gt;allows us to pass any number of keyword arguments.&lt;/p&gt;
+&lt;h3&gt;修饰器&lt;/h3&gt;
+&lt;p&gt;举个例子：&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;hello_decorator&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;inner1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;before Execution&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# getting the returned value&lt;/span&gt;
+        &lt;span class="n"&gt;returned_value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;after Execution&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# returning the value to the original frame&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;returned_value&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;inner1&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# adding decorator to the function&lt;/span&gt;
+&lt;span class="nd"&gt;@hello_decorator&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;sum_two_numbers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Inside the function&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;
+
+&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="c1"&gt;# getting the value through return of the function&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Sum =&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sum_two_numbers&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Output:  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;before Execution
+Inside the function
+after Execution
+Sum = 3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;chain decorators&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# code for testing decorator chaining &lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;decor1&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; 
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;inner&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; 
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; 
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; 
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;inner&lt;/span&gt; 
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;decor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; 
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;inner&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; 
+        &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; 
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; 
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;inner&lt;/span&gt; 
+
+&lt;span class="nd"&gt;@decor1&lt;/span&gt;
+&lt;span class="nd"&gt;@decor&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;num&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt; 
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="nd"&gt;@decor&lt;/span&gt;
+&lt;span class="nd"&gt;@decor1&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; 
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num2&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="mf"&gt;400&lt;/span&gt;
+&lt;span class="mf"&gt;200&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;协程&lt;/h3&gt;
+&lt;p&gt;一系列api来执行并行任务，给出一些区别。&lt;/p&gt;
+&lt;h4&gt;协程&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;asyncio&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;world&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;hello
+world
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;注意：简单地调用一个协程并不会使其被调度执行&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;main()
+&amp;lt;coroutine object main at 0x1053bb7c8&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4&gt;可等待对象&lt;/h4&gt;
+&lt;p&gt;可等待 对象有三种主要类型: 协程, 任务 和 Future.&lt;/p&gt;
+&lt;h5&gt;协程&lt;/h5&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;asyncio&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nested&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;42&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# Nothing happens if we just call &amp;quot;nested()&amp;quot;.&lt;/span&gt;
+    &lt;span class="c1"&gt;# A coroutine object is created but not awaited,&lt;/span&gt;
+    &lt;span class="c1"&gt;# so it *won&amp;#39;t run at all*.&lt;/span&gt;
+    &lt;span class="n"&gt;nested&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# Let&amp;#39;s do it differently now and await it:&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;nested&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;  &lt;span class="c1"&gt;# will print &amp;quot;42&amp;quot;.&lt;/span&gt;
+
+&lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;任务&lt;/h5&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;asyncio&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;nested&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;42&lt;/span&gt;
+
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# Schedule nested() to run soon concurrently&lt;/span&gt;
+    &lt;span class="c1"&gt;# with &amp;quot;main()&amp;quot;.&lt;/span&gt;
+    &lt;span class="n"&gt;task&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nested&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# &amp;quot;task&amp;quot; can now be used to cancel &amp;quot;nested()&amp;quot;, or&lt;/span&gt;
+    &lt;span class="c1"&gt;# can simply be awaited to wait until it is complete:&lt;/span&gt;
+    &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+
+&lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h5&gt;Futures&lt;/h5&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;asyncio&lt;/span&gt;
+&lt;span class="k"&gt;async&lt;/span&gt; &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;function_that_returns_a_future_object&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# this is also valid:&lt;/span&gt;
+    &lt;span class="k"&gt;await&lt;/span&gt; &lt;span class="n"&gt;asyncio&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gather&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;function_that_returns_a_future_object&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;
+        &lt;span class="n"&gt;some_python_coroutine&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;一个很好的返回对象的低层级函数的示例是 loop.run_in_executor()。&lt;/p&gt;
+&lt;h4&gt;创建 任务&lt;/h4&gt;
+&lt;h4&gt;任务取消&lt;/h4&gt;
+&lt;h4&gt;任务组¶&lt;/h4&gt;
+&lt;h4&gt;休眠¶&lt;/h4&gt;
+&lt;h4&gt;并发运行任务¶&lt;/h4&gt;
+&lt;h4&gt;主动任务工厂¶&lt;/h4&gt;
+&lt;h4&gt;屏蔽取消操作¶&lt;/h4&gt;
+&lt;h4&gt;超时&lt;/h4&gt;
+&lt;h4&gt;简单等待&lt;/h4&gt;
+&lt;h4&gt;在线程中运行¶&lt;/h4&gt;
+&lt;h4&gt;跨线程调度¶&lt;/h4&gt;
+&lt;h4&gt;内省¶&lt;/h4&gt;
+&lt;h4&gt;Task 对象¶&lt;/h4&gt;</content></entry><entry><title>QEMU调试</title><link href="alan717.github.io/qemu.html" rel="alternate"></link><published>2022-01-10T00:00:00+08:00</published><updated>2022-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-01-10:alan717.github.io/qemu.html</id><summary type="html">qemu调试驱动</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;仿真一个驱动&lt;/p&gt;
 &lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;_get_user_1&lt;/code&gt;函数 拷贝一个字符从用户空间。
@@ -598,8 +759,16 @@ KQ3oSWrOun9XpzbCAMfSHzIgC48w/V1+YGR9n5SlY7V73qnMAJU=
 在此目录下创建 system/etc/security/cacerts 目录，将 e5c3944b.0 文件拷贝到新建的这个目录下
 最终证书路径为 /data/adb/modules/xxx/system/etc/security/cacerts/e5c3944b.0
 重启手机，wifi 界面设置代理 xxx.xxx.xxx.xxx:8888 即可抓包&lt;/p&gt;
-&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>Binary Ninja插件集合</title><link href="alan717.github.io/BinNinja.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/BinNinja.html</id><summary type="html">Binary Ninja</summary><content type="html">&lt;h2&gt;Python API&lt;/h2&gt;
-&lt;p&gt;安装binja的py包。&lt;/p&gt;</content></entry><entry><title>记录英语单词</title><link href="alan717.github.io/danci_en.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/danci_en.html</id><summary type="html">英语单词本</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;Fiddler 方式适合任意抓包软件，只需要将对应证书转换成 xxxxxxxx.0 文件放入 /data/adb/modules/xxx/system/etc/security/cacerts 目录即可&lt;/p&gt;</content></entry><entry><title>Binary Ninja插件集合</title><link href="alan717.github.io/BinNinja.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/BinNinja.html</id><summary type="html">Binary Ninja</summary><content type="html">&lt;h2&gt;plugin调试&lt;/h2&gt;
+&lt;p&gt;直接在&lt;code&gt;C:\Users\Kian\AppData\Roaming\Binary Ninja\plugins&lt;/code&gt;中写dd.py然后  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kn"&gt;import&lt;/span&gt;  &lt;span class="nn"&gt;dd&lt;/span&gt; 
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;importlib&lt;/span&gt;
+
+&lt;span class="n"&gt;importlib&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reload&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dd&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 修改dd.py后每次都要进行这句命令重新加载.&lt;/span&gt;
+&lt;span class="n"&gt;dd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump_mlil&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bv&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;# 然后调用尝试。&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;插件开发时候注意先注释掉&lt;code&gt;register_api&lt;/code&gt;类型的函数.&lt;/p&gt;</content></entry><entry><title>记录英语单词</title><link href="alan717.github.io/danci_en.html" rel="alternate"></link><published>2020-08-13T00:00:00+08:00</published><updated>2020-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2020-08-13:alan717.github.io/danci_en.html</id><summary type="html">英语单词本</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;记录收集的单词本：目标3000个.&lt;/p&gt;
 &lt;h2&gt;list&lt;/h2&gt;
 &lt;ul&gt;

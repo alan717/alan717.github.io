@@ -54,10 +54,171 @@
 
 
   <h2>pre</h2>
+<blockquote>
+<p>Read The Fucking Source Code.</p>
+<p>A picture is worth a thousand words</p>
+</blockquote>
+<h2>MISC</h2>
 <p>asterisk （*）</p>
 <h2>基础</h2>
+<h3>传参</h3>
 <p><code>*args</code>表示*args enable us to pass the variable number of non-keyword arguments to functions, but we cannot use this to pass keyword arguments. Keyword arguments mean that they contain a key-value pair, like a Python dictionary.</p>
 <p><code>**kwargs</code>allows us to pass any number of keyword arguments.</p>
+<h3>修饰器</h3>
+<p>举个例子：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">hello_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">inner1</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;before Execution&quot;</span><span class="p">)</span>
+
+        <span class="c1"># getting the returned value</span>
+        <span class="n">returned_value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;after Execution&quot;</span><span class="p">)</span>
+
+        <span class="c1"># returning the value to the original frame</span>
+        <span class="k">return</span> <span class="n">returned_value</span>
+
+    <span class="k">return</span> <span class="n">inner1</span>
+
+
+<span class="c1"># adding decorator to the function</span>
+<span class="nd">@hello_decorator</span>
+<span class="k">def</span> <span class="nf">sum_two_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inside the function&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+
+<span class="c1"># getting the value through return of the function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sum =&quot;</span><span class="p">,</span> <span class="n">sum_two_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Output:  </p>
+<div class="codehilite"><pre><span></span><code>before Execution
+Inside the function
+after Execution
+Sum = 3
+</code></pre></div>
+
+<h4>chain decorators</h4>
+<div class="codehilite"><pre><span></span><code><span class="c1"># code for testing decorator chaining </span>
+<span class="k">def</span> <span class="nf">decor1</span><span class="p">(</span><span class="n">func</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span> 
+        <span class="n">x</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span> 
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> 
+    <span class="k">return</span> <span class="n">inner</span> 
+
+<span class="k">def</span> <span class="nf">decor</span><span class="p">(</span><span class="n">func</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">inner</span><span class="p">():</span> 
+        <span class="n">x</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span> 
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> 
+    <span class="k">return</span> <span class="n">inner</span> 
+
+<span class="nd">@decor1</span>
+<span class="nd">@decor</span>
+<span class="k">def</span> <span class="nf">num</span><span class="p">():</span> 
+    <span class="k">return</span> <span class="mi">10</span>
+
+<span class="nd">@decor</span>
+<span class="nd">@decor1</span>
+<span class="k">def</span> <span class="nf">num2</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">num</span><span class="p">())</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">num2</span><span class="p">())</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="codehilite"><pre><span></span><code><span class="mf">400</span>
+<span class="mf">200</span>
+</code></pre></div>
+
+<h3>协程</h3>
+<p>一系列api来执行并行任务，给出一些区别。</p>
+<h4>协程</h4>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;world&#39;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>hello
+world
+</code></pre></div>
+
+<p>注意：简单地调用一个协程并不会使其被调度执行</p>
+<div class="codehilite"><pre><span></span><code>main()
+&lt;coroutine object main at 0x1053bb7c8&gt;
+</code></pre></div>
+
+<h4>可等待对象</h4>
+<p>可等待 对象有三种主要类型: 协程, 任务 和 Future.</p>
+<h5>协程</h5>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">nested</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">42</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Nothing happens if we just call &quot;nested()&quot;.</span>
+    <span class="c1"># A coroutine object is created but not awaited,</span>
+    <span class="c1"># so it *won&#39;t run at all*.</span>
+    <span class="n">nested</span><span class="p">()</span>
+
+    <span class="c1"># Let&#39;s do it differently now and await it:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="k">await</span> <span class="n">nested</span><span class="p">())</span>  <span class="c1"># will print &quot;42&quot;.</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
+<h5>任务</h5>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">nested</span><span class="p">():</span>
+    <span class="k">return</span> <span class="mi">42</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Schedule nested() to run soon concurrently</span>
+    <span class="c1"># with &quot;main()&quot;.</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">nested</span><span class="p">())</span>
+
+    <span class="c1"># &quot;task&quot; can now be used to cancel &quot;nested()&quot;, or</span>
+    <span class="c1"># can simply be awaited to wait until it is complete:</span>
+    <span class="k">await</span> <span class="n">task</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</code></pre></div>
+
+<h5>Futures</h5>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">function_that_returns_a_future_object</span><span class="p">()</span>
+
+    <span class="c1"># this is also valid:</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span>
+        <span class="n">function_that_returns_a_future_object</span><span class="p">(),</span>
+        <span class="n">some_python_coroutine</span><span class="p">()</span>
+    <span class="p">)</span>
+</code></pre></div>
+
+<p>一个很好的返回对象的低层级函数的示例是 loop.run_in_executor()。</p>
+<h4>创建 任务</h4>
+<h4>任务取消</h4>
+<h4>任务组¶</h4>
+<h4>休眠¶</h4>
+<h4>并发运行任务¶</h4>
+<h4>主动任务工厂¶</h4>
+<h4>屏蔽取消操作¶</h4>
+<h4>超时</h4>
+<h4>简单等待</h4>
+<h4>在线程中运行¶</h4>
+<h4>跨线程调度¶</h4>
+<h4>内省¶</h4>
+<h4>Task 对象¶</h4>
 
 
     </main>
