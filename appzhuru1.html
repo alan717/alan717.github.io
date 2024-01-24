@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="注入app">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>App注入1 | LK's blog</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81WR95YF48"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-81WR95YF48');
+    </script>
+  </head>
+
+  <body>
+    <header class="intro-header" style="background-image: url('/img/background.webp')">
+         <div class="site-heading">
+          <h1><a href="/">探索,进取,坚持</a></h1>
+         </div>
+      <nav>
+        <h2>LK's blog</h2>
+        <ul>
+          <li><a href="/">Blog</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/atom.xml">Atom Feed</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+    
+
+  
+  <h1>App注入1</h1>
+  
+
+  <aside>
+    <p>published on 2019-04-25
+
+    
+    · tagged with
+      
+        <a href="/tags/apk.html">#apk</a> and 
+        <a href="/tags/inject.html">#inject</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>pre</h2>
+<p>app一直检测我的package list.烦人，我注入你。</p>
+<h2>frida+lief</h2>
+<blockquote>
+<p>pip install lief </p>
+</blockquote>
+<p>python：  </p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">lief</span>
+
+<span class="n">libnative</span> <span class="o">=</span> <span class="n">lief</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;libsafeguard.so&quot;</span><span class="p">)</span>
+<span class="n">libnative</span><span class="o">.</span><span class="n">add_library</span><span class="p">(</span><span class="s2">&quot;libdd.so&quot;</span><span class="p">)</span>  <span class="c1"># Injection!</span>
+<span class="n">libnative</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;libsafeguard.so.1&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>下载：libgadget</p>
+<p>具体实现看frida代码：<code>lib/gadget/gadget.vala</code>
+然后将so上传到手机，配置文件写</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s">&quot;interaction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;script&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/sdcard/dd.js&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">setImmediate</span><span class="p">(</span><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Java</span><span class="o">.</span><span class="n">perform</span><span class="p">(</span><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">targetClass</span><span class="o">=</span><span class="s1">&#39;com.amap.api.location.AMapLocation&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">methodName</span><span class="o">=</span><span class="s1">&#39;getLongitude&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">gclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Java</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">targetClass</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gclass</span><span class="p">[</span><span class="n">methodName</span><span class="p">]</span><span class="o">.</span><span class="n">overload</span><span class="p">()</span><span class="o">.</span><span class="n">implementation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">GDA[Hook getLongitude()]&#39;</span><span class="o">+</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">this</span><span class="p">[</span><span class="n">methodName</span><span class="p">]();</span>
+<span class="w">        </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">return &#39;</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">108</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">11108.856</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">900</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">})</span>
+<span class="p">})</span>
+
+<span class="n">setImmediate</span><span class="p">(</span><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Java</span><span class="o">.</span><span class="n">perform</span><span class="p">(</span><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">targetClass</span><span class="o">=</span><span class="s1">&#39;com.amap.api.location.AMapLocation&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">methodName</span><span class="o">=</span><span class="s1">&#39;getLatitude&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">gclass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Java</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">targetClass</span><span class="p">);</span>
+<span class="w">    </span><span class="n">gclass</span><span class="p">[</span><span class="n">methodName</span><span class="p">]</span><span class="o">.</span><span class="n">overload</span><span class="p">()</span><span class="o">.</span><span class="n">implementation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">GDA[Hook getLatitude()]&#39;</span><span class="o">+</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">var</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="n">this</span><span class="p">[</span><span class="n">methodName</span><span class="p">]();</span>
+<span class="w">        </span><span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">return &#39;</span><span class="o">+</span><span class="n">i</span><span class="p">);</span>
+<span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">34</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">1234.160</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">Math</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">900</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<p>libdd.config.so 文件配置和so同配置.</p>
+
+
+    </main>
+    <footer>
+      <p>This website was built with <a href="https://github.com/venthur/blag">blag</a>.
+      <br>
+      Subscribe to the <a href="/atom.xml">atom feed</a>.
+      <br>
+      Contact me via
+        <a rel="me" href="https://t.me/sdqqwafdryref">sdqqwafdryref@T@G</a> or
+        <a href="https://github.com/alan717">alan717@Github</a>.
+      </p>
+    </footer>
+  </body>
+
+</html>
