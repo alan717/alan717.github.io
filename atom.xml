@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>探索,进取,坚持</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-01-22T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>提取内核DTB</title><link href="alan717.github.io/extract_dtb.html" rel="alternate"></link><published>2024-01-22T00:00:00+08:00</published><updated>2024-01-22T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-22:alan717.github.io/extract_dtb.html</id><summary type="html">提取DTB</summary><content type="html">&lt;h2&gt;Pre&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>阿凯的博客</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-01-30T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>Ubuntu 23.04 dns解决办法</title><link href="alan717.github.io/ubuntu_dns.html" rel="alternate"></link><published>2024-01-30T00:00:00+08:00</published><updated>2024-01-30T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-30:alan717.github.io/ubuntu_dns.html</id><summary type="html">dns问题解决汇总</summary><content type="html">&lt;h2&gt;问题1： 新安装ubuntu nslookup baidu.com 一直无法解析域名 dns指向127.0.0.53：53&lt;/h2&gt;
+&lt;p&gt;正常情况下 ubuntu 新安装dns不会有什么问题，但是&lt;/p&gt;</content></entry><entry><title>a UE4 game re.</title><link href="alan717.github.io/ue4_re.html" rel="alternate"></link><published>2024-01-23T00:00:00+08:00</published><updated>2024-01-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-23:alan717.github.io/ue4_re.html</id><summary type="html">ue4 game.</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;com.xd.
+&lt;a href=""&gt;https://github.com/kp7742/UE4Dumper&lt;/a&gt;
+&lt;a href=""&gt;https://www.wolai.com/heHPqMdAtvPcJkpyeiwpeK&lt;/a&gt;
+&lt;a href=""&gt;https://www.cnblogs.com/revercc/p/17627503.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;ue4&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ue4+release-4.26-cl-0&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;search for GUobjectArray with &lt;code&gt;"Max UObject count is invalid. It must be a number that is greater than 0."&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;search for GName with &lt;code&gt;"ByteProperty"&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;in function &lt;code&gt;FString FNameEntry::GetPlainNameString() const&lt;/code&gt; location file &lt;code&gt;Engine\Source\Runtime\Core\Private\UObject\UnrealNames.cpp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;function &lt;code&gt;FName::GetComparisonNameEntry&lt;/code&gt; is necessary for GName.&lt;/p&gt;
+&lt;p&gt;get those data offset with dumper tool.&lt;/p&gt;
+&lt;h2&gt;tol&lt;/h2&gt;
+&lt;p&gt;enjoy it!&lt;/p&gt;</content></entry><entry><title>提取内核DTB</title><link href="alan717.github.io/extract_dtb.html" rel="alternate"></link><published>2024-01-22T00:00:00+08:00</published><updated>2024-01-22T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-22:alan717.github.io/extract_dtb.html</id><summary type="html">提取DTB</summary><content type="html">&lt;h2&gt;Pre&lt;/h2&gt;
 &lt;p&gt;在新内核3.5.7以后有了DTB，所以要进行提取。之前没有dtb是uboot传递给内核设备信息。&lt;/p&gt;
 &lt;h2&gt;提取思路&lt;/h2&gt;
 &lt;p&gt;DTB_HEADER是= b&amp;rdquo;\xd0\x0d\xfe\xed&amp;rdquo;
@@ -179,6 +195,11 @@ if __name__ == &amp;quot;__main__&amp;quot;:
 &lt;h1&gt;include &lt;asm/uaccess.h&gt;&lt;/h1&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;err3&lt;/h2&gt;</content></entry><entry><title>emacs使用记录</title><link href="alan717.github.io/emacs.html" rel="alternate"></link><published>2024-01-10T00:00:00+08:00</published><updated>2024-01-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-10:alan717.github.io/emacs.html</id><summary type="html">emacs日常使用的方方面面</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;system&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;variable&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;defined&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;‘&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="err"&gt;’&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Its&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;--build x86_64-linux-gnu --prefix=/usr --sharedstatedir=/var/lib --libexecdir=/usr/lib --localstatedir=/var/lib --infodir=/usr/share/info --mandir=/usr/share/man --enable-libsystemd --with-pop=yes --enable-locallisppath=/etc/emacs:/usr/local/share/emacs/27.1/site-lisp:/usr/local/share/emacs/site-lisp:/usr/share/emacs/27.1/site-lisp:/usr/share/emacs/site-lisp --with-sound=alsa --without-gconf --with-mailutils --build x86_64-linux-gnu --prefix=/usr --sharedstatedir=/var/lib --libexecdir=/usr/lib --localstatedir=/var/lib --infodir=/usr/share/info --mandir=/usr/share/man --enable-libsystemd --with-pop=yes --enable-locallisppath=/etc/emacs:/usr/local/share/emacs/27.1/site-lisp:/usr/local/share/emacs/site-lisp:/usr/share/emacs/27.1/site-lisp:/usr/share/emacs/site-lisp --with-sound=alsa --without-gconf --with-mailutils --with-cairo --with-x=yes --with-x-toolkit=gtk3 --with-toolkit-scroll-bars &amp;#39;CFLAGS=-g -O2 -ffile-prefix-map=/build/emacs-WL9mhG/emacs-27.1+1=. -fstack-protector-strong -Wformat -Werror=format-security -Wall&amp;#39; &amp;#39;CPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=2&amp;#39; &amp;#39;LDFLAGS=-Wl,-Bsymbolic-functions -Wl,-z,relro&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;ubuntu 环境下使用emacs.
 emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很不自觉就使用上了。
 &amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD&lt;/p&gt;
@@ -219,7 +240,14 @@ emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很�
 &lt;li&gt;&lt;code&gt;STP&lt;/code&gt;=Store Pair
 存一对儿，小端存储顺序，从小到大。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;RSB OP1 OP2&lt;/code&gt; OP2-OP1 反向减法。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MOVK&lt;/code&gt; Move wide with keep 将一个可选移位的 16 位立即值移动到一个寄存器中，保持其他位不变。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;MOVK&lt;/code&gt; Move wide with keep 将一个可选移位的 16 位立即值移动到一个寄存器中，保持其他位不变。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MOVT 把立即数放到高16bit  mov thumb 头.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;MOVW 把立即数放到低16bit. mov wide &lt;/li&gt;
+&lt;li&gt;LDR  加载到寄存器中.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;寄存器&lt;/h2&gt;
 &lt;p&gt;AArch 拥有 31 个通用寄存器，系统运行在 64 位状态下的时候名字叫 Xn，运行在 32 位的时候就叫 Wn.
@@ -430,7 +458,73 @@ emacs 使用快捷键之后就是肌肉记忆，不用记忆都记住了。很�
 自分でパソコンを修理しました。
 自己修好電腦。
 家族で旅行します。
-全家一起去旅行。&lt;/p&gt;</content></entry><entry><title>安捷伦衍射仪分析</title><link href="alan717.github.io/anjielun.html" rel="alternate"></link><published>2022-11-23T00:00:00+08:00</published><updated>2022-11-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-11-23:alan717.github.io/anjielun.html</id><summary type="html">一个安捷伦衍射仪的分析</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
+全家一起去旅行。&lt;/p&gt;</content></entry><entry><title>排序算法</title><link href="alan717.github.io/__sort.html" rel="alternate"></link><published>2023-02-23T00:00:00+08:00</published><updated>2023-02-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2023-02-23:alan717.github.io/__sort.html</id><summary type="html">排序算法汇总</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;本质上还是属于原地算法
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;冒泡排序&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"&gt;ref:&lt;/a&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="k"&gt;function&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;bubble_sort&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;array,&lt;span class="w"&gt; &lt;/span&gt;length&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;var&lt;span class="w"&gt; &lt;/span&gt;i,&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;length-1&lt;span class="o"&gt;){&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;to&lt;span class="w"&gt; &lt;/span&gt;length-2-i&lt;span class="o"&gt;){&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;[&lt;/span&gt;j&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;[&lt;/span&gt;j+1&lt;span class="o"&gt;])&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;swap&lt;span class="o"&gt;(&lt;/span&gt;array&lt;span class="o"&gt;[&lt;/span&gt;j&lt;span class="o"&gt;]&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;array&lt;span class="o"&gt;[&lt;/span&gt;j+1&lt;span class="o"&gt;])&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;梳排序&lt;/h2&gt;
+&lt;h2&gt;选择排序&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;void&lt;span class="w"&gt; &lt;/span&gt;selection_sort&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="o"&gt;[]&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i,j,temp&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="w"&gt; &lt;/span&gt;-&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i++&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;min&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;j&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j++&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt;     &lt;/span&gt;//走訪未排序的元素
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;j&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;&lt;span class="w"&gt; &lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;min&lt;span class="o"&gt;])&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;//找到目前最小值
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nv"&gt;min&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;j&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;    &lt;/span&gt;//紀錄最小值
+&lt;span class="w"&gt;            &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;min&lt;span class="w"&gt; &lt;/span&gt;!&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;i&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="nv"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;min&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;//交換兩個變數
+&lt;span class="w"&gt;          &lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;min&lt;span class="o"&gt;]=&lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;          &lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]=&lt;/span&gt;temp&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;/*&lt;span class="w"&gt; &lt;/span&gt;swap&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;min&lt;span class="o"&gt;]&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;a&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;])&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;*/&lt;span class="w"&gt;   &lt;/span&gt;//做交換
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+
+/*
+void&lt;span class="w"&gt; &lt;/span&gt;swap&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;*a,int&lt;span class="w"&gt; &lt;/span&gt;*b&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;//交換兩個變數
+&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;temp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*a&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;*a&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;*b&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;*b&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;temp&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+*/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;插入排序&lt;/h2&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;void&lt;span class="w"&gt; &lt;/span&gt;insertion_sort&lt;span class="o"&gt;(&lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;arr&lt;span class="o"&gt;[]&lt;/span&gt;,&lt;span class="w"&gt; &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;len&lt;span class="o"&gt;){&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;int&lt;span class="w"&gt; &lt;/span&gt;i,j,key&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;i&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;i!&lt;span class="o"&gt;=&lt;/span&gt;len&lt;span class="p"&gt;;&lt;/span&gt;++i&lt;span class="o"&gt;){&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nv"&gt;key&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arr&lt;span class="o"&gt;[&lt;/span&gt;i&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="nv"&gt;j&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;i-1&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="o"&gt;((&lt;/span&gt;j&amp;gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;arr&lt;span class="o"&gt;[&lt;/span&gt;j&lt;span class="o"&gt;]&lt;/span&gt;&amp;gt;key&lt;span class="o"&gt;))&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;                        &lt;/span&gt;arr&lt;span class="o"&gt;[&lt;/span&gt;j+1&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;arr&lt;span class="o"&gt;[&lt;/span&gt;j&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;                        &lt;/span&gt;j--&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;arr&lt;span class="o"&gt;[&lt;/span&gt;j+1&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;key&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>安捷伦衍射仪分析</title><link href="alan717.github.io/anjielun.html" rel="alternate"></link><published>2022-11-23T00:00:00+08:00</published><updated>2022-11-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-11-23:alan717.github.io/anjielun.html</id><summary type="html">一个安捷伦衍射仪的分析</summary><content type="html">&lt;h2&gt;env&lt;/h2&gt;
 &lt;p&gt;接触了一个实验室的安捷伦衍射仪的分析
 全称是:&lt;code&gt;6230B 飞行时间 (TOF) 液质联用系统&lt;/code&gt;
 这个衍射仪还很火，看到很多学校的实验室都有这个设备原名tofserver
@@ -477,7 +571,12 @@ after&lt;br&gt;
 &lt;h3&gt;难度四：数据结构复杂度&lt;/h3&gt;
 &lt;p&gt;在go中的切片 数组结构体，字典都有自定义的数据结构需要来识别。在没有魔改的情况下，直接对照源码可以分析，如果进行了魔改就要凭借经验来识别并进行分析处理。&lt;/p&gt;
 &lt;h4&gt;string&lt;/h4&gt;
-&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;</content></entry><entry><title>Python高级语法</title><link href="alan717.github.io/python_advance.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/python_advance.html</id><summary type="html">py</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;go的字符不像arm那样直接存储，因为是强类型，所以是直接存在字符表中类似于elf的字符表，然后根据长度和offset来加载，在追踪时候和别的不同，需要注意。&lt;/p&gt;
+&lt;h2&gt;info&lt;/h2&gt;
+&lt;h3&gt;GOPATH&lt;/h3&gt;
+&lt;p&gt;GOPATH is a variable that defines the root of your workspace.&lt;/p&gt;
+&lt;h3&gt;GOROOT&lt;/h3&gt;
+&lt;p&gt;GOROOT is a variable that defines where your Go SDK is located. &lt;/p&gt;</content></entry><entry><title>Python高级语法</title><link href="alan717.github.io/python_advance.html" rel="alternate"></link><published>2022-08-13T00:00:00+08:00</published><updated>2022-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2022-08-13:alan717.github.io/python_advance.html</id><summary type="html">py</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Read The Fucking Source Code.&lt;/p&gt;
 &lt;p&gt;A picture is worth a thousand words&lt;/p&gt;
@@ -871,9 +970,146 @@ cs_version
 &lt;p&gt;lib.exe  /DEF:C:\Users\Kian\Desktop\capstone.def /OUT:C:\Users\Kian\Desktop\capstone.lib
 生成对应的lib文件。
 &lt;/p&gt;
-&lt;/blockquote&gt;</content></entry><entry><title>Lua-5.1 long string comments分析四</title><link href="alan717.github.io/lua51-longSC.html" rel="alternate"></link><published>2019-09-26T00:00:00+08:00</published><updated>2019-09-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-26:alan717.github.io/lua51-longSC.html</id><summary type="html">注释和长字符。</summary><content type="html"></content></entry><entry><title>Lua-5.1 varargs分析三</title><link href="alan717.github.io/lua51-varargs.html" rel="alternate"></link><published>2019-09-20T00:00:00+08:00</published><updated>2019-09-20T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-20:alan717.github.io/lua51-varargs.html</id><summary type="html">varargs特性.</summary><content type="html"></content></entry><entry><title>Lua-5.1 gc分析二</title><link href="alan717.github.io/lua51-gc.html" rel="alternate"></link><published>2019-09-10T00:00:00+08:00</published><updated>2019-09-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-10:alan717.github.io/lua51-gc.html</id><summary type="html">garbase collect.</summary><content type="html"></content></entry><entry><title>Lua-5.1 coroutine分析二</title><link href="alan717.github.io/lua51-coroutine.html" rel="alternate"></link><published>2019-08-26T00:00:00+08:00</published><updated>2019-08-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-26:alan717.github.io/lua51-coroutine.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;h2&gt;coroutine&lt;/h2&gt;</content></entry><entry><title>kernel-mm内存页</title><link href="alan717.github.io/krnl_mm.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/krnl_mm.html</id><summary type="html">krnl</summary><content type="html">&lt;h2&gt;pagemap页映射：&lt;/h2&gt;
+&lt;/blockquote&gt;</content></entry><entry><title>Lua-5.1 long string comments分析四</title><link href="alan717.github.io/lua51-longSC.html" rel="alternate"></link><published>2019-09-26T00:00:00+08:00</published><updated>2019-09-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-26:alan717.github.io/lua51-longSC.html</id><summary type="html">注释和长字符。</summary><content type="html"></content></entry><entry><title>Lua-5.1 varargs分析三</title><link href="alan717.github.io/lua51-varargs.html" rel="alternate"></link><published>2019-09-20T00:00:00+08:00</published><updated>2019-09-20T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-20:alan717.github.io/lua51-varargs.html</id><summary type="html">varargs特性.</summary><content type="html"></content></entry><entry><title>kernel-mm内存三部曲-2</title><link href="alan717.github.io/krnl-mm2.html" rel="alternate"></link><published>2019-09-13T00:00:00+08:00</published><updated>2019-09-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-13:alan717.github.io/krnl-mm2.html</id><summary type="html">krnl-2</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;read the fuck code!
+A picture is worth a thousand words.&lt;/p&gt;
+&lt;/blockquote&gt;</content></entry><entry><title>Lua-5.1 gc分析二</title><link href="alan717.github.io/lua51-gc.html" rel="alternate"></link><published>2019-09-10T00:00:00+08:00</published><updated>2019-09-10T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-09-10:alan717.github.io/lua51-gc.html</id><summary type="html">garbase collect.</summary><content type="html"></content></entry><entry><title>Lua-5.1 coroutine分析二</title><link href="alan717.github.io/lua51-coroutine.html" rel="alternate"></link><published>2019-08-26T00:00:00+08:00</published><updated>2019-08-26T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-26:alan717.github.io/lua51-coroutine.html</id><summary type="html">初步编译器分析</summary><content type="html">&lt;h2&gt;coroutine&lt;/h2&gt;</content></entry><entry><title>kernel-mm映射三部曲-1</title><link href="alan717.github.io/krnl_mm.html" rel="alternate"></link><published>2019-08-13T00:00:00+08:00</published><updated>2019-08-13T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2019-08-13:alan717.github.io/krnl_mm.html</id><summary type="html">页表-1</summary><content type="html">&lt;blockquote&gt;
+&lt;p&gt;read the fuck code!&lt;br&gt;
+A picture is worth a thousand words.&lt;/p&gt;
+&lt;p&gt;现在使用的机器是linux3.0.35,arm 32bit需要处理一下内存,一次就处理完&lt;br&gt;
+本文只记录实际的应用，不做科普普及，如需要详尽书面知识请查阅相关wiki.&lt;br&gt;
+不关心整体，因为整体不在本次关注点内  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;虚拟地址和物理地址&lt;/h2&gt;
+&lt;p&gt;下边的代码中v6是虚拟地址加上0x90000000, 在内核中找到对应代码.
+对应的代码为 &lt;code&gt;__pa(virtual_address)&amp;gt;&amp;gt;PAGE_SHIFT&lt;/code&gt;.可知v6为physical address.
+从而得出物理地址得出是虚拟地址加0x90000000.&lt;br&gt;
+&lt;code&gt;#define PFN_PHYS(x)    ((phys_addr_t)(x) &amp;lt;&amp;lt; PAGE_SHIFT)&lt;/code&gt;
+为页框转为物理地址.&lt;/p&gt;
+&lt;p&gt;反向则为物理地址转页框PFN.&lt;code&gt;&amp;gt;&amp;gt;12&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;set_bit(10, mem_map + 32 * ((v6 &amp;gt;&amp;gt; 12) - 0x10000))&lt;/code&gt;
+其中mem_map是内核的导出符号，从导入表可以看到。mem_map其实保存了 page信息。
+其次&lt;code&gt;mem_map + 32 * ((v6 &amp;gt;&amp;gt; 12) - 0x10000)&lt;/code&gt;对应的函数宏为 v6为&lt;code&gt;__pa&lt;/code&gt;得到的物理地址，然后&lt;code&gt;&amp;gt;&amp;gt;PAGE_SHIFT&lt;/code&gt;
+为得到的页框pfn,然后&lt;code&gt;pfn-0x10000&amp;lt;&amp;lt;5&lt;/code&gt;得到的是page页虚拟地址. 这个计算过程对应的宏是&lt;code&gt;pfn_to_page&lt;/code&gt;
+然后验证一下：&lt;/p&gt;
+&lt;p&gt;先看page数据结构：&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt; * Common helper functions.&lt;/span&gt;
+&lt;span class="cm"&gt; */&lt;/span&gt;
+&lt;span class="nx"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;long&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;__get_free_pages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;gfp_t&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;gfp_mask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;order&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
+&lt;span class="cm"&gt;     * __get_free_pages() returns a 32-bit address, which cannot represent&lt;/span&gt;
+&lt;span class="cm"&gt;     * a highmem page&lt;/span&gt;
+&lt;span class="cm"&gt;     */&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;VM_BUG_ON&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="nx"&gt;gfp_mask&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;__GFP_HIGHMEM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;!=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;alloc_pages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;gfp_mask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;order&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(!&lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;page_address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;直接分page 然后page_address:  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;defined&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;HASHED_PAGE_VIRTUAL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;defined&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;WANT_PAGE_VIRTUAL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;page_address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;lowmem_page_address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;set_page_address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;page&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;address&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nx"&gt;page_address_init&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nx"&gt;do&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="nx"&gt;endif&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;lowmem_page_address:  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/vmstat.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;__always_inline&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;lowmem_page_address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;__va&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PFN_PHYS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page_to_pfn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)));&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;page_to_pfn：  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="gh"&gt;#&lt;/span&gt;define page_to_pfn __page_to_pfn
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;__page_to_pfn：
+因为内核分为三种内存模型，要确定是哪一种内存模型：&lt;br&gt;
+* CONFIG_FLATMEM 平坦内存
+* CONFIG_DISCONTIGMEM   不连续内存
+* CONFIG_SPARSEMEM    稀疏内存 支持热插拔
+是arm设备，所以是flatmem了，不用看config文件了。&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;/*&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;supports&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;memory&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*/&lt;/span&gt;
+#&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;defined&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CONFIG_FLATMEM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+#&lt;span class="n"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;__pfn_to_page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mem_map&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;ARCH_PFN_OFFSET&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+#&lt;span class="n"&gt;define&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;__page_to_pfn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)((&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;mem_map&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;\&lt;/span&gt;
+&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="n"&gt;ARCH_PFN_OFFSET&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+#&lt;span class="n"&gt;elif&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;defined&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CONFIG_DISCONTIGMEM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;通过上边得代码可推定ARCH_PFN_OFFSET为0x10000.
+验证：
+&lt;code&gt;#define ARCH_PFN_OFFSET        PHYS_PFN_OFFSET&lt;/code&gt;
+&lt;code&gt;#define PHYS_PFN_OFFSET    (PHYS_OFFSET &amp;gt;&amp;gt; PAGE_SHIFT)&lt;/code&gt;&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;#ifndef PHYS_OFFSET&lt;/span&gt;
+&lt;span class="cp"&gt;#define PHYS_OFFSET         UL(CONFIG_DRAM_BASE)&lt;/span&gt;
+&lt;span class="cp"&gt;#endif&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;推定上边得代码是 推page&lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/init.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/kernel.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/module.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/mm_types.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/mm.h&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cp"&gt;include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;linux/gfp.h&amp;gt;&lt;/span&gt;
+
+&lt;span class="c1"&gt;//内核模块初始化函数&lt;/span&gt;
+&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;__init&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;lkm_init&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;struct&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;alloc_pages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GFP_KERNEL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virt_address&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;page_address&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;printk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;virtual addr = 0x%lx&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virt_address&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;page_to_pfn&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;printk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pfn = %d&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;phys_address&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PFN_PHYS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pfn&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;printk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;phys addr = 0x%lx&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;phys_address&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virt_address1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;unsigned&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;long&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;__va&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;phys_address&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;printk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;virtual addr1 = 0x%lx&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;virt_address1&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;free_pages&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;virt_address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;//内核模块退出函数&lt;/span&gt;
+&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;__exit&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;lkm_exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;printk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Goodbye&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+
+&lt;span class="n"&gt;module_init&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lkm_init&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;module_exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lkm_exit&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="n"&gt;MODULE_LICENSE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GPL&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2&gt;用户层的页表映射&lt;/h2&gt;
+&lt;h3&gt;pagemap页映射：&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;/proc/pid/pagemap&lt;/code&gt;
-该文件允许用户空间程序找出每个虚拟页映射到物理帧。每个虚拟页面对应一个64位的值。包含以下数据（fs/proc/task_mmu.c，pagemap_read方法读取）
+该文件允许用户空间程序找出每个虚拟页映射到物理帧(内核书中描写为页框)。每个虚拟页面对应一个64位的值。包含以下数据（fs/proc/task_mmu.c，pagemap_read方法读取）
 * Bits 0-54 page frame number (PFN) if present&lt;br&gt;
 &lt;em&gt; Bits 0-4 swap type if swapped&lt;br&gt;
 &lt;/em&gt; Bits 5-54 swap offset if swapped&lt;br&gt;
@@ -955,6 +1191,9 @@ cs_version
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2&gt;线性地址转换（MMU）4-levle页表&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;4级页表存在19年以前的发行版中，新的发行版已经是默认支持5级页表了。5级页表支持64TB以上的ram内存。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;地址是直接传递给MMU而非物理地址&lt;/li&gt;
 &lt;li&gt;64-bit linear address is split into some parts. Only low 48 bits are significant, it means that &lt;code&gt;2^48&lt;/code&gt; or &lt;code&gt;256&lt;/code&gt; TBytes of linear-address space may be accessed at any given time.&lt;/li&gt;
@@ -997,7 +1236,6 @@ Every access to a linear address is either a supervisor-mode access or a user-mo
 &lt;li&gt;P - present bit. Current bit indicates was page table or physical page loaded into primary memory or not.
 Ok, we know about the paging structures and their entries. Now let&amp;rsquo;s see some details about 4-level paging in the Linux kernel.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;4级页表存在19年以前的发行版中，新的发行版已经是默认支持5级页表了。5级页表支持64TB以上的ram内存。&lt;/p&gt;
 &lt;p&gt;关闭内核5级页表使用&lt;code&gt;no5lvl&lt;/code&gt;或者检查是否开启5级页表用&lt;code&gt;lscpu | grep -i la57&lt;/code&gt;
 还有就是&lt;code&gt;CONFIG_X86_5LEVEL&lt;/code&gt;配置可以直接看到 
 5级页表本质上在PUD的前一级加了一个P4D,然后在位数上从48位拓冲到57位。&lt;/p&gt;
