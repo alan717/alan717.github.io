@@ -71,14 +71,16 @@
 
   <h2>新安装ubuntu nslookup baidu.com 一直无法解析域名 dns指向127.0.0.53：53</h2>
 <p>正常情况下 ubuntu 新安装dns不会有什么问题.</p>
-<h3>办法1：</h3>
-<p>解决办法:重启dns服务<br>
-<code>sudo systemctl restart systemd-resolve</code>
-如果无法解决,停用systemd-resolve服务.排除systemd-resolve引起的错误.
-<code>sudo systemctl stop systemd-resolve</code>
-<code>vim /etc/resolve.cfg</code>
-修改<code>nameserver 8.8.8.8</code>
-如果还未解决.</p>
+<h3>解决办法一：重启dns服务或暂停服务</h3>
+<p>通常情况下<br>
+解决办法:重启dns服务  <br>
+<code>sudo systemctl restart systemd-resolve</code><br>
+如果无法解决,停用systemd-resolve服务.排除systemd-resolve引起的错误.<br>
+<code>sudo systemctl stop systemd-resolve</code><br>
+<code>vim /etc/resolv.conf</code> <br>
+修改<code>nameserver 8.8.8.8</code><br>
+尝试<code>nslookup qq.com</code>查看解析路径,尝试解析路径，如果无法返回，请检查iptable设置，流量是否正确转发。</p>
+<h3>解决办法二：引入新的管理工具</h3>
 
 
   </ul>

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>阿凯的博客</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-01-30T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>Ubuntu 23.04 dns解决办法</title><link href="alan717.github.io/ubuntu_dns.html" rel="alternate"></link><published>2024-01-30T00:00:00+08:00</published><updated>2024-01-30T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-30:alan717.github.io/ubuntu_dns.html</id><summary type="html">dns问题解决汇总</summary><content type="html">&lt;h2&gt;新安装ubuntu nslookup baidu.com 一直无法解析域名 dns指向127.0.0.53：53&lt;/h2&gt;
 &lt;p&gt;正常情况下 ubuntu 新安装dns不会有什么问题.&lt;/p&gt;
-&lt;h3&gt;办法1：&lt;/h3&gt;
-&lt;p&gt;解决办法:重启dns服务&lt;br&gt;
-&lt;code&gt;sudo systemctl restart systemd-resolve&lt;/code&gt;
-如果无法解决,停用systemd-resolve服务.排除systemd-resolve引起的错误.
-&lt;code&gt;sudo systemctl stop systemd-resolve&lt;/code&gt;
-&lt;code&gt;vim /etc/resolve.cfg&lt;/code&gt;
-修改&lt;code&gt;nameserver 8.8.8.8&lt;/code&gt;
-如果还未解决.&lt;/p&gt;</content></entry><entry><title>a UE4 game re.</title><link href="alan717.github.io/ue4_re.html" rel="alternate"></link><published>2024-01-23T00:00:00+08:00</published><updated>2024-01-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-23:alan717.github.io/ue4_re.html</id><summary type="html">ue4 game.</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;h3&gt;解决办法一：重启dns服务或暂停服务&lt;/h3&gt;
+&lt;p&gt;通常情况下&lt;br&gt;
+解决办法:重启dns服务  &lt;br&gt;
+&lt;code&gt;sudo systemctl restart systemd-resolve&lt;/code&gt;&lt;br&gt;
+如果无法解决,停用systemd-resolve服务.排除systemd-resolve引起的错误.&lt;br&gt;
+&lt;code&gt;sudo systemctl stop systemd-resolve&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;vim /etc/resolv.conf&lt;/code&gt; &lt;br&gt;
+修改&lt;code&gt;nameserver 8.8.8.8&lt;/code&gt;&lt;br&gt;
+尝试&lt;code&gt;nslookup qq.com&lt;/code&gt;查看解析路径,尝试解析路径，如果无法返回，请检查iptable设置，流量是否正确转发。&lt;/p&gt;
+&lt;h3&gt;解决办法二：引入新的管理工具&lt;/h3&gt;</content></entry><entry><title>a UE4 game re.</title><link href="alan717.github.io/ue4_re.html" rel="alternate"></link><published>2024-01-23T00:00:00+08:00</published><updated>2024-01-23T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-01-23:alan717.github.io/ue4_re.html</id><summary type="html">ue4 game.</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;com.xd.
 &lt;a href=""&gt;https://github.com/kp7742/UE4Dumper&lt;/a&gt;
 &lt;a href=""&gt;https://www.wolai.com/heHPqMdAtvPcJkpyeiwpeK&lt;/a&gt;
