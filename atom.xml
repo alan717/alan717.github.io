@@ -1,11 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>阿凯的博客</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-03-01T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>记无源码给闭源内核写模块</title><link href="alan717.github.io/mod_problem.html" rel="alternate"></link><published>2024-03-01T00:00:00+08:00</published><updated>2024-03-01T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-01:alan717.github.io/mod_problem.html</id><summary type="html">给一个产品的linux写内核模块</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>阿凯的博客</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-03-04T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>多peer组网-wireguard使用</title><link href="alan717.github.io/wireguard_cfg.html" rel="alternate"></link><published>2024-03-04T00:00:00+08:00</published><updated>2024-03-04T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-04:alan717.github.io/wireguard_cfg.html</id><summary type="html">使用wireguard连接家庭内网</summary><content type="html">&lt;h2&gt;简要&lt;/h2&gt;
+&lt;p&gt;wireguard简单理解就是非对称加密的peer-2-peer连接，所以配置依赖公私钥.&lt;/p&gt;
+&lt;h2&gt;使用&lt;/h2&gt;
+&lt;p&gt;使用wireguard生成公私钥.&lt;/p&gt;
+&lt;h3&gt;生成密钥对&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;wg genkey | sudo tee /etc/wireguard/src_private.key&lt;/code&gt;
+&lt;code&gt;sudo cat /etc/wireguard/src_private.key | wg pubkey | sudo tee /etc/wireguard/srv_public.key&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;服务器端配置&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/etc/wireguard/wg0.conf
+&lt;span class="o"&gt;[&lt;/span&gt;Interface&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;PrivateKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;cat&lt;span class="w"&gt; &lt;/span&gt;src_private.key&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;span class="nv"&gt;Address&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.1/24,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::1/64
+&lt;span class="nv"&gt;ListenPort&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;51820&lt;/span&gt;
+&lt;span class="nv"&gt;SaveConfig&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
+
+&lt;span class="nv"&gt;PostUp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;route&lt;span class="w"&gt; &lt;/span&gt;allow&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;wg0&lt;span class="w"&gt; &lt;/span&gt;out&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;eth0
+&lt;span class="nv"&gt;PostUp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iptables&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;nat&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;POSTROUTING&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;-j&lt;span class="w"&gt; &lt;/span&gt;MASQUERADE
+&lt;span class="nv"&gt;PostUp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ip6tables&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;nat&lt;span class="w"&gt; &lt;/span&gt;-I&lt;span class="w"&gt; &lt;/span&gt;POSTROUTING&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;-j&lt;span class="w"&gt; &lt;/span&gt;MASQUERADE
+&lt;span class="nv"&gt;PreDown&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ufw&lt;span class="w"&gt; &lt;/span&gt;route&lt;span class="w"&gt; &lt;/span&gt;delete&lt;span class="w"&gt; &lt;/span&gt;allow&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;wg0&lt;span class="w"&gt; &lt;/span&gt;out&lt;span class="w"&gt; &lt;/span&gt;on&lt;span class="w"&gt; &lt;/span&gt;eth0
+&lt;span class="nv"&gt;PreDown&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;iptables&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;nat&lt;span class="w"&gt; &lt;/span&gt;-D&lt;span class="w"&gt; &lt;/span&gt;POSTROUTING&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;-j&lt;span class="w"&gt; &lt;/span&gt;MASQUERADE
+&lt;span class="nv"&gt;PreDown&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;ip6tables&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;nat&lt;span class="w"&gt; &lt;/span&gt;-D&lt;span class="w"&gt; &lt;/span&gt;POSTROUTING&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;eth0&lt;span class="w"&gt; &lt;/span&gt;-j&lt;span class="w"&gt; &lt;/span&gt;MASQUERADE
+
+&lt;span class="o"&gt;[&lt;/span&gt;Peer&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# client 1&lt;/span&gt;
+&lt;span class="nv"&gt;PublicKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;client1_pub.key&lt;span class="s1"&gt;&amp;#39;s content&lt;/span&gt;
+&lt;span class="s1"&gt;AllowedIPs = 10.8.0.2/32, fd0d:86fa:c3bc::/64&lt;/span&gt;
+&lt;span class="s1"&gt;Endpoint = 203.0.113.1:51820&lt;/span&gt;
+&lt;span class="s1"&gt;[Peer] # client 2&lt;/span&gt;
+&lt;span class="s1"&gt;PublicKey = client2_pub.key&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;content
+&lt;span class="nv"&gt;AllowedIPs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.3/32,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::/64
+&lt;span class="nv"&gt;Endpoint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;203&lt;/span&gt;.0.113.1:51820
+&lt;span class="o"&gt;[&lt;/span&gt;Peer&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="c1"&gt;# client 3 &lt;/span&gt;
+&lt;span class="nv"&gt;PublicKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;client3_pub.key&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;content
+&lt;span class="nv"&gt;AllowedIPs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.4/32,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::/64
+&lt;span class="nv"&gt;Endpoint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;203&lt;/span&gt;.0.113.1:51820
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;系统配置：  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;nano&lt;span class="w"&gt; &lt;/span&gt;/etc/sysctl.conf
+net.ipv4.ip_forward&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;启动：&lt;br&gt;
+&lt;code&gt;wg-quick up wg0&lt;/code&gt;
+停止：&lt;br&gt;
+&lt;code&gt;wg-quick down wg0&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;peer配置&lt;/h3&gt;
+&lt;h4&gt;key-pair&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;wg genkey | sudo tee /etc/wireguard/cli_private.key&lt;/code&gt;
+&lt;code&gt;sudo cat /etc/wireguard/cli_private.key | wg pubkey | sudo tee /etc/wireguard/cli_public.key&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;wg配置&lt;/h4&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;nano&lt;span class="w"&gt; &lt;/span&gt;/etc/wireguard/wg0.conf
+/etc/wireguard/wg0.conf
+&lt;span class="o"&gt;[&lt;/span&gt;Interface&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;PrivateKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;client1&lt;span class="s1"&gt;&amp;#39;s private key.&lt;/span&gt;
+&lt;span class="s1"&gt;Address = 10.8.0.2/24&lt;/span&gt;
+&lt;span class="s1"&gt;Address = fd0d:86fa:c3bc::2/64&lt;/span&gt;
+
+&lt;span class="s1"&gt;[Peer]&lt;/span&gt;
+&lt;span class="s1"&gt;PublicKey = srv&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;key.
+&lt;span class="nv"&gt;AllowedIPs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.0/24,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::/64
+&lt;span class="nv"&gt;Endpoint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;203&lt;/span&gt;.0.113.1:51820
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;启动和暂停和服务器一样。&lt;/p&gt;
+&lt;h3&gt;第二个peer配置&lt;/h3&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;nano&lt;span class="w"&gt; &lt;/span&gt;/etc/wireguard/wg0.conf
+/etc/wireguard/wg0.conf
+&lt;span class="o"&gt;[&lt;/span&gt;Interface&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;PrivateKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;client2&lt;span class="s1"&gt;&amp;#39;s private key.&lt;/span&gt;
+&lt;span class="s1"&gt;Address = 10.8.0.3/24&lt;/span&gt;
+&lt;span class="s1"&gt;Address = fd0d:86fa:c3bc::2/64&lt;/span&gt;
+
+&lt;span class="s1"&gt;[Peer]&lt;/span&gt;
+&lt;span class="s1"&gt;PublicKey = srv&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;key.
+&lt;span class="nv"&gt;AllowedIPs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.0/24,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::/64
+&lt;span class="nv"&gt;Endpoint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;203&lt;/span&gt;.0.113.1:51820
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3&gt;第三个peer配置第四个etc....&lt;/h3&gt;
+&lt;p&gt;这个配置和上边的Peer一样，需要修改的是Peer的私钥和IP.还有服务器端Peer的allowedIPs和Peer的公钥.&lt;/p&gt;</content></entry><entry><title>记无源码给闭源内核写模块</title><link href="alan717.github.io/mod_problem.html" rel="alternate"></link><published>2024-03-01T00:00:00+08:00</published><updated>2024-03-01T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-01:alan717.github.io/mod_problem.html</id><summary type="html">给一个产品的linux写内核模块</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;目标主机没有内核源码，只确定内核大概版本，确定是它修改了内核，和引入了xenomai实时内核.&lt;/p&gt;
 &lt;h2&gt;模块编写&lt;/h2&gt;
 &lt;p&gt;开发很顺利，正向开发就可以&lt;/p&gt;
 &lt;h2&gt;问题&lt;/h2&gt;
 &lt;h3&gt;1.disagrees about version of symbol module_layout&lt;/h3&gt;
-&lt;p&gt;这个内核版本驱动版本号和自己开发的&lt;code&gt;module_layout&lt;/code&gt;版本号不一样导致的，解决办法有2：&lt;br&gt;
+&lt;p&gt;这个内核版本驱动版本号和自己开发的&lt;code&gt;module_layout&lt;/code&gt;版本号不一样导致的，解决办法有2:
 * 找一个内核能加载的内核ko文件，找到&lt;code&gt;____versions&lt;/code&gt;的section ,第一个unsigned int 即为对应内核的版本号，将自己写的内核模块的版本号，手动改为这个版本，即刻加载模块。
 * 将内核的所有版本号导出，此办法分析对应内核的&lt;code&gt;__stop___ksymtab_unused_gpl&lt;/code&gt;的符号， 然后执行一下python脚本即可将所有符号的版本号导出, 导出后找到&lt;code&gt;module_layout&lt;/code&gt;修改对应的版本即可。 &lt;/p&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0x&lt;/span&gt;&lt;span class="si"&gt;%x&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="n"&gt;here&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;

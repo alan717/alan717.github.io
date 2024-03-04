@@ -74,7 +74,7 @@
 <p>开发很顺利，正向开发就可以</p>
 <h2>问题</h2>
 <h3>1.disagrees about version of symbol module_layout</h3>
-<p>这个内核版本驱动版本号和自己开发的<code>module_layout</code>版本号不一样导致的，解决办法有2：<br>
+<p>这个内核版本驱动版本号和自己开发的<code>module_layout</code>版本号不一样导致的，解决办法有2:
 * 找一个内核能加载的内核ko文件，找到<code>____versions</code>的section ,第一个unsigned int 即为对应内核的版本号，将自己写的内核模块的版本号，手动改为这个版本，即刻加载模块。
 * 将内核的所有版本号导出，此办法分析对应内核的<code>__stop___ksymtab_unused_gpl</code>的符号， 然后执行一下python脚本即可将所有符号的版本号导出, 导出后找到<code>module_layout</code>修改对应的版本即可。 </p>
 <div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0x</span><span class="si">%x</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">here</span><span class="p">())</span>
