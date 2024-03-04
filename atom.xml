@@ -4,7 +4,7 @@
 &lt;h2&gt;使用&lt;/h2&gt;
 &lt;p&gt;使用wireguard生成公私钥.&lt;/p&gt;
 &lt;h3&gt;生成密钥对&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;wg genkey | sudo tee /etc/wireguard/src_private.key&lt;/code&gt;
+&lt;p&gt;&lt;code&gt;wg genkey | sudo tee /etc/wireguard/src_private.key&lt;/code&gt; &lt;br&gt;
 &lt;code&gt;sudo cat /etc/wireguard/src_private.key | wg pubkey | sudo tee /etc/wireguard/srv_public.key&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;服务器端配置&lt;/h3&gt;
 &lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;/etc/wireguard/wg0.conf
@@ -42,8 +42,8 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;启动：&lt;br&gt;
-&lt;code&gt;wg-quick up wg0&lt;/code&gt;
-停止：&lt;br&gt;
+&lt;code&gt;wg-quick up wg0&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;停止：&lt;br&gt;
 &lt;code&gt;wg-quick down wg0&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;peer配置&lt;/h3&gt;
 &lt;h4&gt;key-pair&lt;/h4&gt;

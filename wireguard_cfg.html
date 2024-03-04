@@ -73,7 +73,7 @@
 <h2>使用</h2>
 <p>使用wireguard生成公私钥.</p>
 <h3>生成密钥对</h3>
-<p><code>wg genkey | sudo tee /etc/wireguard/src_private.key</code>
+<p><code>wg genkey | sudo tee /etc/wireguard/src_private.key</code> <br>
 <code>sudo cat /etc/wireguard/src_private.key | wg pubkey | sudo tee /etc/wireguard/srv_public.key</code></p>
 <h3>服务器端配置</h3>
 <div class="codehilite"><pre><span></span><code>/etc/wireguard/wg0.conf
@@ -111,8 +111,8 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 
 <p>启动：<br>
-<code>wg-quick up wg0</code>
-停止：<br>
+<code>wg-quick up wg0</code>  </p>
+<p>停止：<br>
 <code>wg-quick down wg0</code></p>
 <h3>peer配置</h3>
 <h4>key-pair</h4>
