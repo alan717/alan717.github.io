@@ -56,6 +56,7 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;span class="nv"&gt;PrivateKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;client1&lt;span class="s1"&gt;&amp;#39;s private key.&lt;/span&gt;
 &lt;span class="s1"&gt;Address = 10.8.0.2/24&lt;/span&gt;
 &lt;span class="s1"&gt;Address = fd0d:86fa:c3bc::2/64&lt;/span&gt;
+&lt;span class="s1"&gt;MTU = 1280&lt;/span&gt;
 
 &lt;span class="s1"&gt;[Peer]&lt;/span&gt;
 &lt;span class="s1"&gt;PublicKey = srv&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;key.
@@ -71,6 +72,8 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;span class="nv"&gt;PrivateKey&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;client2&lt;span class="s1"&gt;&amp;#39;s private key.&lt;/span&gt;
 &lt;span class="s1"&gt;Address = 10.8.0.3/24&lt;/span&gt;
 &lt;span class="s1"&gt;Address = fd0d:86fa:c3bc::2/64&lt;/span&gt;
+&lt;span class="s1"&gt;MTU = 1280&lt;/span&gt;
+
 
 &lt;span class="s1"&gt;[Peer]&lt;/span&gt;
 &lt;span class="s1"&gt;PublicKey = srv&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;key.
@@ -79,7 +82,12 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;第三个peer配置第四个etc....&lt;/h3&gt;
-&lt;p&gt;这个配置和上边的Peer一样，需要修改的是Peer的私钥和IP.还有服务器端Peer的allowedIPs和Peer的公钥.&lt;/p&gt;</content></entry><entry><title>记无源码给闭源内核写模块</title><link href="alan717.github.io/mod_problem.html" rel="alternate"></link><published>2024-03-01T00:00:00+08:00</published><updated>2024-03-01T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-01:alan717.github.io/mod_problem.html</id><summary type="html">给一个产品的linux写内核模块</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;这个配置和上边的Peer一样，需要修改的是Peer的私钥和IP.还有服务器端Peer的allowedIPs和Peer的公钥.&lt;/p&gt;
+&lt;h2&gt;troubleshooting&lt;/h2&gt;
+&lt;h3&gt;stuck on some command&lt;/h3&gt;
+&lt;p&gt;设置MTU降低.就好了&lt;/p&gt;
+&lt;h3&gt;allowedips is none&lt;/h3&gt;
+&lt;p&gt;设置allowedips时候，使用的那个ip的流量和网段prefix，直接使用peer&amp;rsquo;s ip/32即可接受这个ip的所有流量.&lt;/p&gt;</content></entry><entry><title>记无源码给闭源内核写模块</title><link href="alan717.github.io/mod_problem.html" rel="alternate"></link><published>2024-03-01T00:00:00+08:00</published><updated>2024-03-01T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-01:alan717.github.io/mod_problem.html</id><summary type="html">给一个产品的linux写内核模块</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;目标主机没有内核源码，只确定内核大概版本，确定是它修改了内核，和引入了xenomai实时内核.&lt;/p&gt;
 &lt;h2&gt;模块编写&lt;/h2&gt;
 &lt;p&gt;开发很顺利，正向开发就可以&lt;/p&gt;

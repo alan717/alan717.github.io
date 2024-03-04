@@ -125,6 +125,7 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 <span class="nv">PrivateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client1<span class="s1">&#39;s private key.</span>
 <span class="s1">Address = 10.8.0.2/24</span>
 <span class="s1">Address = fd0d:86fa:c3bc::2/64</span>
+<span class="s1">MTU = 1280</span>
 
 <span class="s1">[Peer]</span>
 <span class="s1">PublicKey = srv&#39;</span>s<span class="w"> </span>public<span class="w"> </span>key.
@@ -140,6 +141,8 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 <span class="nv">PrivateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>client2<span class="s1">&#39;s private key.</span>
 <span class="s1">Address = 10.8.0.3/24</span>
 <span class="s1">Address = fd0d:86fa:c3bc::2/64</span>
+<span class="s1">MTU = 1280</span>
+
 
 <span class="s1">[Peer]</span>
 <span class="s1">PublicKey = srv&#39;</span>s<span class="w"> </span>public<span class="w"> </span>key.
@@ -149,6 +152,11 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 
 <h3>第三个peer配置第四个etc....</h3>
 <p>这个配置和上边的Peer一样，需要修改的是Peer的私钥和IP.还有服务器端Peer的allowedIPs和Peer的公钥.</p>
+<h2>troubleshooting</h2>
+<h3>stuck on some command</h3>
+<p>设置MTU降低.就好了</p>
+<h3>allowedips is none</h3>
+<p>设置allowedips时候，使用的那个ip的流量和网段prefix，直接使用peer&rsquo;s ip/32即可接受这个ip的所有流量.</p>
 
 
   </ul>
