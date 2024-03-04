@@ -83,6 +83,11 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 
 &lt;h3&gt;第三个peer配置第四个etc....&lt;/h3&gt;
 &lt;p&gt;这个配置和上边的Peer一样，需要修改的是Peer的私钥和IP.还有服务器端Peer的allowedIPs和Peer的公钥.&lt;/p&gt;
+&lt;h2&gt;测试&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;ping 10.8.0.1&lt;/code&gt;   &lt;br&gt;
+&lt;code&gt;ping 10.8.0.2&lt;/code&gt;   &lt;br&gt;
+&lt;code&gt;ping 10.8.0.3&lt;/code&gt;   &lt;br&gt;
+&lt;code&gt;ping 10.8.0.4&lt;/code&gt;     &lt;/p&gt;
 &lt;h2&gt;troubleshooting&lt;/h2&gt;
 &lt;h3&gt;stuck on some command&lt;/h3&gt;
 &lt;p&gt;设置MTU降低.就好了&lt;/p&gt;
