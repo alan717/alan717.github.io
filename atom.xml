@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>阿凯的博客</title><link href="alan717.github.io/" rel="alternate"></link><link href="alan717.github.io/atom.xml" rel="self"></link><id>alan717.github.io/</id><updated>2024-03-04T00:00:00+08:00</updated><subtitle>LK's blog</subtitle><entry><title>多peer组网-wireguard使用</title><link href="alan717.github.io/wireguard_cfg.html" rel="alternate"></link><published>2024-03-04T00:00:00+08:00</published><updated>2024-03-04T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-04:alan717.github.io/wireguard_cfg.html</id><summary type="html">使用wireguard连接家庭内网</summary><content type="html">&lt;h2&gt;简要&lt;/h2&gt;
+&lt;p&gt;我有两台服务器，一台Linux台式机，一台笔记本，一台Windows台式机,现在需要组网，思前想后，决定用开源方案，可控可玩。&lt;/p&gt;
 &lt;p&gt;wireguard简单理解就是非对称加密的peer-2-peer连接，所以配置依赖公私钥.&lt;/p&gt;
 &lt;h2&gt;使用&lt;/h2&gt;
 &lt;p&gt;使用wireguard生成公私钥.&lt;/p&gt;
@@ -62,6 +63,7 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;span class="s1"&gt;PublicKey = srv&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;key.
 &lt;span class="nv"&gt;AllowedIPs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.0/24,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::/64
 &lt;span class="nv"&gt;Endpoint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;203&lt;/span&gt;.0.113.1:51820
+&lt;span class="nv"&gt;PersistentKeepalive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;启动和暂停和服务器一样。&lt;/p&gt;
@@ -79,6 +81,7 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;span class="s1"&gt;PublicKey = srv&amp;#39;&lt;/span&gt;s&lt;span class="w"&gt; &lt;/span&gt;public&lt;span class="w"&gt; &lt;/span&gt;key.
 &lt;span class="nv"&gt;AllowedIPs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;.8.0.0/24,&lt;span class="w"&gt; &lt;/span&gt;fd0d:86fa:c3bc::/64
 &lt;span class="nv"&gt;Endpoint&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;203&lt;/span&gt;.0.113.1:51820
+&lt;span class="nv"&gt;PersistentKeepalive&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;25&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3&gt;第三个peer配置第四个etc....&lt;/h3&gt;
@@ -92,7 +95,86 @@ net.ipv6.conf.all.forwarding&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="
 &lt;h3&gt;stuck on some command&lt;/h3&gt;
 &lt;p&gt;设置MTU降低.就好了&lt;/p&gt;
 &lt;h3&gt;allowedips is none&lt;/h3&gt;
-&lt;p&gt;设置allowedips时候，使用的那个ip的流量和网段prefix，直接使用peer&amp;rsquo;s ip/32即可接受这个ip的所有流量.&lt;/p&gt;</content></entry><entry><title>记无源码给闭源内核写模块</title><link href="alan717.github.io/mod_problem.html" rel="alternate"></link><published>2024-03-01T00:00:00+08:00</published><updated>2024-03-01T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-01:alan717.github.io/mod_problem.html</id><summary type="html">给一个产品的linux写内核模块</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
+&lt;p&gt;设置allowedips时候，使用的那个ip的流量和网段prefix，直接使用peer&amp;rsquo;s ip/32即可接受这个ip的所有流量.&lt;/p&gt;</content></entry><entry><title>多peer组网-远程唤醒Ubuntu主机</title><link href="alan717.github.io/wol.html" rel="alternate"></link><published>2024-03-04T00:00:00+08:00</published><updated>2024-03-04T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-04:alan717.github.io/wol.html</id><summary type="html">组网并唤醒远程PC.</summary><content type="html">&lt;h2&gt;简要&lt;/h2&gt;
+&lt;p&gt;上篇已经使用wireguard组网好了，现在在老家的情况下远程唤醒家里的Ubuntu Linux主机.&lt;/p&gt;
+&lt;h2&gt;使用&lt;/h2&gt;
+&lt;h3&gt;确定网卡是否支持&lt;/h3&gt;
+&lt;p&gt;首先ifconfig确定网卡的名称。
+然后：&lt;br&gt;
+&lt;code&gt;sudo ethtool enp7s0 | grep Wake-on #我的网卡设备名是enp7s0&lt;/code&gt;&lt;br&gt;
+确定输出模式：&lt;br&gt;
+* g模式(GENERIC):只需要NIC芯片和驱动支持唤醒扩展就可以工作,兼容性最好。这是wol标准实现。
+* p模式(PHY):需要NIC PHY层支持未对齐帧检测唤醒,支持程度较低。
+* u模式(UNICAST):需要NIC芯片支持L2/L3过滤和单播唤醒功能,支持程度一般。
+* m模式(MULTICAST):同时支持g和p模式,兼容性次于g模式。
+* b模式(BROADCAST):同时支持所有模式,兼容性汇总下来可能性最低。&lt;/p&gt;
+&lt;p&gt;我们使用&lt;code&gt;g&lt;/code&gt;模式&lt;/p&gt;
+&lt;h3&gt;设置g模式&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;sudo ethtool -s enp7s0 wol g&lt;/code&gt;来通过命令设置.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;有一个问题是：当前设置后，下次开机后会丢失这个设置。可以每次开机自动永久设置为g.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;永久设置g模式&lt;/h3&gt;
+&lt;p&gt;方法有3种：&lt;br&gt;
+* udevadm
+* systemd service 
+* netplan&lt;/p&gt;
+&lt;p&gt;只说netplan吧，其它2种我在ubuntu下没尝试成功.&lt;/p&gt;
+&lt;h4&gt;netplan&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://ubuntu.com/core/docs/networkmanager/networkmanager-and-netplan"&gt;link&lt;/a&gt;这个link解释了network-manager
+会使用netplan配置脚本进行配置渲染。 &lt;br&gt;
+我使用如下：  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Let NetworkManager manage all devices on this system&lt;/span&gt;
+network:
+&lt;span class="w"&gt;  &lt;/span&gt;version:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;renderer:&lt;span class="w"&gt; &lt;/span&gt;NetworkManager
+&lt;span class="w"&gt;  &lt;/span&gt;ethernets:
+&lt;span class="w"&gt;    &lt;/span&gt;enp6s0:
+&lt;span class="w"&gt;      &lt;/span&gt;dhcp4:&lt;span class="w"&gt; &lt;/span&gt;no
+&lt;span class="w"&gt;      &lt;/span&gt;addresses:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.50.27/24&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;gateway4:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.50.1
+&lt;span class="w"&gt;      &lt;/span&gt;wakeonlan:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;nameservers:
+&lt;span class="w"&gt;          &lt;/span&gt;addresses:&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;192&lt;/span&gt;.168.50.1,8.8.8.8&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code&gt;wakeonlan: true&lt;/code&gt; 只用添加这条配置即可ubuntu每次开机会自动打开唤醒功能。&lt;/p&gt;
+&lt;h3&gt;测试&lt;/h3&gt;
+&lt;p&gt;我使用python脚本在另外一台电脑来测试开机：&lt;br&gt;
+需要 修改python中的mac address.  &lt;/p&gt;
+&lt;div class="codehilite"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n"&gt;list1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;xx:xx:xx:xx:xx:xx&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="c1"&gt;##give your MAC addresses here in this format&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;struct&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;wake_on_lan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;macaddress&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;macaddress&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;pass&lt;/span&gt;
+    &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;macaddress&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;12&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;sep&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;macaddress&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="n"&gt;macaddress&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;macaddress&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sep&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Incorrect MAC address format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;FFFFFFFFFFFF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;macaddress&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="n"&gt;send_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;send_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sa"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;send_data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                             &lt;span class="n"&gt;struct&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;B&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;16&lt;/span&gt;&lt;span class="p"&gt;))])&lt;/span&gt;
+
+    &lt;span class="n"&gt;sock&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AF_INET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SOCK_DGRAM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setsockopt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SOL_SOCKET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SO_BROADCAST&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sendto&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;send_data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;lt;broadcast&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;list1&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="n"&gt;wake_on_lan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;list1&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;System is Powered ON&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;开机后ping 确认成功唤醒.&lt;/p&gt;</content></entry><entry><title>记无源码给闭源内核写模块</title><link href="alan717.github.io/mod_problem.html" rel="alternate"></link><published>2024-03-01T00:00:00+08:00</published><updated>2024-03-01T00:00:00+08:00</updated><author><name>LK.</name></author><id>tag:None,2024-03-01:alan717.github.io/mod_problem.html</id><summary type="html">给一个产品的linux写内核模块</summary><content type="html">&lt;h2&gt;pre&lt;/h2&gt;
 &lt;p&gt;目标主机没有内核源码，只确定内核大概版本，确定是它修改了内核，和引入了xenomai实时内核.&lt;/p&gt;
 &lt;h2&gt;模块编写&lt;/h2&gt;
 &lt;p&gt;开发很顺利，正向开发就可以&lt;/p&gt;

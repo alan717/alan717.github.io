@@ -69,6 +69,7 @@
 
 
   <h2>简要</h2>
+<p>我有两台服务器，一台Linux台式机，一台笔记本，一台Windows台式机,现在需要组网，思前想后，决定用开源方案，可控可玩。</p>
 <p>wireguard简单理解就是非对称加密的peer-2-peer连接，所以配置依赖公私钥.</p>
 <h2>使用</h2>
 <p>使用wireguard生成公私钥.</p>
@@ -131,6 +132,7 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 <span class="s1">PublicKey = srv&#39;</span>s<span class="w"> </span>public<span class="w"> </span>key.
 <span class="nv">AllowedIPs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>.8.0.0/24,<span class="w"> </span>fd0d:86fa:c3bc::/64
 <span class="nv">Endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">203</span>.0.113.1:51820
+<span class="nv">PersistentKeepalive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
 </code></pre></div>
 
 <p>启动和暂停和服务器一样。</p>
@@ -148,6 +150,7 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 <span class="s1">PublicKey = srv&#39;</span>s<span class="w"> </span>public<span class="w"> </span>key.
 <span class="nv">AllowedIPs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>.8.0.0/24,<span class="w"> </span>fd0d:86fa:c3bc::/64
 <span class="nv">Endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">203</span>.0.113.1:51820
+<span class="nv">PersistentKeepalive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">25</span>
 </code></pre></div>
 
 <h3>第三个peer配置第四个etc....</h3>
