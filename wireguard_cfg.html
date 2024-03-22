@@ -56,7 +56,7 @@
   
 
   <aside>
-    <p>published on 2024-03-04
+    <p>published on 2024-03-05
 
     
     · tagged with
@@ -68,7 +68,10 @@
   </aside>
 
 
-  <h2>简要</h2>
+  <blockquote>
+<p>强调 从写文章开始使用，到今天3.7日，运营商已经ban掉wg的udp端口了，无法直接连接，详情请查阅<code>运营商封锁udp</code></p>
+</blockquote>
+<h2>简要</h2>
 <p>我有两台服务器，一台Linux台式机，一台笔记本，一台Windows台式机,现在需要组网，思前想后，决定用开源方案，可控可玩。</p>
 <p>wireguard简单理解就是非对称加密的peer-2-peer连接，所以配置依赖公私钥.</p>
 <h2>使用</h2>
@@ -165,6 +168,8 @@ net.ipv6.conf.all.forwarding<span class="o">=</span><span class="m">1</span>
 <p>设置MTU降低.就好了</p>
 <h3>allowedips is none</h3>
 <p>设置allowedips时候，使用的那个ip的流量和网段prefix，直接使用peer&rsquo;s ip/32即可接受这个ip的所有流量.</p>
+<h2>开机启动启动 autostar wg-quick after power up</h2>
+<p><code>sudo systemctl enable --now wg-quick@wg0</code>  </p>
 
 
   </ul>

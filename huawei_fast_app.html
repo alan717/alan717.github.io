@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="LK.">
+    <meta name="description" content="快应用逆向">
+    <link rel="stylesheet" href="/static/main.css" type="text/css">
+    <title>[RE-APP]某为快逆向 | LK's blog</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81WR95YF48"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-81WR95YF48');
+    </script>
+  </head>
+
+  <body>
+    <header class="site-header" >
+      <div class="wrapper">
+          <a class='site-title' href="/">阿凯的博客</a>
+
+          <nav class="site-nav">
+                    <a href="#" class="menu-icon">
+                        <svg viewBox="0 0 18 15">
+                            <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                            <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                            <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                        </svg>
+                    </a>
+
+              <div class="trigger">
+                  <a class="page-link" href="/">Blog</a>
+                  <a class="page-link" href="/tags/">Tags</a>
+                  <a class="page-link" href="/atom.xml">Atom Feed</a>
+              </div>
+          </nav>
+      </div>
+    </header>
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    
+
+  
+  <h1>[RE-APP]某为快逆向</h1>
+  
+
+  <aside>
+    <p>published on 2024-03-08
+
+    
+    · tagged with
+      
+        <a href="/tags/huawei.html">#huawei</a>
+    
+    </p>
+  </aside>
+
+
+  <h2>pre</h2>
+<p>逆向一个记账本</p>
+<h2>todo</h2>
+<h3>文件</h3>
+<p><code>/data/data/com.huawei.fastapp/app_resource/fastappEgine/com.xx.fruit</code>
+提取拿到轻应用的网页资源。 应用程序在这里。下来看抓包</p>
+<h3>抓包</h3>
+<p>注入证书，然后开启抓包软件。发现无法抓包。</p>
+<h4>找到不能抓包原因</h4>
+<p>在目录下找到<code>cbg_root.cert</code>证书,</p>
+<div class="codehilite"><pre><span></span><code><span class="n">InputStream</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">getAssets</span><span class="p">().</span><span class="na">open</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="n">X509Certificate</span><span class="w"> </span><span class="n">x509Certificate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">X509Certificate</span><span class="p">)</span><span class="w"> </span><span class="n">CertificateFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;X.509&quot;</span><span class="p">).</span><span class="na">generateCertificate</span><span class="p">(</span><span class="n">open</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">open</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">open</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="k">return</span><span class="w"> </span><span class="n">x509Certificate</span><span class="p">;</span>
+</code></pre></div>
+
+<p>生成了证书，然后日志看到它固定证书. </p>
+<div class="codehilite"><pre><span></span><code>C:\Users\Kian&gt;adb logcat  |findstr CertVerifier
+03-08 15:02:35.446 18560 18657 I a       : [hmssafetydetect-feature CertVerifierUtil.java:1] Start verify cert chain using root ca: CN=Huawei CBG Root CA,OU=Huawei CBG,O=Huawei,C=CN
+03-08 15:02:35.447 18560 18657 I a       : [hmssafetydetect-feature CertVerifierUtil.java:3] verify cert CN=sysintegrity.platform.hicloud.com,OU=Huawei CBG Cloud Security Signer,O=Huawei,C=CN
+03-08 15:02:35.448 18560 18657 I a       : [hmssafetydetect-feature CertVerifierUtil.java:4] using CN=Huawei CBG Application Integration CA,OU=Huawei CBG,O=Huawei,C=CN
+</code></pre></div>
+
+<p>来自于类：Lcom/huawei/fastapp/ca8;</p>
+<h4>猜测</h4>
+<p>这里猜测，它和服务器使用这套证书，不用这套证书是无法通信的，
+同事给建议是转发全部流量然后用mitmproxy抓包，但是觉得是不可行的，理论说不通.</p>
+<p>跟踪了一下 发现它传递到 native中去了。太深了。我觉得这个四路有问题。</p>
+<p>换一种思路找它的通信方式。直接拿到app的代码。</p>
+<p>代码在上边的文件夹中，我们找到关键的代码：</p>
+<div class="codehilite"><pre><span></span><code>                               c.fetch({
+                                    url: s,
+                                    responseType: &quot;text&quot;,
+                                    method: &quot;POST&quot;,
+                                    header: {
+                                        &quot;Content-Type&quot;: &quot;application/json&quot;
+                                    },
+</code></pre></div>
+
+<p>其中c的定义：</p>
+<div class="codehilite"><pre><span></span><code>, c = $app_require$(&quot;@app-module/system.fetch&quot;)
+</code></pre></div>
+
+<p>好好好，就找<code>system.fetch</code></p>
+<p>经过在apk中寻找， <br>
+找到了fetchModule.class</p>
+<p>然后根据其创建okhttp3client的过程，找到其证书管理器的类的关键三个方法：</p>
+<div class="codehilite"><pre><span></span><code>getAcceptedIssuers
+checkServerTrusted
+checkClientTrusted
+</code></pre></div>
+
+<p>知道这三个方法就知道大概的流程了。</p>
+<p>直接bypass</p>
+<div class="codehilite"><pre><span></span><code>            iz.checkClientTrusted.implementation = function (obj1,ibj2) {
+                console.log(&#39;  --&gt;checkClientTrusted Bypassing&#39;);
+            };
+            iz.checkServerTrusted.implementation = function (obj1,ibj2) {
+                console.log(&#39;  --&gt;checkServerTrusted Bypassing&#39;);
+            };
+            iz.getAcceptedIssuers.implementation = function () {
+                console.log(&#39;  --&gt;getAcceptedIssuers Bypassing&#39;);
+                return [];
+            };
+</code></pre></div>
+
+<p>然后安装证书</p>
+<div class="codehilite"><pre><span></span><code>@echo off
+adb shell su -c &quot;mkdir -m 700 /data/local/tmp/ca-copy&quot;
+adb shell su -c &quot;cp /system/etc/security/cacerts/* /data/local/tmp/ca-copy/&quot;
+adb shell su -c &quot;mount -t tmpfs tmpfs /system/etc/security/cacerts&quot;
+adb shell su -c &quot;mv /data/local/tmp/ca-copy/* /system/etc/security/cacerts/&quot;
+adb push c8750f0d.0 /data/local/tmp/c8750f0d.0
+adb shell su -c &quot;cp /data/local/tmp/c8750f0d.0 /system/etc/security/cacerts/&quot;
+adb shell su -c &quot;chown root:root /system/etc/security/cacerts/*&quot;
+adb shell su -c &quot;chmod 644 /system/etc/security/cacerts/*&quot;
+adb shell su -c &quot;chcon u:object_r:system_file:s0 /system/etc/security/cacerts/*&quot;
+adb shell su -c &quot;rm -r /data/local/tmp/ca-copy&quot;
+echo &quot; cert  into system ok!&quot;
+</code></pre></div>
+
+<p>打开转发报工具。即可正常抓取包。</p>
+<h3>算法突破</h3>
+<p>就是调试JS  </p>
+<p>调试js就很easy:<br>
+ 直接copy js 到一个html</p>
+<div class="codehilite"><pre><span></span><code>&lt;script&gt;
+function w(e, t) {
+  var r = (65535 &amp; e) + (65535 &amp; t);
+  return (e &gt;&gt; 16) + (t &gt;&gt; 16) + (r &gt;&gt; 16) &lt;&lt; 16 | 65535 &amp; r;
+}
+function b(e, t, r, n, a, i) {
+  return w((s = w(w(t, e), w(n, i))) &lt;&lt; (o = a) | s &gt;&gt;&gt; 32 - o, r);
+  var s, o;
+}
+function A(e, t, r, n, a, i, s) {
+  return b(t &amp; r | ~t &amp; n, e, t, a, i, s);
+}
+function k(e, t, r, n, a, i, s) {
+  return b(t &amp; n | r &amp; ~n, e, t, a, i, s);
+}
+function S(e, t, r, n, a, i, s) {
+  return b(t ^ r ^ n, e, t, a, i, s);
+}
+function C(e, t, r, n, a, i, s) {
+  return b(r ^ (t | ~n), e, t, a, i, s);
+}
+function _(e, t) {
+debugger;
+  var r,
+    n = &quot;noncestr=&quot; + e + &quot;&amp;timestamp=&quot; + String(t) + &quot;&amp;key=205B31FA4F96D31D84DF380BA559A603&quot;;
+  return (r = n, function (e) {
+    var t,
+      r,
+      n = &quot;0123456789abcdef&quot;,
+      a = &quot;&quot;;
+    for (r = 0; r &lt; e.length; r += 1) t = e.charCodeAt(r), a += n.charAt(t &gt;&gt;&gt; 4 &amp; 15) + n.charAt(15 &amp; t);
+    return a;
+  }(function (e) {
+    return function (e) {
+      return function (e) {
+        var t,
+          r = &quot;&quot;;
+        for (t = 0; t &lt; 32 * e.length; t += 8) r += String.fromCharCode(e[t &gt;&gt; 5] &gt;&gt;&gt; t % 32 &amp; 255);
+        return r;
+      }(function (e, t) {
+        e[t &gt;&gt; 5] |= 128 &lt;&lt; t % 32, e[14 + (t + 64 &gt;&gt;&gt; 9 &lt;&lt; 4)] = t;
+        var r,
+          n,
+          a,
+          i,
+          s,
+          o = 1732584193,
+          c = -271733879,
+          u = -1732584194,
+          l = 271733878;
+        for (r = 0; r &lt; e.length; r += 16) n = o, a = c, i = u, s = l, o = A(o, c, u, l, e[r], 7, -680876936),
+         l = A(l, o, c, u, e[r + 1], 12, -389564586), 
+         u = A(u, l, o, c, e[r + 2], 17, 606105819), 
+         c = A(c, u, l, o, e[r + 3], 22, -1044525330), 
+         o = A(o, c, u, l, e[r + 4], 7, -176418897), 
+         l = A(l, o, c, u, e[r + 5], 12, 1200080426), 
+         u = A(u, l, o, c, e[r + 6], 17, -1473231341), 
+         c = A(c, u, l, o, e[r + 7], 22, -45705983), 
+         o = A(o, c, u, l, e[r + 8], 7, 1770035416), 
+         l = A(l, o, c, u, e[r + 9], 12, -1958414417), 
+         u = A(u, l, o, c, e[r + 10], 17, -42063), 
+         c = A(c, u, l, o, e[r + 11], 22, -1990404162), 
+         o = A(o, c, u, l, e[r + 12], 7, 1804603682), 
+         l = A(l, o, c, u, e[r + 13], 12, -40341101), 
+         u = A(u, l, o, c, e[r + 14], 17, -1502002290),
+          o = k(o, c = A(c, u, l, o, e[r + 15], 22, 1236535329), u, l, e[r + 1], 5, -165796510), 
+          l = k(l, o, c, u, e[r + 6], 9, -1069501632), 
+          u = k(u, l, o, c, e[r + 11], 14, 643717713), 
+          c = k(c, u, l, o, e[r], 20, -373897302), 
+          o = k(o, c, u, l, e[r + 5], 5, -701558691), 
+          l = k(l, o, c, u, e[r + 10], 9, 38016083), 
+          u = k(u, l, o, c, e[r + 15], 14, -660478335), 
+          c = k(c, u, l, o, e[r + 4], 20, -405537848), 
+          o = k(o, c, u, l, e[r + 9], 5, 568446438), 
+          l = k(l, o, c, u, e[r + 14], 9, -1019803690), 
+          u = k(u, l, o, c, e[r + 3], 14, -187363961),
+           c = k(c, u, l, o, e[r + 8], 20, 1163531501), 
+           o = k(o, c, u, l, e[r + 13], 5, -1444681467), l = k(l, o, c, u, e[r + 2], 9, -51403784), 
+           u = k(u, l, o, c, e[r + 7], 14, 1735328473), 
+           o = S(o, c = k(c, u, l, o, e[r + 12], 20, -1926607734), u, l, e[r + 5], 4, -378558), 
+           l = S(l, o, c, u, e[r + 8], 11, -2022574463), 
+           u = S(u, l, o, c, e[r + 11], 16, 1839030562), 
+           c = S(c, u, l, o, e[r + 14], 23, -35309556), 
+           o = S(o, c, u, l, e[r + 1], 4, -1530992060), 
+           l = S(l, o, c, u, e[r + 4], 11, 1272893353), 
+           u = S(u, l, o, c, e[r + 7], 16, -155497632), 
+           c = S(c, u, l, o, e[r + 10], 23, -1094730640), 
+           o = S(o, c, u, l, e[r + 13], 4, 681279174), 
+           l = S(l, o, c, u, e[r], 11, -358537222), 
+           u = S(u, l, o, c, e[r + 3], 16, -722521979), 
+           c = S(c, u, l, o, e[r + 6], 23, 76029189), 
+           o = S(o, c, u, l, e[r + 9], 4, -640364487),
+            l = S(l, o, c, u, e[r + 12], 11, -421815835), u = S(u, l, o, c, e[r + 15], 16, 530742520), 
+            o = C(o, c = S(c, u, l, o, e[r + 2], 23, -995338651), u, l, e[r], 6, -198630844), 
+            l = C(l, o, c, u, e[r + 7], 10, 1126891415), u = C(u, l, o, c, e[r + 14], 15, -1416354905), 
+            c = C(c, u, l, o, e[r + 5], 21, -57434055), o = C(o, c, u, l, e[r + 12], 6, 1700485571), 
+            l = C(l, o, c, u, e[r + 3], 10, -1894986606), u = C(u, l, o, c, e[r + 10], 15, -1051523), 
+            c = C(c, u, l, o, e[r + 1], 21, -2054922799), o = C(o, c, u, l, e[r + 8], 6, 1873313359), 
+            l = C(l, o, c, u, e[r + 15], 10, -30611744), u = C(u, l, o, c, e[r + 6], 15, -1560198380), 
+            c = C(c, u, l, o, e[r + 13], 21, 1309151649), o = C(o, c, u, l, e[r + 4], 6, -145523070), 
+            l = C(l, o, c, u, e[r + 11], 10, -1120210379), u = C(u, l, o, c, e[r + 2], 15, 718787259),
+            c = C(c, u, l, o, e[r + 9], 21, -343485551), o = w(o, n), c = w(c, a), u = w(u, i), l = w(l, s);
+        return [o, c, u, l];
+      }(function (e) {
+        var t,
+          r = [];
+        console.log(e.length);
+
+        for (r[(e.length &gt;&gt; 2) - 1] = undefined, t = 0; t &lt; r.length; t += 1) r[t] = 0;
+        for (t = 0; t &lt; 8 * e.length; t += 8) r[t &gt;&gt; 5] |= (255 &amp; e.charCodeAt(t / 8)) &lt;&lt; t % 32;
+        console.log(r);
+        return r;
+      }(e), 8 * e.length));
+    }(unescape(encodeURIComponent(e)));
+  }(r))).toUpperCase();
+}
+
+
+&lt;/script&gt;
+</code></pre></div>
+
+<p>浏览器打开，直接调用调试就可以了。 注意debugger位置;</p>
+<h3>复现</h3>
+<p>直接配合AI和python直接写出来。</p>
+<h3>总结</h3>
+<p>按图索骥！</p>
+
+
+  </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+        <h2 class="footer-heading">阿凯的博客</h2>
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li>LK's blog</li>
+<!--                    <li><a href="mailto:@gmail.com">@gmail.com</a></li>-->
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    <li><a href="https://github.com/alan717"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path></svg>
+</span><span class="username">alan717</span></a>
+                    </li>
+                    <li><a href="https://t.me/sdqqwafdryref"><span class="icon icon--twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M248 8C111 8 0 119 0 256S111 504 248 504 496 393 496 256 385 8 248 8zM363 176.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7 .2-.7 .3-3.1-1.2-4.4s-3.6-.8-5.1-.5q-3.3 .7-104.6 69.1-14.8 10.2-26.9 9.9c-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3q.8-6.7 18.5-13.7 108.4-47.2 144.6-62.3c68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6 .5 9.6 2.9a10.5 10.5 0 0 1 3.5 6.7A43.8 43.8 0 0 1 363 176.7z"/></svg>
+                    </span><span class="username">TG</span></a></li>
+	                <li>
+		                <a href="/atom.xml"><span class="icon icon--rss"><!--?xml version="1.0" encoding="utf-8"?-->
+                            <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M576 1344q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm512 123q2 28-17 48-18 21-47 21h-135q-25 0-43-16.5t-20-41.5q-22-229-184.5-391.5t-391.5-184.5q-25-2-41.5-20t-16.5-43v-135q0-29 21-47 17-17 43-17h5q160 13 306 80.5t259 181.5q114 113 181.5 259t80.5 306zm512 2q2 27-18 47-18 20-46 20h-143q-26 0-44.5-17.5t-19.5-42.5q-12-215-101-408.5t-231.5-336-336-231.5-408.5-102q-25-1-42.5-19.5t-17.5-43.5v-143q0-28 20-46 18-18 44-18h3q262 13 501.5 120t425.5 294q187 186 294 425.5t120 501.5z"></path></svg></span><span class="username"> subscribe </span></a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col-3">
+                <p>Yet another alan717 Blog (aka alan)
+                </p>
+            </div>
+        </div>
+
+
+
+
+</div>
+    </footer>
+  </body>
+
+</html>
